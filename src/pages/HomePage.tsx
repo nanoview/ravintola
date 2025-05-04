@@ -62,19 +62,18 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Our Story</h2>
+              <h2 className="text-3xl font-bold mb-6">Tarinamme</h2>
               <p className="mb-4 text-lg">
-                Since opening our doors in 2010, Savoria Bistro has been dedicated to
-                 providing an exceptional dining experience that combines
-                  culinary excellence with warm hospitality.
+              Perustamisestamme lähtien baarimme ja ravintolamme on noudattanut yksinkertaista missiota:
+               valmistaa poikkeuksellisia juomia parhaista paikallisista raaka-aineista 
+               ja tarjota unohtumaton vieraanvaraisuuskokemus.
               </p>
               <p className="mb-6 text-lg">
-                Our chef, with over 20 years of experience in renowned 
-                restaurants across the world, crafts each dish with passion and creativity, 
-                using only the finest locally-sourced ingredients.
+                Meidän intohimomme on luoda makuja, jotka vievät sinut matkalle ympäri maailmaa,
+                 ja jokainen annos on suunniteltu herättämään aistisi henkiin.
               </p>
               <Button asChild>
-                <Link to="/about">Learn More About Us</Link>
+                <Link to="/about">Lue lisää meistä</Link>
               </Button>
             </div>
             <div className="rounded-lg overflow-hidden shadow-lg">
@@ -91,7 +90,7 @@ export default function HomePage() {
       {/* Featured Menu Items */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Featured Dishes</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Esittelyssä olevat ruoat</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {featuredItems.map(item => (
               <Card key={item.id} className="overflow-hidden hover:shadow-lg transition-shadow">
@@ -136,7 +135,8 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-              <p className="italic">"The food was absolutely delicious and the service was impeccable. I highly recommend the truffle risotto!"</p>
+              <p className="italic">"The food was absolutely delicious and the service was impeccable. 
+                I highly recommend the truffle risotto!"</p>
             </div>
             <div className="bg-foreground/80 p-6 rounded-lg border border-white/10">
               <div className="flex items-center mb-4">
@@ -151,7 +151,9 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-              <p className="italic">"An extraordinary dining experience. The atmosphere was elegant yet comfortable, and every dish was a work of art."</p>
+              <p className="italic">"An extraordinary dining experience.
+                 The atmosphere was elegant yet comfortable,
+                  and every dish was a work of art."</p>
             </div>
             <div className="bg-foreground/80 p-6 rounded-lg border border-white/10">
               <div className="flex items-center mb-4">
@@ -166,7 +168,9 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-              <p className="italic">"We celebrated our anniversary here and it couldn't have been more perfect. The staff went above and beyond to make our night special."</p>
+              <p className="italic">"We celebrated our anniversary here and
+                 it couldn't have been more perfect.
+                  The staff went above and beyond to make our night special."</p>
             </div>
           </div>
         </div>

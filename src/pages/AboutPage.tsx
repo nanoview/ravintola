@@ -5,21 +5,31 @@ export default function AboutPage() {
   return (
     <Layout>
       <div className="container mx-auto px-4 py-16">
-        <h1 className="text-4xl font-bold text-center mb-10">About Savoria Bistro</h1>
+        <h1 className="text-4xl font-bold text-center mb-10">Tietoja Savoria Bistrosta</h1>
         
         {/* Our Story Section */}
         <section className="mb-20">
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <div>
-              <h2 className="text-3xl font-semibold mb-6">Our Story</h2>
+              <h2 className="text-3xl font-semibold mb-6">Tarinamme</h2>
               <p className="text-lg mb-4">
-                Founded in 2010 by award-winning Chef Marco Rossi, Savoria Bistro began as a small family-owned restaurant with a simple mission: to create exceptional dishes using the freshest local ingredients while providing an unforgettable dining experience.
+              Perustamisestamme lähtien baarimme ja ravintolamme on noudattanut yksinkertaista missiota:
+               valmistaa poikkeuksellisia juomia parhaista paikallisista raaka-aineista
+                ja tarjota unohtumaton vieraanvaraisuuskokemus.
               </p>
               <p className="text-lg mb-4">
-                Over the years, our dedication to culinary excellence and warm hospitality has earned us recognition as one of the top dining destinations in the region. What started as a passion project has blossomed into a beloved establishment where food lovers gather to celebrate life's special moments and everyday pleasures.
+              Vuosien varrella omistautumisemme cocktailien valmistuksen huippuosaamiseen sekä lämmin ja
+               toivottava palveluasenteemme on tehnyt meistä yhden alueen arvostetuimmista kohteista 
+               niin cocktailien ystäville kuin baarikulttuurin harrastajille.
+                Se, mikä alkoi intohimoprojektina, on kasvanut rakastetuksi kohtaamispaikaksi,
+               jossa ystävät, kollegat ja naapurit kokoontuvat nauttimaan huolella valmistetuista juomista ja eloisasta tunnelmasta.
               </p>
               <p className="text-lg">
-                Today, while we've grown in size and reputation, we remain true to our roots – committed to sustainability, supporting local farmers, and creating dishes that tell a story about our community and culinary heritage.
+              Tänä päivänä, vaikka olemme kasvaneet niin kooltamme kuin maineeltamme, pysymme uskollisina
+               juurillemme – sitoutuneina kestävään kehitykseen,
+               paikallisten tislaamojen ja tuottajien tukemiseen sekä luomaan ainutlaatuisia cocktaileja,
+               jotka juhlistavat yhteisöämme ja käsityöläisbaarimestaruuden rikasta perinnettä.
+              Jokainen, joka vierailee luonamme, tuntee olonsa kuin kotonaan.
               </p>
             </div>
             <div className="rounded-lg overflow-hidden shadow-lg">
@@ -47,7 +57,8 @@ export default function AboutPage() {
               <h3 className="text-xl font-semibold mb-2">Chef Marco Rossi</h3>
               <p className="text-primary mb-3">Executive Chef & Founder</p>
               <p className="text-muted-foreground">
-                With over 20 years of experience in Michelin-starred restaurants across Europe, Chef Marco brings his passion for innovative cuisine to every dish.
+                With over 20 years of experience in Michelin-starred restaurants across Europe,
+                 Chef Marco brings his passion for innovative cuisine to every dish.
               </p>
             </div>
             
@@ -62,7 +73,8 @@ export default function AboutPage() {
               <h3 className="text-xl font-semibold mb-2">Sofia Garcia</h3>
               <p className="text-primary mb-3">Head Chef</p>
               <p className="text-muted-foreground">
-                Sofia's expertise in traditional techniques combined with modern creativity results in dishes that are both familiar and surprising.
+                Sofia's expertise in traditional techniques combined with modern
+                 creativity results in dishes that are both familiar and surprising.
               </p>
             </div>
             
@@ -77,7 +89,9 @@ export default function AboutPage() {
               <h3 className="text-xl font-semibold mb-2">James Wilson</h3>
               <p className="text-primary mb-3">Restaurant Manager</p>
               <p className="text-muted-foreground">
-                James ensures that every guest receives exceptional service, making your dining experience memorable from the moment you walk through our doors.
+                James ensures that every guest receives exceptional service,
+                 making your dining experience memorable
+                  from the moment you walk through our doors.
               </p>
             </div>
           </div>
@@ -93,8 +107,9 @@ export default function AboutPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold mb-3">Fresh Ingredients</h3>
-              <p>We source the freshest seasonal ingredients from local farmers and suppliers who share our commitment to quality and sustainability.</p>
+              <h3 className="text-xl font-semibold mb-3">Tuoreita ainesosia</h3>
+              <p>We source the freshest seasonal ingredients from local farmers
+                 and suppliers who share our commitment to quality and sustainability.</p>
             </div>
             
             <div className="text-center p-6">

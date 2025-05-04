@@ -22,8 +22,8 @@ export default function Navbar({ darkHeader }: NavbarProps) {
   }, []);
 
   const navbarClass = isScrolled || !darkHeader
-    ? "bg-white shadow-md text-foreground fixed w-full z-50 transition-all duration-300"
-    : "bg-transparent text-white fixed w-full z-50 transition-all duration-300";
+    ? "bg-white shadow-md text-foreground fixed w-full z-50"
+    : "bg-transparent text-purple fixed w-full z-50";
 
   return (
     <nav className={navbarClass}>
@@ -31,24 +31,24 @@ export default function Navbar({ darkHeader }: NavbarProps) {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link to="/" className="text-2xl font-bold flex items-center">
-            <span className="text-primary mr-1">Savoria</span>
-            <span className={isScrolled || !darkHeader ? "text-foreground" : "text-white"}>Bistro</span>
+            <span className="text-primary mr-1 text-fuchsia-500">RAVINTOLA</span>
+            <span className={isScrolled || !darkHeader ? "text-purple" : "text-foreground"}>MUMMUNTUPA</span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="hover:text-primary transition-colors font-medium">Home</Link>
-            <Link to="/menu" className="hover:text-primary transition-colors font-medium">Menu</Link>
-            <Link to="/about" className="hover:text-primary transition-colors font-medium">About</Link>
-            <Link to="/contact" className="hover:text-primary transition-colors font-medium">Contact</Link>
+            <Link to="/" className="hover:text-primary transition-colors font-medium" style={{ color: isScrolled || !darkHeader ? 'inherit' : 'fuchsia' }}>KOTI</Link>
+            <Link to="/menu" className="hover:text-primary transition-colors font-medium">RUOKALISTA</Link>
+            <Link to="/about" className="hover:text-primary transition-colors font-medium">TIETOA MEISTA</Link>
+            <Link to="/contact" className="hover:text-primary transition-colors font-medium">OTA YHTEYTTÄ</Link>
             <Button asChild>
-              <Link to="/reservation">Reserve a Table</Link>
+              <Link to="/reservation">VARAA PÖYTÄ</Link>
             </Button>
           </div>
 
           {/* Mobile menu button */}
           <button 
-            className="md:hidden"
+            className="md:hidden relative z-50"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}

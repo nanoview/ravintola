@@ -7,14 +7,14 @@ export default function MenuPage() {
   const [activeCategory, setActiveCategory] = useState("starters");
   
   const menuCategories = [
-    { id: "starters", name: "Starters" },
-    { id: "mains", name: "Main Courses" },
-    { id: "desserts", name: "Desserts" },
-    { id: "drinks", name: "Drinks" }
+    { id: "PIZZAT", name: "PIZZAT" },
+    { id: "KEBABIT", name: "KEBABIT" },
+    { id: "JUOMAT", name: "JUOMAT" },
+    { id: "SALAATIT", name: "SALAATIT" }
   ];
 
   const menuItems = {
-    starters: [
+    PIZZAT: [
       {
         id: 1,
         name: "Bruschetta",
@@ -37,7 +37,7 @@ export default function MenuPage() {
         image: "https://images.unsplash.com/photo-1584947897558-4e06f5024915?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
       }
     ],
-    mains: [
+    KEBABIT: [
       {
         id: 1,
         name: "Herb-Crusted Salmon",
@@ -67,7 +67,7 @@ export default function MenuPage() {
         image: "https://images.unsplash.com/photo-1632778149955-e80f8ceca2e8?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
       }
     ],
-    desserts: [
+    SALAATIT: [
       {
         id: 1,
         name: "Tiramisu",
@@ -90,7 +90,7 @@ export default function MenuPage() {
         image: "https://images.unsplash.com/photo-1470124182917-cc6e71b22ecc?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
       }
     ],
-    drinks: [
+    JUOMAT: [
       {
         id: 1,
         name: "Signature Sangria",
@@ -119,9 +119,10 @@ export default function MenuPage() {
     <Layout>
       <div className="bg-gray-50 py-10">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold text-center mb-4">Our Menu</h1>
+          <h1 className="text-4xl font-bold text-center mb-4">Meidan ruokalista</h1>
           <p className="text-center text-lg mb-10 max-w-2xl mx-auto">
-            Explore our carefully crafted menu featuring the finest ingredients and culinary traditions.
+          Tutustu huolella laadittuun ruokalistaamme,
+           jossa on käytetty parhaita raaka-aineita ja kulinaarisia perinteitä.
           </p>
 
           <Tabs defaultValue="starters" className="w-full max-w-4xl mx-auto">
