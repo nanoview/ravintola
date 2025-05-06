@@ -41,17 +41,17 @@ export default function HomePage() {
       >
         <div className="container mx-auto px-4 text-center text-white">
           <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in">
-            A Culinary Experience Like No Other
+          Unohtumaton ruoka- ja juomaelämys
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto animate-fade-in">
-            Indulge in the finest cuisine crafted with passion and the freshest ingredients.
+          "Nauti parhaista ruoista ja juomista, valmistetuista tuoreimmista suomalaisista raaka-aineista. The Finnish way."
           </p>
           <div className="flex justify-center gap-4 animate-fade-in">
             <Button size="lg" asChild>
-              <Link to="/reservation">Reserve a Table</Link>
+              <Link to="/reservation">Varaa Pöytä</Link>
             </Button>
-            <Button size="lg" variant="outline" className="text-white border-white hover:bg-white hover:text-foreground" asChild>
-              <Link to="/menu">Explore Menu</Link>
+            <Button size="lg" variant="outline" className="text-fuchsia-500 border-white hover:bg-white hover:text-foreground" asChild>
+              <Link to="/menu">Tutustu ruokalistaan</Link>
             </Button>
           </div>
         </div>
@@ -62,7 +62,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Tarinamme</h2>
+              <h2 className="text-3xl font-bold mb-6">Meidän tarina</h2>
               <p className="mb-4 text-lg">
               Perustamisestamme lähtien baarimme ja ravintolamme on noudattanut yksinkertaista missiota:
                valmistaa poikkeuksellisia juomia parhaista paikallisista raaka-aineista 
@@ -111,7 +111,7 @@ export default function HomePage() {
           </div>
           <div className="text-center mt-10">
             <Button size="lg" asChild>
-              <Link to="/menu">View Full Menu</Link>
+              <Link to="/menu">Näytä koko valikko</Link>
             </Button>
           </div>
         </div>
@@ -120,12 +120,12 @@ export default function HomePage() {
       {/* Testimonials */}
       <section className="py-20 bg-foreground text-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">What Our Guests Say</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Mitä vieraamme sanovat !</h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="bg-foreground/80 p-6 rounded-lg border border-white/10">
               <div className="flex items-center mb-4">
                 <div>
-                  <h4 className="font-semibold">Sarah Johnson</h4>
+                  <h4 className="font-semibold">Aino Lehtonen</h4>
                   <div className="flex text-yellow-400">
                     {[1, 2, 3, 4, 5].map(star => (
                       <svg key={star} xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
@@ -135,8 +135,7 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-              <p className="italic">"The food was absolutely delicious and the service was impeccable. 
-                I highly recommend the truffle risotto!"</p>
+              <p className="italic">"Ruoka oli aivan herkullista ja palvelu oli erinomaista.</p>
             </div>
             <div className="bg-foreground/80 p-6 rounded-lg border border-white/10">
               <div className="flex items-center mb-4">
@@ -151,14 +150,14 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-              <p className="italic">"An extraordinary dining experience.
-                 The atmosphere was elegant yet comfortable,
-                  and every dish was a work of art."</p>
+              <p className="italic">"There was a wide variety of drinks and cocktails.
+                 I had a pleasant evening with local Finnish people and felt a warm,
+                  home-like atmosphere."</p>
             </div>
             <div className="bg-foreground/80 p-6 rounded-lg border border-white/10">
               <div className="flex items-center mb-4">
                 <div>
-                  <h4 className="font-semibold">Emily Rodriguez</h4>
+                  <h4 className="font-semibold">Helmi Mäkinen</h4>
                   <div className="flex text-yellow-400">
                     {[1, 2, 3, 4, 5].map(star => (
                       <svg key={star} xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
@@ -168,9 +167,8 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
-              <p className="italic">"We celebrated our anniversary here and
-                 it couldn't have been more perfect.
-                  The staff went above and beyond to make our night special."</p>
+              <p className="italic">"Juhlimme syntymäpäivääni täällä ystävien kanssa.
+              Henkilökunta teki kaikkensa tehdäkseen illastamme erityisen."</p>
             </div>
           </div>
         </div>
@@ -184,14 +182,11 @@ export default function HomePage() {
         }}
       >
         <div className="container mx-auto px-4 text-center text-white">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Reserve Your Table Today</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Experience the exquisite flavors and ambiance of Savoria Bistro. 
-            Make a reservation and treat yourself to an unforgettable dining experience.
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">Mummuntupa &#128522; Grandma's Cottage</h2>
+          <p className="text-xl mb-8 max-w-2xl mx-auto">"Tule mummon tupalle tänään! Koe upeat maut ja tunnelma.
+             Varaa pöytä tai tule suoraan ja hemmottele itseäsi jollakin hyvällä."
           </p>
-          <Button size="lg" className="bg-primary text-white hover:bg-primary/90" asChild>
-            <Link to="/reservation">Book a Table Now</Link>
-          </Button>
+         
         </div>
       </section>
     </Layout>
