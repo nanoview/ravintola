@@ -4,13 +4,17 @@ import { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function MenuPage() {
-  const [activeCategory, setActiveCategory] = useState("starters");
+  const [activeCategory, setActiveCategory] = useState("PIZZAT");
   
-  const menuCategories = [
+  const menuCategories = [ 
     { id: "PIZZAT", name: "PIZZAT" },
     { id: "KEBABIT", name: "KEBABIT" },
     { id: "JUOMAT", name: "JUOMAT" },
-    { id: "SALAATIT", name: "SALAATIT" }
+    { id: "SALAATIT", name: "SALAATIT" },
+    { id: "KANARUOAT", name: "KANARUOAT" },
+    { id: "KANALEIKKEET", name: "KANALEIKKEET" },
+    { id: "PIHIVIT", name: "PIHIVIT" },
+    { id: "BURGERIT", name: "BURGERIT" }
   ];
 
   const menuItems = {
@@ -119,13 +123,13 @@ export default function MenuPage() {
     <Layout>
       <div className="bg-gray-50 py-10">
         <div className="container mx-auto px-4">
-          <h1 className="text-4xl font-bold text-center mb-4">Meidan ruokalista</h1>
+          <h1 className="text-4xl font-bold text-center mb-4">Ruokalista</h1>
           <p className="text-center text-lg mb-10 max-w-2xl mx-auto">
           Tutustu huolella laadittuun ruokalistaamme,
            jossa on käytetty parhaita raaka-aineita ja kulinaarisia perinteitä.
           </p>
 
-          <Tabs defaultValue="starters" className="w-full max-w-4xl mx-auto">
+          <Tabs defaultValue="PIZZAT" className="w-full max-w-4xl mx-auto">
             <TabsList className="grid grid-cols-2 md:grid-cols-4">
               {menuCategories.map(category => (
                 <TabsTrigger 

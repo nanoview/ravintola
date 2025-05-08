@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom';
-import { Instagram, Facebook, Twitter } from 'lucide-react';
+import { Instagram, Facebook, Twitter, MapPin } from 'lucide-react';
 
 export default function Footer() {
   return (
@@ -10,10 +10,19 @@ export default function Footer() {
           {/* Restaurant Info */}
           <div>
             <h3 className="text-xl font-bold mb-4 text-green-500">Ravintola Mummuntupa</h3>
-            <p className="mb-2">123 Gourmet Avenue</p>
-            <p className="mb-2">Culinary District</p>
-            <p className="mb-2">Foodville, FL 34567</p>
-            <p className="mb-4">(123) 456-7890</p>
+            <p className="mb-2">Vieraskuja 4 (2 krs)   </p>
+           <p className="mb-2"> 02770  Espoo, Finland</p>
+            <p className="mb-4">+358 45 116 9090</p>
+             {/* Google Maps Link */}
+             <a
+              href="https://www.google.com/maps?q=Vieraskuja+4,+02770+Espoo,+Finland"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center text-fuchsia-500 hover:text-primary transition-colors"
+            >
+              <MapPin size={20} className="mr-2" />
+              View on Google Maps
+            </a>
           </div>
 
           {/* Opening Hours */}

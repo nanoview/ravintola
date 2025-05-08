@@ -41,7 +41,7 @@ export default function HomePage() {
       >
         <div className="container mx-auto px-4 text-center text-white">
           <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fade-in">
-          Unohtumaton ruoka- ja juomaelämys
+          Ruoka- ja juoma elämys
           </h1>
           <p className="text-xl md:text-2xl mb-8 max-w-2xl mx-auto animate-fade-in">
           "Nauti parhaista ruoista ja juomista, valmistetuista tuoreimmista suomalaisista raaka-aineista. The Finnish way."
@@ -62,7 +62,7 @@ export default function HomePage() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Meidän tarina</h2>
+              <h2 className="text-3xl font-bold mb-6">Meidän pieni tarina</h2>
               <p className="mb-4 text-lg">
               Perustamisestamme lähtien baarimme ja ravintolamme on noudattanut yksinkertaista missiota:
                valmistaa poikkeuksellisia juomia parhaista paikallisista raaka-aineista 
@@ -183,7 +183,8 @@ export default function HomePage() {
       >
         <div className="container mx-auto px-4 text-center text-white">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Mummuntupa &#128522; Grandma's Cottage</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">"Tule mummon tupalle tänään! Koe upeat maut ja tunnelma.
+          <p className="text-xl mb-8 max-w-2xl mx-auto">"Tule mummon tupalle tänään!
+             Koe upeat maut ja tunnelma.
              Varaa pöytä tai tule suoraan ja hemmottele itseäsi jollakin hyvällä."
           </p>
          
