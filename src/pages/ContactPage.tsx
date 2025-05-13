@@ -87,7 +87,7 @@ export default function ContactPage() {
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  placeholder="Varaustiedustelu"
+                  placeholder="Varaustiedustelut tai muut asiat"
                   required
                 />
               </div>
@@ -151,13 +151,13 @@ export default function ContactPage() {
                 <div className="flex items-start">
                   <Clock className="text-primary mr-4 mt-1" />
                   <div>
-                    <h3 className="font-medium mb-1">Hours</h3>
+                    <h3 className="font-medium mb-1">Hours - Aukioloajat</h3>
                     <p className="text-muted-foreground">
                       Maanantai - perjantai: klo 11.00 - 22.00
                       <br />
-                      Lauantai: klo 10–23
+                      Lauantai: klo 10-23
                       <br />
-                      Sunnuntai: klo 10–21
+                      Sunnuntai: klo 10-21
                     </p>
                   </div>
                 </div>
