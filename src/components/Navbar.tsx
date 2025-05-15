@@ -32,7 +32,7 @@ export default function Navbar({ darkHeader }: NavbarProps) {
           {/* Logo */}
           <Link to="/" className="text-2xl font-bold flex items-center">
             <span className="text-primary mr-1 text-fuchsia-500">RAVINTOLA</span>
-            <span className={isScrolled || !darkHeader ? "text-purple" : "text-foreground"}>MUMMUNTUPA</span>
+            <span className={isScrolled || !darkHeader ? "text-fuchsia-500" : "text-foreground"}>MUMMUNTUPA</span>
           </Link>
 
           {/* Desktop Navigation */}

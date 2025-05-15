@@ -13,9 +13,7 @@ export default function MenuPage() {
     { id: "SALAATIT", name: "SALAATIT" },
     { id: "KANARUOAT", name: "KANARUOAT" },
     { id: "KANALEIKKEET", name: "KANALEIKKEET" },
-    { id: "PIHIVIT", name: "PIHIVIT" },
-    { id: "BURGERIT", name: "BURGERIT" }
-  ];
+   ];
 
   const menuItems = {
     PIZZAT: [
@@ -130,7 +128,7 @@ export default function MenuPage() {
           </p>
 
           <Tabs defaultValue="PIZZAT" className="w-full max-w-4xl mx-auto">
-            <TabsList className="grid grid-cols-2 md:grid-cols-4">
+            <TabsList className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
               {menuCategories.map(category => (
                 <TabsTrigger 
                   key={category.id} 
@@ -143,7 +141,8 @@ export default function MenuPage() {
             </TabsList>
             
             {Object.keys(menuItems).map(category => (
-              <TabsContent key={category} value={category} className="pt-8">
+              <TabsContent key={category} value={category} className="pt-8 md:pt-12">
+                <h2 className="text-green-500 text-2xl font-bold text-center mb-10 pt-10">{category}</h2>
                 <div className="grid md:grid-cols-2 gap-8">
                   {menuItems[category as keyof typeof menuItems].map(item => (
                     <div key={item.id} className="flex bg-white rounded-lg overflow-hidden shadow-md">
