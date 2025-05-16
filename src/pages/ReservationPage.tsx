@@ -42,8 +42,8 @@ export default function ReservationPage() {
     
     if (!date) {
       toast({
-        title: "Please select a date",
-        description: "A reservation date is required.",
+        title: "Valitse päivämäärä",
+        description: "Varauksen päivämäärä vaaditaan.",
         variant: "destructive"
       });
       return;
@@ -51,8 +51,8 @@ export default function ReservationPage() {
     
     if (!reservationData.time) {
       toast({
-        title: "Please select a time",
-        description: "A reservation time is required.",
+        title: "Valitse aika",
+        description: "Varausaika vaaditaan.",
         variant: "destructive"
       });
       return;
@@ -97,8 +97,8 @@ export default function ReservationPage() {
       }
 
       toast({
-        title: "Reservation Request Sent!",
-        description: "We'll confirm your reservation shortly via email.",
+        title: "Varauspyyntö lähetetty!",
+        description: "Vahvistamme varauksesi pian sähköpostitse.",
       });
       
       // Reset form
@@ -114,8 +114,9 @@ export default function ReservationPage() {
     } catch (error) {
       console.error('Error submitting reservation:', error);
       toast({
-        title: "Error submitting reservation",
-        description: "There was a problem submitting your reservation. Please try again.",
+        title: "Virhe varauksen lähettämisessä",
+        description: "Varauksesi lähettämisessä oli ongelma. Lähetä sähköpostitse tai soita numeron +358 45 116 9090. Pahoittelemme ongelmasta.",
+
         variant: "destructive"
       });
     } finally {
@@ -132,20 +133,20 @@ export default function ReservationPage() {
   return (
     <Layout>
       <div className="container mx-auto px-4 py-16">
-        <h1 className="text-4xl font-bold text-center mb-4">Reserve a Table</h1>
+        <h1 className="text-4xl font-bold text-center mb-4">Varaa pöytä</h1>
         <p className="text-center text-lg mb-10 max-w-2xl mx-auto">
-          Make a reservation at Savoria Bistro and enjoy an unforgettable dining experience.
+          Varaa pöytä Savoria Bistroon ja nauti unohtumattomasta ruokailukokemuksesta.
         </p>
         
         <div className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-5 gap-8">
             {/* Reservation Form (3 columns) */}
             <div className="md:col-span-3 bg-white p-8 rounded-lg shadow-md">
-              <h2 className="text-2xl font-semibold mb-6">Reservation Details</h2>
+              <h2 className="text-2xl font-semibold mb-6">Varauksen tiedot</h2>
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="name">Full Name</Label>
+                    <Label htmlFor="name">Koko nimi</Label>
                     <Input 
                       id="name" 
                       name="name" 
@@ -157,7 +158,7 @@ export default function ReservationPage() {
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="email">Email Address</Label>
+                    <Label htmlFor="email">Sähköpostiosoite</Label>
                     <Input 
                       id="email" 
                       name="email" 
@@ -172,7 +173,7 @@ export default function ReservationPage() {
                 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label htmlFor="phone">Phone Number</Label>
+                    <Label htmlFor="phone">Puhelinnumero</Label>
                     <Input 
                       id="phone" 
                       name="phone" 
@@ -184,10 +185,10 @@ export default function ReservationPage() {
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="guests">Number of Guests</Label>
+                    <Label htmlFor="guests">Vieraiden määrä</Label>
                     <Select value={reservationData.guests} onValueChange={handleGuestsChange}>
                       <SelectTrigger id="guests">
-                        <SelectValue placeholder="Select number of guests" />
+                        <SelectValue placeholder="Valitse vieraiden määrä" />
                       </SelectTrigger>
                       <SelectContent>
                         {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
@@ -211,7 +212,7 @@ export default function ReservationPage() {
                           className="w-full justify-start text-left font-normal"
                         >
                           <CalendarIcon className="mr-2 h-4 w-4" />
-                          {date ? format(date, "PPP") : <span>Select a date</span>}
+                          {date ? format(date, "PPP") : <span>Valitse päivämäärä</span>}
                         </Button>
                       </PopoverTrigger>
                       <PopoverContent className="w-auto p-0">
@@ -230,7 +231,7 @@ export default function ReservationPage() {
                   </div>
                   
                   <div className="space-y-2">
-                    <Label htmlFor="time">Time</Label>
+                    <Label htmlFor="time">Aika</Label>
                     <Select value={reservationData.time} onValueChange={handleTimeChange}>
                       <SelectTrigger id="time">
                         <SelectValue placeholder="Select a time" />
@@ -247,7 +248,7 @@ export default function ReservationPage() {
                 </div>
                 
                 <div className="space-y-2">
-                  <Label htmlFor="specialRequests">Special Requests (Optional)</Label>
+                  <Label htmlFor="specialRequests">Erityispyynnöt (valinnainen)</Label>
                   <textarea
                     id="specialRequests"
                     name="specialRequests"
@@ -255,7 +256,7 @@ export default function ReservationPage() {
                     onChange={handleChange}
                     rows={4}
                     className="w-full min-h-[80px] p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                    placeholder="Any special requirements or preferences?"
+                    placeholder="Erityisvaatimukset tai mieltymykset?"
                   ></textarea>
                 </div>
                 
@@ -264,7 +265,7 @@ export default function ReservationPage() {
                   className="w-full" 
                   disabled={loading}
                 >
-                  {loading ? 'Processing...' : 'Complete Reservation'}
+                  {loading ? 'Käsitellään...' : 'Lähetä varauspyyntö'}
                 </Button>
               </form>
             </div>
@@ -272,23 +273,23 @@ export default function ReservationPage() {
             {/* Information Panel (2 columns) */}
             <div className="md:col-span-2 space-y-6">
               <div className="bg-white p-6 rounded-lg shadow-md">
-                <h3 className="text-xl font-semibold mb-4">Reservation Information</h3>
+                <h3 className="text-xl font-semibold mb-4">Varaustiedot</h3>
                 <ul className="space-y-4">
                   <li className="flex items-start">
                     <CheckCircle className="text-primary mr-3 mt-0.5" size={18} />
-                    <span>Reservations are available up to 30 days in advance.</span>
+                    <span>Varauksia voi tehdä jopa 30 päivää etukäteen.</span>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="text-primary mr-3 mt-0.5" size={18} />
-                    <span>For parties larger than 10, please call us directly.</span>
+                    <span>Yli 10 hengen seurueille soitathan meille suoraan.</span>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="text-primary mr-3 mt-0.5" size={18} />
-                    <span>We hold reserved tables for 15 minutes past the reservation time.</span>
+                    <span>Pidämme varattua pöytää 15 minuuttia varausajan jälkeen.</span>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="text-primary mr-3 mt-0.5" size={18} />
-                    <span>A credit card is not required to make a reservation.</span>
+                    <span>Luottokorttia ei tarvita varauksen tekemiseen.</span>
                   </li>
                 </ul>
               </div>
@@ -296,25 +297,26 @@ export default function ReservationPage() {
               <div className="bg-primary text-white p-6 rounded-lg shadow-md">
                 <h3 className="text-xl font-semibold mb-4">Special Events</h3>
                 <p className="mb-4">
-                  Planning a special occasion? We offer private dining and custom menus for:
+                  Suunnitteletko erityistä tilaisuutta? Tarjoamme yksityistilaisuuksia ja räätälöityjä menuja:
                 </p>
                 <ul className="space-y-2 mb-4">
-                  <li>- Corporate events</li>
-                  <li>- Wedding rehearsals</li>
-                  <li>- Birthday celebrations</li>
-                  <li>- Anniversary dinners</li>
+                  <li>- Yritystapahtumat</li>
+                  <li>- Hääharjoitukset</li>
+                  <li>- Syntymäpäiväjuhlat</li>
+                  <li>- Vuosipäiväillalliset</li>
                 </ul>
                 <p className="italic">
-                  Contact our events team at events@savoriabistro.com for more information.
+                  Ota yhteyttä tapahtumatiimiimme osoitteessa events@savoriabistro.com saadaksesi lisätietoja.
                 </p>
               </div>
               
               <div className="p-6 rounded-lg border border-muted bg-gray-50">
-                <h3 className="text-xl font-semibold mb-4">Need Help?</h3>
+                <h3 className="text-xl font-semibold mb-4">Tarvitsetko apua?</h3>
                 <p className="mb-2">
-                  For immediate assistance or last-minute reservations, please call us at:
+                  Jos tarvitset välitöntä apua tai haluat tehdä viime hetken varauksia, voit soittaa meille tai lähettää sähköpostia:
                 </p>
-                <p className="text-lg font-medium">(123) 456-7890</p>
+                <p className="text-lg font-medium">+358 45 116 9090</p>
+                <p className="text-lg font-medium">afrin.aloron@gmail.com</p>
               </div>
             </div>
           </div>
