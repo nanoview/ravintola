@@ -125,9 +125,9 @@ export default function ReservationPage() {
   };
   
   const timeSlots = [
-    "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM", "1:30 PM", 
-    "2:00 PM", "5:00 PM", "5:30 PM", "6:00 PM", "6:30 PM", "7:00 PM", 
-    "7:30 PM", "8:00 PM", "8:30 PM", "9:00 PM"
+    "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", 
+    "14:00", "17:00", "17:30", "18:00", "18:30", "19:00", 
+    "19:30", "20:00", "20:30", "21:00"
   ];
   
   return (
@@ -234,7 +234,7 @@ export default function ReservationPage() {
                     <Label htmlFor="time">Aika</Label>
                     <Select value={reservationData.time} onValueChange={handleTimeChange}>
                       <SelectTrigger id="time">
-                        <SelectValue placeholder="Select a time" />
+                        <SelectValue placeholder="Valitse aika" />
                       </SelectTrigger>
                       <SelectContent>
                         {timeSlots.map(time => (
@@ -265,7 +265,7 @@ export default function ReservationPage() {
                   className="w-full" 
                   disabled={loading}
                 >
-                  {loading ? 'Käsitellään...' : 'Lähetä varauspyyntö'}
+                  {loading ? 'Käsitellään...' : 'lähetä varaustietosi'}
                 </Button>
               </form>
             </div>
@@ -295,7 +295,7 @@ export default function ReservationPage() {
               </div>
               
               <div className="bg-primary text-white p-6 rounded-lg shadow-md">
-                <h3 className="text-xl font-semibold mb-4">Special Events</h3>
+                <h3 className="text-xl font-semibold mb-4">Erikoistapahtumat</h3>
                 <p className="mb-4">
                   Suunnitteletko erityistä tilaisuutta? Tarjoamme yksityistilaisuuksia ja räätälöityjä menuja:
                 </p>

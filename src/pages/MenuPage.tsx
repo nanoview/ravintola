@@ -1,4 +1,3 @@
-
 import Layout from '../components/Layout';
 import { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -141,9 +140,11 @@ export default function MenuPage() {
             </TabsList>
             
             {Object.keys(menuItems).map(category => (
-              <TabsContent key={category} value={category} className="pt-8 md:pt-12">
-                <h2 className="text-green-500 text-2xl font-bold text-center mb-10 pt-10">{category}</h2>
-                <div className="grid md:grid-cols-2 gap-8">
+              <TabsContent key={category} value={category} className="pt-8 md:pt-8 md:pb-8">
+                <div className="flex justify-center items-center mt-8 mb-8 pb-12 w-full">
+                  <h2 className="text-green-500 text-2xl font-bold text-center w-full max-w-xs md:max-w-md lg:max-w-lg xl:max-w-2xl mt-4 px-2 py-2 md:mt-8 md:mb-8 md:px-0 md:py-0">{category}</h2>
+                </div>
+                <div className="grid md:grid-cols-2 gap-10">
                   {menuItems[category as keyof typeof menuItems].map(item => (
                     <div key={item.id} className="flex bg-white rounded-lg overflow-hidden shadow-md">
                       <img 

@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import { Instagram, Facebook, Twitter, MapPin } from 'lucide-react';
 
@@ -11,7 +10,7 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4 text-green-500">Ravintola Mummuntupa</h3>
             <p className="mb-2">Vieraskuja 4 (2 krs)   </p>
-           <p className="mb-2"> 02770  Espoo, Finland</p>
+           <p className="mb-2"> 02770 Espoo, Finland</p>
             <p className="mb-4">+358 45 116 9090</p>
              {/* Google Maps Link */}
              <a
@@ -28,14 +27,9 @@ export default function Footer() {
           {/* Opening Hours */}
           <div>
             <h3 className="text-xl font-bold mb-4 text-green-500">Aukioloajat</h3>
-            <p className="mb-2">Maanantai - perjantai: klo 11.00 - 22.00</p>
-            <p className="mb-2">Lauantai: klo 10–23</p>
-            <p className="mb-2">Sunnuntai: klo 10–21</p>
-          
-            <h3 className="text-xl font-bold mb-4 text-green-500">Opening Hours</h3>
-            <p className="mb-2">Monday - Friday: 11:00 AM - 10:00 PM</p>
-            <p className="mb-2">Saturday: 10am - 11pm</p>
-            <p className="mb-2">Sunday: 10am - 9pm</p>
+            <p className="mb-2">Maanantai - perjantai: klo 11.00–22.00</p>
+            <p className="mb-2">Lauantai: klo 10.00–23.00</p>
+            <p className="mb-2">Sunnuntai: klo 10.00–21.00</p>
           </div>
 
           {/* Links */}

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import Layout from '../components/Layout';
 import { useToast } from '@/hooks/use-toast';
@@ -142,7 +141,7 @@ export default function DashboardPage() {
   };
 
   const formatDate = (dateString: string) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
+    return new Date(dateString).toLocaleDateString('fi-FI', {
       year: 'numeric',
       month: 'long',
       day: 'numeric'

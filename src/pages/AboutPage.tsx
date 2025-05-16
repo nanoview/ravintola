@@ -1,17 +1,16 @@
-
 import Layout from '../components/Layout';
 
 export default function AboutPage() {
   return (
     <Layout>
       <div className="container mx-auto px-4 py-16">
-        <h1 className="text-4xl font-bold text-center mb-10">Tietoa Ravintola Mummuntupa</h1>
+        <h1 className="text-4xl font-bold text-center mb-10">TIETOA MEISTA</h1>
         
         {/* Our Story Section */}
         <section className="mb-20">
           <div className="grid md:grid-cols-2 gap-10 items-center">
             <div>
-              <h2 className="text-3xl font-semibold mb-6">Tarinamme</h2>
+              <h2 className="text-3xl font-semibold mb-6 text-center">Tarinamme</h2>
               <p className="text-lg mb-4">
               Perustamisestamme lähtien baarimme ja ravintolamme on noudattanut yksinkertaista missiota:
                valmistaa poikkeuksellisia juomia parhaista paikallisista raaka-aineista
