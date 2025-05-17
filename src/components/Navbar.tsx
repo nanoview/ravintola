@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -37,12 +36,12 @@ export default function Navbar({ darkHeader }: NavbarProps) {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="hover:text-primary transition-colors font-medium" style={{ color: isScrolled || !darkHeader ? 'inherit' : 'fuchsia' }}>KOTI</Link>
-            <Link to="/menu" className="hover:text-primary transition-colors font-medium">RUOKALISTA</Link>
-            <Link to="/about" className="hover:text-primary transition-colors font-medium">TIETOA MEISTA</Link>
-            <Link to="/contact" className="hover:text-primary transition-colors font-medium">OTA YHTEYTTÄ</Link>
+            <Link to="/" className="hover:text-primary transition-colors font-medium" style={{ color: isScrolled || !darkHeader ? 'inherit' : 'fuchsia' }} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>KOTI</Link>
+            <Link to="/menu" className="hover:text-primary transition-colors font-medium" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>RUOKALISTA</Link>
+            <Link to="/about" className="hover:text-primary transition-colors font-medium" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>TIETOA MEISTA</Link>
+            <Link to="/contact" className="hover:text-primary transition-colors font-medium" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>OTA YHTEYTTÄ</Link>
             <Button asChild>
-              <Link to="/reservation">VARAA PÖYTÄ</Link>
+              <Link to="/reservation" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>VARAA PÖYTÄ</Link>
             </Button>
           </div>
 
@@ -62,37 +61,34 @@ export default function Navbar({ darkHeader }: NavbarProps) {
               <Link 
                 to="/" 
                 className="hover:text-primary transition-colors px-4 py-2 font-medium"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => { setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               >
                 Home
               </Link>
               <Link 
                 to="/menu" 
                 className="hover:text-primary transition-colors px-4 py-2 font-medium"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => { setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               >
                 Menu
               </Link>
               <Link 
                 to="/about" 
                 className="hover:text-primary transition-colors px-4 py-2 font-medium"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => { setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               >
                 About
               </Link>
               <Link 
                 to="/contact" 
                 className="hover:text-primary transition-colors px-4 py-2 font-medium"
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => { setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               >
                 Contact
               </Link>
               <div className="px-4 py-2">
                 <Button asChild className="w-full">
-                  <Link 
-                    to="/reservation"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
+                  <Link to="/reservation" onClick={() => { setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
                     Reserve a Table
                   </Link>
                 </Button>
