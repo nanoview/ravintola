@@ -22,7 +22,7 @@ export default function MenuPage() {
         description: "Tehty ja keitetty kana spicy curry kastikkeessa",
         price: "16€",
         dietary: "L, G, M, P",
-        imageUrl: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?auto=format&fit=crop&w=500&q=80"
+        imageUrl: "https://media.istockphoto.com/id/2151903091/cs/fotografie/fresh-chicken-breast-curry-with-herbs-and-spices.jpg?s=1024x1024&w=is&k=20&c=h5yXUn3UiwerpfNBF1gvIxadFDOtsOxFm34VV4BNbSE="
       },
       {
         id: 2,
@@ -38,35 +38,40 @@ export default function MenuPage() {
         description: "Tehty ja keitetty kana maustetulla kookoskastikkeella",
         price: "17€",
         dietary: "L, G",
+        imageUrl: "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=500&q=80"
       },
       {
         id: 4,
-        name: "CHICKEN MUGHLAI TIKKA MASALA",
+        name: "CHICKEN TIKKA MASALA",
         description: "Marinoitua kanaa paistettua maustekastikkeella",
         price: "22€",
         dietary: "L, G",
-        highlight: true
+        highlight: true,
+        imageUrl: "https://media.istockphoto.com/id/1735046457/cs/fotografie/tradi%C4%8Dn%C3%AD-indick%C3%A9-j%C3%ADdlo-ku%C5%99ec%C3%AD-tikka-masala-s-pikantn%C3%ADm-kari-masem-v-misce-detail.jpg?s=1024x1024&w=is&k=20&c=8FOJyV3a_pzXKiOMG3e_vfmmnmRC7dAjHYPbRTk-XtU=",
       },
       {
         id: 5,
         name: "NAUDANLIHA CURRY",
         description: "Tehty ja keitetty currykastikkeella",
         price: "18€",
-        dietary: "L, G, M, P"
+        dietary: "L, G, M, P",
+        imageUrl: "https://images.unsplash.com/photo-1545247181-516773cae754?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
       },
       {
         id: 6,
         name: "NAUDANLIHA MASALA",
         description: "Tehty ja keitetty mausteisella masalakastikkeessa",
         price: "19€",
-        dietary: "L, G, M, P"
+        dietary: "L, G, M, P",
+        imageUrl: "https://th.bing.com/th/id/OIP.uO7TLR7-nC4fbIqQztwkUwHaE7?r=0&rs=1&pid=ImgDetMain"
       },
       {
         id: 7,
         name: "NAUDANLIHA MALAI KOFTA",
         description: "Lihakeema prosessoitu kofta 4 kpl malai-kastikkeella",
         price: "20€",
-        dietary: "L, G"
+        dietary: "L, G",
+        imageUrl: "https://media.istockphoto.com/id/1397648059/cs/fotografie/malajsk%C3%A9-kofta-kari.jpg?s=1024x1024&w=is&k=20&c=UdS0GtVrN0BQ4dDw1M64lHvWAb8hxwyALylXyGBMOws="
       },
       {
         id: 8,
@@ -322,6 +327,9 @@ export default function MenuPage() {
                           <span className="text-primary font-medium">{item.price}</span>
                         </div>
                         <p className="text-muted-foreground text-sm flex-1">{item.description}</p>
+                        {item.dietary && (
+                          <div className="mt-2 text-xs text-gray-500 font-medium">{item.dietary}</div>
+                        )}
                       </div>
                     </div>
                   ))}

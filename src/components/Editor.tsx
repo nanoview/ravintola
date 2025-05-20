@@ -6,7 +6,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/components/ui/use-toast';
 import { ArrowLeft, Eye, Image, Save } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { PostPreview } from './PostPreview';
 
 export function Editor() {
   const [name, setName] = useState('');

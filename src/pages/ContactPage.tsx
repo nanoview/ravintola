@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/components/ui/use-toast";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 export default function ContactPage() {
   const { toast } = useToast();
@@ -22,9 +23,28 @@ export default function ContactPage() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Form submitted:", formData);
+    // Insert contact message into Supabase
+    const { error } = await supabase
+      .from("contact_messages")
+      .insert([
+        {
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        },
+      ]);
+    if (error) {
+      toast({
+        title: "Virhe! Error!",
+        description: `Viestin lähetys epäonnistui. Message sending failed. (${error.message})`,
+        variant: "destructive",
+      });
+      return;
+    }
     toast({
       title: "Viesti lähetetty! Message Sent! ",
       description:

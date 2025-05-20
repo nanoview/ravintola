@@ -66,16 +66,18 @@ export default function ReservationPage() {
       // Save reservation to Supabase
       const { error } = await supabase
         .from('reservations')
-        .insert({
-          name: reservationData.name,
-          email: reservationData.email,
-          phone: reservationData.phone,
-          guests: reservationData.guests,
-          date: formattedDate,
-          time: reservationData.time,
-          special_requests: reservationData.specialRequests,
-          status: 'pending'
-        });
+        .insert([
+          {
+            name: reservationData.name,
+            email: reservationData.email,
+            phone: reservationData.phone,
+            guests: reservationData.guests,
+            date: formattedDate,
+            time: reservationData.time,
+            special_requests: reservationData.specialRequests,
+            status: 'pending'
+          }
+        ]);
 
       if (error) throw error;
 

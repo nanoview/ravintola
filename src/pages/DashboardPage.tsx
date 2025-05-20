@@ -49,6 +49,25 @@ export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState<"reservations" | "messages">("reservations");
   const pageSize = 10;
 
+  useEffect(() => {
+    // Log Supabase URL (do not log keys in production)
+    // @ts-ignore
+    console.log('Supabase URL:', supabase?.restUrl || supabase?.url || 'Unknown');
+
+    // Test connection by fetching 1 row from reservations
+    supabase
+      .from('reservations')
+      .select('*')
+      .limit(1)
+      .then(({ data, error }) => {
+        if (error) {
+          console.log('Supabase test query error:', error.message, error);
+        } else {
+          console.log('Supabase test query success. Sample data:', data);
+        }
+      });
+  }, []);
+
   const fetchReservations = async () => {
     const { data, error, count } = await supabase
       .from('reservations')
@@ -179,6 +198,7 @@ export default function DashboardPage() {
                         <TableHead>Guests</TableHead>
                         <TableHead>Contact</TableHead>
                         <TableHead>Status</TableHead>
+                        <TableHead>Special Requests</TableHead>
                         <TableHead>Actions</TableHead>
                       </TableRow>
                     </TableHeader>
@@ -201,6 +221,9 @@ export default function DashboardPage() {
                             }`}>
                               {reservation.status.charAt(0).toUpperCase() + reservation.status.slice(1)}
                             </span>
+                          </TableCell>
+                          <TableCell>
+                            {reservation.special_requests || <span className="text-gray-400 italic">-</span>}
                           </TableCell>
                           <TableCell>
                             <div className="flex space-x-2">
