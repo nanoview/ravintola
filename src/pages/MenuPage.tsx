@@ -78,49 +78,57 @@ export default function MenuPage() {
         name: "LAMB MUGHLAI",
         description: "Hienosti maustettu lampaan curry kermalla, kananmunalla ja mantelilla",
         price: "22€",
-        dietary: "L, G"
+        dietary: "L, G",
+        imageUrl:"https://bing.com/th?id=OSK.34fc0932db0447a82202bedd252bbe48"
       },
       {
         id: 9,
         name: "LAMB BUTTER",
         description: "Tehty ja keitetyt lammat kastikkeella, cashewpähkinöillä",
         price: "21€",
-        dietary: "L, G"
+        dietary: "L, G",
+        imageUrl: "https://bing.com/th?id=OSK.b02f81a5430597b51df38d7fa5a1ce8a"
       },
       {
         id: 10,
         name: "LAMB MASALA",
         description: "Tehty ja keitetyt lammat mausteisella masala kastikkeessa",
         price: "20€",
-        dietary: "L, G"
+        dietary: "L, G",
+        imageUrl:"https://bing.com/th?id=OSK.e57429a1d9a2739cb9d12e1a6339c064"
+
       },
       {
         id: 11,
         name: "PRAWN KORMA",
         description: "Jättikatkaravut/katkaravut kookosmaidolla, maustekastikkeella",
         price: "24€",
-        dietary: "L, G"
+        dietary: "L, G",
+        imageUrl:"https://th.bing.com/th/id/R.212d1e73645b077467e16a15384436d6?rik=GkNNP2POhEFlfw&pid=ImgRaw&r=0",
       },
       {
         id: 12,
         name: "PRAWN MASALA",
         description: "Jättikatkaravut/katkaravut mausteisella masalakastikkeessa",
         price: "24€",
-        dietary: "L, G"
+        dietary: "L, G",
+        imageUrl:"https://th.bing.com/th/id/R.9ed54774c9cd4048a9e79498bad7273d?rik=TgiIsuLhMlHzfg&riu=http%3a%2f%2fwww.nnisha.com%2fwp-content%2fuploads%2f2021%2f08%2f4A2D511F-F467-4387-A9C7-65A279580D43-1536x1152.jpeg&ehk=41o2bkSngSEgy5Y%2fxOdKLaLBJsk5XebaeywzTNfkbiw%3d&risl=&pid=ImgRaw&r=0"
       },
       {
         id: 13,
         name: "Kasvis Sekoitettu MASALA",
         description: "Peruna, Tomaatti, Gobi, Porkkana, Pavut masalakastikkeessa",
         price: "15€",
-        dietary: "L, G"
+        dietary: "L, G",
+        imageUrl: "https://healthiersteps.com/wp-content/uploads/2022/09/mixed-vegetables-864x1536.jpg"
       },
       {
         id: 14,
         name: "MALAI KOFTA",
         description: "Tehty kofta (peruna, tomaatti, gobi, porkkana, pavut) malai-kastikkeella",
         price: "16€",
-        dietary: "L, G, M, P"
+        dietary: "L, G, M, P",
+        imageUrl:"https://th.bing.com/th/id/OIP.26HHcFn0VGmFFozol-QLSQHaJQ?rs=1&pid=ImgDetMain"
       },
       {
         id: 15,
@@ -128,7 +136,7 @@ export default function MenuPage() {
         description: "Marinoitu enimmäkseen mausteinen kana / lammas / Naudanliha / katkaravut & kasvissekoitukset Jugurttikastike pulao-riisin kanssa",
         price: "22€",
         dietary: "L, G",
-        highlight: true
+        imageUrl:"https://d36tnp772eyphs.cloudfront.net/blogs/1/2019/09/Hyderabadi-biryani.jpg"
       }
     ],
     leikkeet: [
@@ -138,35 +146,39 @@ export default function MenuPage() {
         description: "Kanasta. Tarjoillaan ranskalaisten / lohkoperunoiden / perunamuusin tai kermaperunoiden kanssa",
         price: "18€",
         dietary: "",
-        imageUrl: "https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=500&q=80"
+        imageUrl: "https://sliceofjess.com/wp-content/uploads/2022/12/IMG_9908.jpg"
       },
       {
         id: 17,
         name: "WIENARI LEIKE",
         description: "Kanasta. Tarjoillaan ranskalaisten / lohkoperunoiden / perunamuusin tai kermaperunoiden kanssa",
         price: "18€",
-        dietary: ""
+        dietary: "",
+        imageUrl:"https://food.fnr.sndimg.com/content/dam/images/food/fullset/2019/12/20/0/FNK_Chicken-Cutlet_H_s4x3.jpg.rend.hgtvcom.616.462.suffix/1576855328048.jpeg"
       },
       {
         id: 18,
         name: "HAWAI LEIKE",
         description: "Kanasta. Tarjoillaan ranskalaisten / lohkoperunoiden / perunamuusin tai kermaperunoiden kanssa",
         price: "18€",
-        dietary: ""
+        dietary: "",
+        imageUrl:"https://bing.com/th?id=OSK.7ac8ec4efb9d7d1cef4b439f0fa29639"
       },
       {
         id: 19,
         name: "METSASIAN LEIKE",
         description: "Kanasta. Tarjoillaan ranskalaisten / lohkoperunoiden / perunamuusin tai kermaperunoiden kanssa",
         price: "18€",
-        dietary: ""
+        dietary: "",
+        imageUrl:"https://bing.com/th?id=OSK.7ac8ec4efb9d7d1cef4b439f0fa29639"
       },
       {
         id: 20,
         name: "SPICY LEIKE",
         description: "Kanasta. Tarjoillaan ranskalaisten / lohkoperunoiden / perunamuusin tai kermaperunoiden kanssa",
         price: "18€",
-        dietary: ""
+        dietary: "",
+        imageUrl:"https://bing.com/th?id=OSK.cf88993b36a5d4c7988275f2353149b1"
       }
     ],
     burgers: [
@@ -175,7 +187,7 @@ export default function MenuPage() {
         name: "NAUTA BURGERI",
         description: "Sampula, American Salatti, Tupla chader, Talon Maonesi, Tomatti, Mautekurku. Tarjoillaan ranskalaisten tai lohkoperunoiden kanssa",
         price: "16€",
-        dietary: "",
+        dietary: "L.",
         imageUrl: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=80"
       },
       {
@@ -183,7 +195,9 @@ export default function MenuPage() {
         name: "KANA BURGERI",
         description: "Sampula, American Salatti, Tupla chader, Talon Maonesi, Tomatti, Mautekurku. Tarjoillaan ranskalaisten tai lohkoperunoiden kanssa",
         price: "16€",
-        dietary: ""
+        dietary: "L",
+        imageUrl:"https://bing.com/th?id=OSK.d0d4819a59beff41d2f3e70725d1b5b0"
+
       }
     ],
     salads: [
@@ -200,14 +214,16 @@ export default function MenuPage() {
         name: "KATKARAPUSALAATTI",
         description: "Sisältää Amerikan salaattia, tomaattia ja rucolaa",
         price: "15€",
-        dietary: ""
+        dietary: "",
+        imageUrl:"https://th.bing.com/th/id/OIP.2cnzjX9Abcuqh72AScTA9AHaHa?rs=1&pid=ImgDetMain"
       },
       {
         id: 25,
         name: "KIRJOLOHENSALAATTI",
         description: "Sisältää Amerikan salaattia, tomaattia ja rucolaa",
         price: "15€",
-        dietary: ""
+        dietary: "",
+        imageUrl:"https://th.bing.com/th/id/OIP.wEm5Hlp8hXReo7y-zUSOQQHaG_?rs=1&pid=ImgDetMain"
       }
     ],
     pizzas: [
@@ -248,42 +264,49 @@ export default function MenuPage() {
         name: "OLUT, IV",
         description: "Pullo",
         price: "5,50€",
-        dietary: ""
+        dietary: "",
+        
+       imageUrl: "https://i.colnect.net/f/8172/685/Karhu-Olut-IV-A-Beer.jpg"
       },
       {
         id: 31,
         name: "SIIDERI",
         description: "Sommersby Omena tai Päärynä",
         price: "6€",
-        dietary: ""
+        dietary: "",
+        imageUrl: "https://th.bing.com/th/id/OIP.BroudF6-h_NuC82YZ97TSAHaHa?rs=1&pid=ImgDetMain"
       },
       {
         id: 32,
         name: "VALKOVIINI",
         description: "Pullo",
         price: "25€",
-        dietary: ""
+        dietary: "",
+        imageUrl:"https://th.bing.com/th/id/R.a8b7e895811a59351dff6fb8ae84c4aa?rik=sCpt%2f2Y7cLb9Tg&pid=ImgRaw&r=0"
       },
       {
         id: 33,
         name: "PUNAVIINI",
         description: "Pullo",
         price: "25€",
-        dietary: ""
+        dietary: "",
+        imageUrl: "https://th.bing.com/th/id/OIP.aaqgl4B95vmsUzaOz1DiVQHaN1?rs=1&pid=ImgDetMain"
       },
       {
         id: 34,
         name: "VIRVOITUSJUOMAT (0,5L)",
         description: "Coca Cola / Fanta / Sprite",
         price: "4€",
-        dietary: ""
+        dietary: "",
+        imageUrl:"https://th.bing.com/th/id/OIP.eWw0kGyREfAvQaMZKYomGwHaE8?rs=1&pid=ImgDetMain"
       },
       {
         id: 35,
         name: "VIRVOITUSJUOMAT (1,5L)",
         description: "Coca Cola / Fanta / Sprite",
         price: "7€",
-        dietary: ""
+        dietary: "",
+        imageUrl:"https://th.bing.com/th/id/OIP.eWw0kGyREfAvQaMZKYomGwHaE8?rs=1&pid=ImgDetMain"
       }
     ]
   };
@@ -317,7 +340,7 @@ export default function MenuPage() {
                 </div>
                 <div className="grid md:grid-cols-2 gap-10">
                   {items.map(item => (
-                    <div key={item.id} className="flex bg-white rounded-lg overflow-hidden shadow-md cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                    <div key={item.id} className="flex bg-white rounded-lg overflow-hidden shadow-md">
                       {item.imageUrl && (
                         <img src={item.imageUrl} alt={item.name} className="w-1/3 object-cover" />
                       )}

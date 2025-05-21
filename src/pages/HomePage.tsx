@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom';
 import Layout from '../components/Layout';
 import { Button } from '@/components/ui/button';
@@ -111,7 +110,9 @@ export default function HomePage() {
           </div>
           <div className="text-center mt-10">
             <Button size="lg" asChild>
-              <Link to="/menu">Näytä koko valikko</Link>
+              <Link to="/menu" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                Näytä koko valikko
+              </Link>
             </Button>
           </div>
         </div>
