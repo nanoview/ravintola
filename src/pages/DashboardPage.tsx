@@ -20,6 +20,7 @@ import {
 } from '@/components/ui/pagination';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useQuery } from '@tanstack/react-query';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 
 type Reservation = {
   id: string;
@@ -38,6 +39,7 @@ type ContactMessage = {
   id: string;
   created_at: string;
   name: string;
+  subject: string;
   email: string;
   message: string;
   status: 'unread' | 'read';
@@ -47,7 +49,14 @@ export default function DashboardPage() {
   const { toast } = useToast();
   const [page, setPage] = useState(1);
   const [activeTab, setActiveTab] = useState<"reservations" | "messages">("reservations");
+  const [openMessageId, setOpenMessageId] = useState<string | null>(null);
+  const [viewedMessage, setViewedMessage] = useState<ContactMessage | null>(null);
   const pageSize = 10;
+
+  // Reset page to 1 when switching tabs
+  useEffect(() => {
+    setPage(1);
+  }, [activeTab]);
 
   useEffect(() => {
     // Log Supabase URL (do not log keys in production)
@@ -159,6 +168,35 @@ export default function DashboardPage() {
     }
   };
 
+  const handleMarkMessageAsUnread = async (id: string) => {
+    const { error } = await supabase
+      .from('contact_messages')
+      .update({ status: 'unread' })
+      .eq('id', id);
+
+    if (error) {
+      toast({
+        title: "Error updating message",
+        description: error.message,
+        variant: "destructive",
+      });
+    } else {
+      toast({
+        title: "Message marked as unread",
+      });
+      refetchMessages();
+    }
+  };
+
+  // Open dialog and mark as read if needed
+  const handleViewMessage = async (message: ContactMessage) => {
+    setViewedMessage(message);
+    setOpenMessageId(message.id);
+    if (message.status === 'unread') {
+      await handleMarkMessageAsRead(message.id);
+    }
+  };
+
   const formatDate = (dateString: string) => {
     return new Date(dateString).toLocaleDateString('fi-FI', {
       year: 'numeric',
@@ -166,6 +204,10 @@ export default function DashboardPage() {
       day: 'numeric'
     });
   };
+
+  // Pagination helpers
+  const reservationsTotalPages = reservationsData ? Math.ceil(reservationsData.count / pageSize) : 1;
+  const messagesTotalPages = messagesData ? Math.ceil(messagesData.count / pageSize) : 1;
 
   return (
     <Layout>
@@ -260,7 +302,7 @@ export default function DashboardPage() {
                           className={page === 1 ? 'pointer-events-none opacity-50' : ''}
                         />
                       </PaginationItem>
-                      {Array.from({ length: Math.ceil(reservationsData.count / pageSize) }).map((_, i) => (
+                      {Array.from({ length: reservationsTotalPages }).map((_, i) => (
                         <PaginationItem key={i}>
                           <PaginationLink 
                             onClick={() => setPage(i + 1)} 
@@ -272,8 +314,8 @@ export default function DashboardPage() {
                       ))}
                       <PaginationItem>
                         <PaginationNext 
-                          onClick={() => setPage(prev => Math.min(Math.ceil(reservationsData.count / pageSize), prev + 1))}
-                          className={page === Math.ceil(reservationsData.count / pageSize) ? 'pointer-events-none opacity-50' : ''}
+                          onClick={() => setPage(prev => Math.min(reservationsTotalPages, prev + 1))}
+                          className={page === reservationsTotalPages ? 'pointer-events-none opacity-50' : ''}
                         />
                       </PaginationItem>
                     </PaginationContent>
@@ -299,6 +341,7 @@ export default function DashboardPage() {
                       <TableRow>
                         <TableHead>Date</TableHead>
                         <TableHead>Name</TableHead>
+                        <TableHead>Subject</TableHead>
                         <TableHead>Email</TableHead>
                         <TableHead>Message</TableHead>
                         <TableHead>Status</TableHead>
@@ -306,31 +349,44 @@ export default function DashboardPage() {
                       </TableRow>
                     </TableHeader>
                     <TableBody>
-                      {messagesData?.data.map((message) => (
-                        <TableRow key={message.id}>
-                          <TableCell>{formatDate(message.created_at)}</TableCell>
-                          <TableCell>{message.name}</TableCell>
-                          <TableCell>{message.email}</TableCell>
-                          <TableCell className="max-w-xs truncate">{message.message}</TableCell>
-                          <TableCell>
-                            <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
-                              message.status === 'read' ? 'bg-gray-100 text-gray-800' : 'bg-blue-100 text-blue-800'
-                            }`}>
-                              {message.status === 'read' ? 'Read' : 'Unread'}
-                            </span>
-                          </TableCell>
-                          <TableCell>
-                            {message.status === 'unread' && (
+                      {messagesData?.data.map((message) => {
+                        // If the dialog is open for this message, and it was just marked as unread, update the local viewedMessage status
+                        const isViewed = openMessageId === message.id;
+                        const status = isViewed && viewedMessage ? viewedMessage.status : message.status;
+                        return (
+                          <TableRow key={message.id}>
+                            <TableCell>{formatDate(message.created_at)}</TableCell>
+                            <TableCell>{message.name}</TableCell>
+                            <TableCell>{message.subject}</TableCell>
+                            <TableCell>{message.email}</TableCell>
+                            <TableCell className="max-w-xs truncate">
                               <button
-                                onClick={() => handleMarkMessageAsRead(message.id)}
-                                className="text-xs bg-blue-500 hover:bg-blue-600 text-white py-1 px-2 rounded"
+                                className="underline text-blue-600 hover:text-blue-800"
+                                onClick={() => handleViewMessage(message)}
                               >
-                                Mark as Read
+                                View
                               </button>
-                            )}
-                          </TableCell>
-                        </TableRow>
-                      ))}
+                            </TableCell>
+                            <TableCell>
+                              <span className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${
+                                status === 'read' ? 'bg-gray-100 text-gray-800' : 'bg-blue-100 text-blue-800'
+                              }`}>
+                                {status === 'read' ? 'Read' : 'Unread'}
+                              </span>
+                            </TableCell>
+                            <TableCell>
+                              {status === 'read' && (
+                                <button
+                                  onClick={() => handleMarkMessageAsUnread(message.id)}
+                                  className="text-xs bg-gray-400 hover:bg-gray-500 text-white py-1 px-2 rounded"
+                                >
+                                  Mark as Unread
+                                </button>
+                              )}
+                            </TableCell>
+                          </TableRow>
+                        );
+                      })}
                     </TableBody>
                   </Table>
                 </div>
@@ -344,7 +400,7 @@ export default function DashboardPage() {
                           className={page === 1 ? 'pointer-events-none opacity-50' : ''}
                         />
                       </PaginationItem>
-                      {Array.from({ length: Math.ceil(messagesData.count / pageSize) }).map((_, i) => (
+                      {Array.from({ length: messagesTotalPages }).map((_, i) => (
                         <PaginationItem key={i}>
                           <PaginationLink 
                             onClick={() => setPage(i + 1)} 
@@ -356,8 +412,8 @@ export default function DashboardPage() {
                       ))}
                       <PaginationItem>
                         <PaginationNext 
-                          onClick={() => setPage(prev => Math.min(Math.ceil(messagesData.count / pageSize), prev + 1))}
-                          className={page === Math.ceil(messagesData.count / pageSize) ? 'pointer-events-none opacity-50' : ''}
+                          onClick={() => setPage(prev => Math.min(messagesTotalPages, prev + 1))}
+                          className={page === messagesTotalPages ? 'pointer-events-none opacity-50' : ''}
                         />
                       </PaginationItem>
                     </PaginationContent>
@@ -367,6 +423,23 @@ export default function DashboardPage() {
             )}
           </TabsContent>
         </Tabs>
+        
+        {/* Message Dialog */}
+        <Dialog open={!!openMessageId} onOpenChange={(open) => { if (!open) { setOpenMessageId(null); setViewedMessage(null); } }}>
+          <DialogContent>
+            <DialogHeader>
+              <DialogTitle>{viewedMessage?.subject}</DialogTitle>
+              <DialogDescription>
+                <div className="mb-2 text-sm text-gray-500">
+                  <span>{viewedMessage?.name}</span> &lt;{viewedMessage?.email}&gt; · {viewedMessage && formatDate(viewedMessage.created_at)}
+                </div>
+                <div className="whitespace-pre-line text-base text-gray-800">
+                  {viewedMessage?.message}
+                </div>
+              </DialogDescription>
+            </DialogHeader>
+          </DialogContent>
+        </Dialog>
       </div>
     </Layout>
   );

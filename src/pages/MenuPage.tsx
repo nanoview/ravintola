@@ -6,7 +6,7 @@ export default function MenuPage() {
   const [activeCategory, setActiveCategory] = useState("leikkeet");
 
   const menuCategories = [
-    { id: "indian", label: "Indian Specialties" },
+    { id: "indian", label: "Intialaiset" },
     { id: "leikkeet", label: "Leikkeet" },
     { id: "burgers", label: "Burgerit" },
     { id: "salads", label: "Salaatit" },
