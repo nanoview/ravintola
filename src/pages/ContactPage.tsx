@@ -186,20 +186,23 @@ export default function ContactPage() {
 
             {/* Map */}
             <div className="bg-gray-200 h-[300px] rounded-lg overflow-hidden relative">
-              {/* Ideally, we would embed an actual map here with a service like Google Maps */}
-              <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
-                <div className="text-center px-6">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1984.1234567890123!2d24.123456789!3d60.123456789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x123456789abcdef%3A0xabcdef123456789!2sVieraskuja%204%2C%2002770%20Espoo%2C%20Finland!5e0!3m2!1sen!2sfi!4v1234567890123"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                  ></iframe>
-                </div>
-              </div>
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1984.1234567890123!2d24.123456789!3d60.123456789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x123456789abcdef%3A0xabcdef123456789!2sVieraskuja%204%2C%2002770%20Espoo%2C%20Finland!5e0!3m2!1sen!2sfi!4v1234567890123"
+                width="100%"
+                height="100%"
+                style={{
+                  border: 0,
+                  position: "absolute",
+                  top: 0,
+                  left: 0,
+                  width: "100%",
+                  height: "100%",
+                }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Google Map"
+              ></iframe>
             </div>
           </div>
         </div>

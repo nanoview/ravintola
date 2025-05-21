@@ -240,14 +240,16 @@ export default function MenuPage() {
         name: "NORMAALIPIZZA",
         description: "Sisältää neljä vapaavalintaista täytettä. Lisätäyte +2€",
         price: "12€",
-        dietary: ""
+        dietary: "",
+        imageUrl:"https://th.bing.com/th/id/R.3999f2e45ea0d100103cbb14ff81e710?rik=aW64L3ORQrRcRg&pid=ImgRaw&r=0"
       },
       {
         id: 28,
         name: "PERHEPIZZA",
         description: "Sisältää neljä vapaavalintaista täytettä. Lisätäyte +3€",
         price: "20€",
-        dietary: ""
+        dietary: "",
+        imageUrl:"https://th.bing.com/th/id/R.3999f2e45ea0d100103cbb14ff81e710?rik=aW64L3ORQrRcRg&pid=ImgRaw&r=0"
       }
     ],
     beverages: [

@@ -63,33 +63,33 @@ export default function Navbar({ darkHeader }: NavbarProps) {
                 className="hover:text-primary transition-colors px-4 py-2 font-medium"
                 onClick={() => { setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               >
-                Home
+                Koti
               </Link>
               <Link 
                 to="/menu" 
                 className="hover:text-primary transition-colors px-4 py-2 font-medium"
                 onClick={() => { setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               >
-                Menu
+                Ruokalista
               </Link>
               <Link 
                 to="/about" 
                 className="hover:text-primary transition-colors px-4 py-2 font-medium"
                 onClick={() => { setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               >
-                About
+                Tietoa meistä
               </Link>
               <Link 
                 to="/contact" 
                 className="hover:text-primary transition-colors px-4 py-2 font-medium"
                 onClick={() => { setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               >
-                Contact
+                Ota yhteyttä
               </Link>
               <div className="px-4 py-2">
                 <Button asChild className="w-full">
                   <Link to="/reservation" onClick={() => { setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
-                    Reserve a Table
+                    Varaa pöytä
                   </Link>
                 </Button>
               </div>

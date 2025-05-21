@@ -36,27 +36,21 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4 text-green-500">Pikalinkit</h3>
             <ul className="space-y-2">
-              <li><Link to="/menu" className="hover:text-primary transition-colors">Ruokalistamme</Link></li>
-              <li><Link to="/reservation" className="hover:text-primary transition-colors">Varaukset</Link></li>
-              <li><Link to="/about" className="hover:text-primary transition-colors">Tietoa meistä</Link></li>
-              <li><Link to="/contact" className="hover:text-primary transition-colors">Ota yhteyttä</Link></li>
+              <li><Link to="/menu" className="hover:text-primary transition-colors" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Ruokalistamme</Link></li>
+              <li><Link to="/reservation" className="hover:text-primary transition-colors" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Varaukset</Link></li>
+              <li><Link to="/about" className="hover:text-primary transition-colors" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Tietoa meistä</Link></li>
+              <li><Link to="/contact" className="hover:text-primary transition-colors" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Ota yhteyttä</Link></li>
               <li></li>
             </ul>
-            <h3 className="text-xl font-bold mb-4 text-green-500">Quicklinks</h3>
-            <ul className="space-y-2">
-              <li><Link to="/menu" className="hover:text-primary transition-colors">Our menu</Link></li>
-              <li><Link to="/reservation" className="hover:text-primary transition-colors">Reservation</Link></li>
-              <li><Link to="/about" className="hover:text-primary transition-colors">About us</Link></li>
-              <li><Link to="/contact" className="hover:text-primary transition-colors">Contact</Link></li>
-            </ul>
+        
             <div className="flex space-x-4 mt-4">
-              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-fuchsia-400 hover:text-primary transition-colors">
                 <Instagram size={20} />
               </a>
-              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:text-primary transition-colors">
                 <Facebook size={20} />
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-sky-400 hover:text-primary transition-colors">
                 <Twitter size={20} />
               </a>
             </div>
