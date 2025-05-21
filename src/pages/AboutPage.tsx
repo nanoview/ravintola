@@ -1,4 +1,5 @@
 import Layout from '../components/Layout';
+import sofiaGarciaImg from '../assets/images/sofia_garcia.png';
 
 export default function AboutPage() {
   return (
@@ -62,7 +63,7 @@ export default function AboutPage() {
             <div className="text-center">
               <div className="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4">
                 <img 
-                  src="https://images.unsplash.com/photo-1566554273541-37a9ca77b91f?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" 
+                  src={sofiaGarciaImg} 
                   alt="Sofia Garcia" 
                   className="w-full h-full object-cover"
                 />
