@@ -61,7 +61,7 @@ export default function DashboardPage() {
   useEffect(() => {
     // Log Supabase URL (do not log keys in production)
     // @ts-ignore
-    console.log('Supabase URL:', supabase?.restUrl || supabase?.url || 'Unknown');
+    //console.log('Supabase URL:', supabase?.restUrl || supabase?.url || 'Unknown');
 
     // Test connection by fetching 1 row from reservations
     supabase
