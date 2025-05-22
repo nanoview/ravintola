@@ -2,30 +2,33 @@ import { Link } from 'react-router-dom';
 import Layout from '../components/Layout';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import salmonsaladImg from '../assets/images/salmonsalad.png';
+import chickenkormaImg from '../assets/images/chickenkorma.png';
+import beefmasalaImg from '../assets/images/beefmasala.png';
 
 export default function HomePage() {
   // Example featured menu items
   const featuredItems = [
     {
       id: 1,
-      name: "Herb-Crusted Salmon",
-      description: "Fresh Atlantic salmon with a crispy herb crust, served with roasted vegetables and lemon butter sauce.",
+      name: "KIRJOLOHENSALAATTI",
+      description: "Sisältää Amerikan salaattia, tomaattia ja rucolaa",
       price: "$24.99",
-      image: "https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+      image: salmonsaladImg
     },
     {
       id: 2,
-      name: "Truffle Risotto",
-      description: "Creamy Arborio rice cooked with wild mushrooms, finished with truffle oil and parmesan.",
+      name: "CHICKEN TIKKA MASALA",
+      description: "Marinoitua kanaa paistettua maustekastikkeella.",
       price: "$22.99",
-      image: "https://images.unsplash.com/photo-1539252554453-80ab65ce3586?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+      image: chickenkormaImg
     },
     {
       id: 3,
-      name: "Filet Mignon",
-      description: "Prime cut filet mignon cooked to perfection, served with mashed potatoes and seasonal vegetables.",
+      name: "NAUDANLIHA MASALA",
+      description: "Tehty ja keitetty mausteisella masalakastikkeessa.",
       price: "$34.99",
-      image: "https://images.unsplash.com/photo-1544025162-d76694265947?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3"
+      image: beefmasalaImg
     }
   ];
 

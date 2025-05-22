@@ -1,6 +1,32 @@
 import Layout from '../components/Layout';
 import { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import beefcurryImg from '../assets/images/beefcurry.png';
+import butterlambImg from '../assets/images/butterlamb.png';
+import chickenburgerImg from '../assets/images/chickenburger.png';
+import chickencutletImg from '../assets/images/chickencutlet.png';
+import chickenkormaImg from '../assets/images/chickenkorma.png';
+import chikencurryImg from '../assets/images/chikencurry.png';
+import kidspizzaImg from '../assets/images/kidspizza.png';
+import lambmasalImg from '../assets/images/lambmasal.png';
+import malaikoftaImg from '../assets/images/malaikofta.png';
+import mixvegImg from '../assets/images/mixveg.png';
+import mughlailambImg from '../assets/images/mughlailamb.png';
+import nautaburgerImg from '../assets/images/nautaburger.png';
+import pepperchickencutletImg from '../assets/images/pepperchickencutlet.png';
+import pizzaImg from '../assets/images/pizza.png';
+import prawnkormaImg from '../assets/images/prawnkorma.png';
+import prawnmasalaImg from '../assets/images/prawnmasala.png';
+import salmonsaladImg from '../assets/images/salmonsalad.png';
+import spicychickenImg from '../assets/images/spicychicken.png';
+import whitewineImg from '../assets/images/whitewine.png';
+import redwineImg from '../assets/images/redwine.png';
+import beer1Img from '../assets/images/beer1.png';
+import beer2Img from '../assets/images/beer2.png';
+import ciderImg from '../assets/images/cider.png';
+import softdrinkImg from '../assets/images/softdrink.png';
+import beefmasalaImg from '../assets/images/beefmasala.png';
+import BiriyaniImg from '../assets/images/Biriyani.png';
 
 export default function MenuPage() {
   const [activeCategory, setActiveCategory] = useState("leikkeet");
@@ -22,7 +48,7 @@ export default function MenuPage() {
         description: "Tehty ja keitetty kana spicy curry kastikkeessa",
         price: "16€",
         dietary: "L, G, M, P",
-        imageUrl: "https://media.istockphoto.com/id/2151903091/cs/fotografie/fresh-chicken-breast-curry-with-herbs-and-spices.jpg?s=1024x1024&w=is&k=20&c=h5yXUn3UiwerpfNBF1gvIxadFDOtsOxFm34VV4BNbSE="
+        imageUrl: chikencurryImg
       },
       {
         id: 2,
@@ -30,7 +56,7 @@ export default function MenuPage() {
         description: "Marinoitu Tandoori kana paistettu spicy butter kastikkeet",
         price: "18€",
         dietary: "L, G",
-        imageUrl: "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=500&q=80"
+        imageUrl: chickenkormaImg
       },
       {
         id: 3,
@@ -38,7 +64,7 @@ export default function MenuPage() {
         description: "Tehty ja keitetty kana maustetulla kookoskastikkeella",
         price: "17€",
         dietary: "L, G",
-        imageUrl: "https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=500&q=80"
+        imageUrl: chickenkormaImg
       },
       {
         id: 4,
@@ -47,7 +73,7 @@ export default function MenuPage() {
         price: "22€",
         dietary: "L, G",
         highlight: true,
-        imageUrl: "https://media.istockphoto.com/id/1735046457/cs/fotografie/tradi%C4%8Dn%C3%AD-indick%C3%A9-j%C3%ADdlo-ku%C5%99ec%C3%AD-tikka-masala-s-pikantn%C3%ADm-kari-masem-v-misce-detail.jpg?s=1024x1024&w=is&k=20&c=8FOJyV3a_pzXKiOMG3e_vfmmnmRC7dAjHYPbRTk-XtU=",
+        imageUrl: spicychickenImg,
       },
       {
         id: 5,
@@ -55,7 +81,7 @@ export default function MenuPage() {
         description: "Tehty ja keitetty currykastikkeella",
         price: "18€",
         dietary: "L, G, M, P",
-        imageUrl: "https://images.unsplash.com/photo-1545247181-516773cae754?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        imageUrl: beefcurryImg
       },
       {
         id: 6,
@@ -63,7 +89,7 @@ export default function MenuPage() {
         description: "Tehty ja keitetty mausteisella masalakastikkeessa",
         price: "19€",
         dietary: "L, G, M, P",
-        imageUrl: "https://th.bing.com/th/id/OIP.uO7TLR7-nC4fbIqQztwkUwHaE7?r=0&rs=1&pid=ImgDetMain"
+        imageUrl: beefmasalaImg
       },
       {
         id: 7,
@@ -71,7 +97,7 @@ export default function MenuPage() {
         description: "Lihakeema prosessoitu kofta 4 kpl malai-kastikkeella",
         price: "20€",
         dietary: "L, G",
-        imageUrl: "https://media.istockphoto.com/id/1397648059/cs/fotografie/malajsk%C3%A9-kofta-kari.jpg?s=1024x1024&w=is&k=20&c=UdS0GtVrN0BQ4dDw1M64lHvWAb8hxwyALylXyGBMOws="
+        imageUrl: malaikoftaImg
       },
       {
         id: 8,
@@ -79,7 +105,7 @@ export default function MenuPage() {
         description: "Hienosti maustettu lampaan curry kermalla, kananmunalla ja mantelilla",
         price: "22€",
         dietary: "L, G",
-        imageUrl:"https://bing.com/th?id=OSK.34fc0932db0447a82202bedd252bbe48"
+        imageUrl: mughlailambImg
       },
       {
         id: 9,
@@ -87,7 +113,7 @@ export default function MenuPage() {
         description: "Tehty ja keitetyt lammat kastikkeella, cashewpähkinöillä",
         price: "21€",
         dietary: "L, G",
-        imageUrl: "https://bing.com/th?id=OSK.b02f81a5430597b51df38d7fa5a1ce8a"
+        imageUrl: butterlambImg
       },
       {
         id: 10,
@@ -95,8 +121,7 @@ export default function MenuPage() {
         description: "Tehty ja keitetyt lammat mausteisella masala kastikkeessa",
         price: "20€",
         dietary: "L, G",
-        imageUrl:"https://bing.com/th?id=OSK.e57429a1d9a2739cb9d12e1a6339c064"
-
+        imageUrl: lambmasalImg
       },
       {
         id: 11,
@@ -104,7 +129,7 @@ export default function MenuPage() {
         description: "Jättikatkaravut/katkaravut kookosmaidolla, maustekastikkeella",
         price: "24€",
         dietary: "L, G",
-        imageUrl:"https://th.bing.com/th/id/R.212d1e73645b077467e16a15384436d6?rik=GkNNP2POhEFlfw&pid=ImgRaw&r=0",
+        imageUrl: prawnkormaImg,
       },
       {
         id: 12,
@@ -112,15 +137,15 @@ export default function MenuPage() {
         description: "Jättikatkaravut/katkaravut mausteisella masalakastikkeessa",
         price: "24€",
         dietary: "L, G",
-        imageUrl:"https://th.bing.com/th/id/R.9ed54774c9cd4048a9e79498bad7273d?rik=TgiIsuLhMlHzfg&riu=http%3a%2f%2fwww.nnisha.com%2fwp-content%2fuploads%2f2021%2f08%2f4A2D511F-F467-4387-A9C7-65A279580D43-1536x1152.jpeg&ehk=41o2bkSngSEgy5Y%2fxOdKLaLBJsk5XebaeywzTNfkbiw%3d&risl=&pid=ImgRaw&r=0"
+        imageUrl: prawnmasalaImg
       },
       {
         id: 13,
-        name: "Kasvis Sekoitettu MASALA",
+        name: "KASVIS SEKOITUS MASALA",
         description: "Peruna, Tomaatti, Gobi, Porkkana, Pavut masalakastikkeessa",
         price: "15€",
         dietary: "L, G",
-        imageUrl: "https://healthiersteps.com/wp-content/uploads/2022/09/mixed-vegetables-864x1536.jpg"
+        imageUrl: mixvegImg
       },
       {
         id: 14,
@@ -128,7 +153,7 @@ export default function MenuPage() {
         description: "Tehty kofta (peruna, tomaatti, gobi, porkkana, pavut) malai-kastikkeella",
         price: "16€",
         dietary: "L, G, M, P",
-        imageUrl:"https://th.bing.com/th/id/OIP.26HHcFn0VGmFFozol-QLSQHaJQ?rs=1&pid=ImgDetMain"
+        imageUrl: malaikoftaImg
       },
       {
         id: 15,
@@ -136,7 +161,7 @@ export default function MenuPage() {
         description: "Marinoitu enimmäkseen mausteinen kana / lammas / Naudanliha / katkaravut & kasvissekoitukset Jugurttikastike pulao-riisin kanssa",
         price: "22€",
         dietary: "L, G",
-        imageUrl:"https://d36tnp772eyphs.cloudfront.net/blogs/1/2019/09/Hyderabadi-biryani.jpg"
+        imageUrl: BiriyaniImg
       }
     ],
     leikkeet: [
@@ -146,7 +171,7 @@ export default function MenuPage() {
         description: "Kanasta. Tarjoillaan ranskalaisten / lohkoperunoiden / perunamuusin tai kermaperunoiden kanssa",
         price: "18€",
         dietary: "",
-        imageUrl: "https://sliceofjess.com/wp-content/uploads/2022/12/IMG_9908.jpg"
+        imageUrl: pepperchickencutletImg
       },
       {
         id: 17,
@@ -154,7 +179,7 @@ export default function MenuPage() {
         description: "Kanasta. Tarjoillaan ranskalaisten / lohkoperunoiden / perunamuusin tai kermaperunoiden kanssa",
         price: "18€",
         dietary: "",
-        imageUrl:"https://food.fnr.sndimg.com/content/dam/images/food/fullset/2019/12/20/0/FNK_Chicken-Cutlet_H_s4x3.jpg.rend.hgtvcom.616.462.suffix/1576855328048.jpeg"
+        imageUrl: chickencutletImg
       },
       {
         id: 18,
@@ -162,7 +187,7 @@ export default function MenuPage() {
         description: "Kanasta. Tarjoillaan ranskalaisten / lohkoperunoiden / perunamuusin tai kermaperunoiden kanssa",
         price: "18€",
         dietary: "",
-        imageUrl:"https://bing.com/th?id=OSK.7ac8ec4efb9d7d1cef4b439f0fa29639"
+        imageUrl: chickencutletImg
       },
       {
         id: 19,
@@ -170,7 +195,7 @@ export default function MenuPage() {
         description: "Kanasta. Tarjoillaan ranskalaisten / lohkoperunoiden / perunamuusin tai kermaperunoiden kanssa",
         price: "18€",
         dietary: "",
-        imageUrl:"https://bing.com/th?id=OSK.7ac8ec4efb9d7d1cef4b439f0fa29639"
+        imageUrl: chickencutletImg
       },
       {
         id: 20,
@@ -178,7 +203,7 @@ export default function MenuPage() {
         description: "Kanasta. Tarjoillaan ranskalaisten / lohkoperunoiden / perunamuusin tai kermaperunoiden kanssa",
         price: "18€",
         dietary: "",
-        imageUrl:"https://bing.com/th?id=OSK.cf88993b36a5d4c7988275f2353149b1"
+        imageUrl: spicychickenImg
       }
     ],
     burgers: [
@@ -188,7 +213,7 @@ export default function MenuPage() {
         description: "Sampula, American Salatti, Tupla chader, Talon Maonesi, Tomatti, Mautekurku. Tarjoillaan ranskalaisten tai lohkoperunoiden kanssa",
         price: "16€",
         dietary: "L.",
-        imageUrl: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=500&q=80"
+        imageUrl: nautaburgerImg
       },
       {
         id: 22,
@@ -196,8 +221,7 @@ export default function MenuPage() {
         description: "Sampula, American Salatti, Tupla chader, Talon Maonesi, Tomatti, Mautekurku. Tarjoillaan ranskalaisten tai lohkoperunoiden kanssa",
         price: "16€",
         dietary: "L",
-        imageUrl:"https://bing.com/th?id=OSK.d0d4819a59beff41d2f3e70725d1b5b0"
-
+        imageUrl: chickenburgerImg
       }
     ],
     salads: [
@@ -207,7 +231,7 @@ export default function MenuPage() {
         description: "Sisältää Amerikan salaattia, tomaattia ja rucolaa",
         price: "15€",
         dietary: "",
-        imageUrl: "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=500&q=80"
+        imageUrl: chickenkormaImg
       },
       {
         id: 24,
@@ -215,7 +239,7 @@ export default function MenuPage() {
         description: "Sisältää Amerikan salaattia, tomaattia ja rucolaa",
         price: "15€",
         dietary: "",
-        imageUrl:"https://th.bing.com/th/id/OIP.2cnzjX9Abcuqh72AScTA9AHaHa?rs=1&pid=ImgDetMain"
+        imageUrl: prawnkormaImg
       },
       {
         id: 25,
@@ -223,7 +247,7 @@ export default function MenuPage() {
         description: "Sisältää Amerikan salaattia, tomaattia ja rucolaa",
         price: "15€",
         dietary: "",
-        imageUrl:"https://th.bing.com/th/id/OIP.wEm5Hlp8hXReo7y-zUSOQQHaG_?rs=1&pid=ImgDetMain"
+        imageUrl: salmonsaladImg
       }
     ],
     pizzas: [
@@ -233,7 +257,7 @@ export default function MenuPage() {
         description: "Sisältää neljä vapaavalintaista täytettä. Lisätäyte +1€",
         price: "7€",
         dietary: "",
-        imageUrl: "https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=500&q=80"
+        imageUrl: kidspizzaImg
       },
       {
         id: 27,
@@ -241,7 +265,7 @@ export default function MenuPage() {
         description: "Sisältää neljä vapaavalintaista täytettä. Lisätäyte +2€",
         price: "12€",
         dietary: "",
-        imageUrl:"https://th.bing.com/th/id/R.3999f2e45ea0d100103cbb14ff81e710?rik=aW64L3ORQrRcRg&pid=ImgRaw&r=0"
+        imageUrl: pizzaImg
       },
       {
         id: 28,
@@ -249,7 +273,7 @@ export default function MenuPage() {
         description: "Sisältää neljä vapaavalintaista täytettä. Lisätäyte +3€",
         price: "20€",
         dietary: "",
-        imageUrl:"https://th.bing.com/th/id/R.3999f2e45ea0d100103cbb14ff81e710?rik=aW64L3ORQrRcRg&pid=ImgRaw&r=0"
+        imageUrl: pizzaImg
       }
     ],
     beverages: [
@@ -259,7 +283,7 @@ export default function MenuPage() {
         description: "Pullo",
         price: "5€",
         dietary: "",
-        imageUrl: "https://images.unsplash.com/photo-1566633806327-68e152aaf26d?auto=format&fit=crop&w=500&q=80"
+        imageUrl: beer1Img
       },
       {
         id: 30,
@@ -267,8 +291,7 @@ export default function MenuPage() {
         description: "Pullo",
         price: "5,50€",
         dietary: "",
-        
-       imageUrl: "https://i.colnect.net/f/8172/685/Karhu-Olut-IV-A-Beer.jpg"
+        imageUrl: beer2Img
       },
       {
         id: 31,
@@ -276,7 +299,7 @@ export default function MenuPage() {
         description: "Sommersby Omena tai Päärynä",
         price: "6€",
         dietary: "",
-        imageUrl: "https://th.bing.com/th/id/OIP.BroudF6-h_NuC82YZ97TSAHaHa?rs=1&pid=ImgDetMain"
+        imageUrl: ciderImg
       },
       {
         id: 32,
@@ -284,7 +307,7 @@ export default function MenuPage() {
         description: "Pullo",
         price: "25€",
         dietary: "",
-        imageUrl:"https://th.bing.com/th/id/R.a8b7e895811a59351dff6fb8ae84c4aa?rik=sCpt%2f2Y7cLb9Tg&pid=ImgRaw&r=0"
+        imageUrl: whitewineImg
       },
       {
         id: 33,
@@ -292,7 +315,7 @@ export default function MenuPage() {
         description: "Pullo",
         price: "25€",
         dietary: "",
-        imageUrl: "https://th.bing.com/th/id/OIP.aaqgl4B95vmsUzaOz1DiVQHaN1?rs=1&pid=ImgDetMain"
+        imageUrl: redwineImg
       },
       {
         id: 34,
@@ -300,7 +323,7 @@ export default function MenuPage() {
         description: "Coca Cola / Fanta / Sprite",
         price: "4€",
         dietary: "",
-        imageUrl:"https://th.bing.com/th/id/OIP.eWw0kGyREfAvQaMZKYomGwHaE8?rs=1&pid=ImgDetMain"
+        imageUrl: softdrinkImg
       },
       {
         id: 35,
@@ -308,7 +331,7 @@ export default function MenuPage() {
         description: "Coca Cola / Fanta / Sprite",
         price: "7€",
         dietary: "",
-        imageUrl:"https://th.bing.com/th/id/OIP.eWw0kGyREfAvQaMZKYomGwHaE8?rs=1&pid=ImgDetMain"
+        imageUrl: softdrinkImg
       }
     ]
   };
