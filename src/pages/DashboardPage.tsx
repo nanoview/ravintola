@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
+import { supabase } from '@/integrations/supabase/client';
 import Layout from '../components/Layout';
 import { useToast } from '@/hooks/use-toast';
-import { supabase } from '@/integrations/supabase/client';
 import { 
   Table, 
   TableHeader, 
@@ -48,9 +48,19 @@ type ContactMessage = {
 export default function DashboardPage() {
   const { toast } = useToast();
   const [page, setPage] = useState(1);
-  const [activeTab, setActiveTab] = useState<"reservations" | "messages">("reservations");
+  const [activeTab, setActiveTab] = useState<"reservations" | "messages" | "offers">("reservations");
   const [openMessageId, setOpenMessageId] = useState<string | null>(null);
   const [viewedMessage, setViewedMessage] = useState<ContactMessage | null>(null);
+  const [offers, setOffers] = useState([]);
+  const [offersLoading, setOffersLoading] = useState(false);
+  const [offerForm, setOfferForm] = useState({
+    name: '',
+    description: '',
+    old_price: '',
+    new_price: '',
+    start_date: '',
+    end_date: ''
+  });
   const pageSize = 10;
 
   // Reset page to 1 when switching tabs
@@ -126,6 +136,21 @@ export default function DashboardPage() {
     queryFn: fetchMessages,
     enabled: activeTab === 'messages',
   });
+
+  // Fetch offers
+  useEffect(() => {
+    if (activeTab === 'offers') {
+      setOffersLoading(true);
+      supabase
+        .from('offers')
+        .select('*')
+        .order('end_date', { ascending: true })
+        .then(({ data }) => {
+          setOffers(data || []);
+          setOffersLoading(false);
+        });
+    }
+  }, [activeTab]);
 
   const handleUpdateReservationStatus = async (id: string, status: 'confirmed' | 'cancelled') => {
     const { error } = await supabase
@@ -205,6 +230,24 @@ export default function DashboardPage() {
     });
   };
 
+  // Handle offer form changes
+  const handleOfferFormChange = (e) => {
+    const { name, value } = e.target;
+    setOfferForm((prev) => ({ ...prev, [name]: value }));
+  };
+
+  // Add new offer
+  const handleAddOffer = async (e) => {
+    e.preventDefault();
+    const { error } = await supabase.from('offers').insert([offerForm]);
+    if (!error) {
+      setOfferForm({ name: '', description: '', old_price: '', new_price: '', start_date: '', end_date: '' });
+      // Refresh offers
+      const { data } = await supabase.from('offers').select('*').order('end_date', { ascending: true });
+      setOffers(data || []);
+    }
+  };
+
   // Pagination helpers
   const reservationsTotalPages = reservationsData ? Math.ceil(reservationsData.count / pageSize) : 1;
   const messagesTotalPages = messagesData ? Math.ceil(messagesData.count / pageSize) : 1;
@@ -214,10 +257,11 @@ export default function DashboardPage() {
       <div className="container mx-auto py-10">
         <h1 className="text-3xl font-bold mb-6">Restaurant Dashboard</h1>
         
-        <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as "reservations" | "messages")}>
+        <Tabs value={activeTab} onValueChange={(value) => setActiveTab(value as "reservations" | "messages" | "offers")}>
           <TabsList className="mb-6">
             <TabsTrigger value="reservations">Reservations</TabsTrigger>
             <TabsTrigger value="messages">Contact Messages</TabsTrigger>
+            <TabsTrigger value="offers">Tarjoukset</TabsTrigger>
           </TabsList>
           
           <TabsContent value="reservations">
@@ -420,6 +464,36 @@ export default function DashboardPage() {
                   </Pagination>
                 )}
               </>
+            )}
+          </TabsContent>
+
+          <TabsContent value="offers">
+            <h2 className="text-2xl font-semibold mb-4">Tarjousten hallinta</h2>
+            <form onSubmit={handleAddOffer} className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+              <input name="name" value={offerForm.name} onChange={handleOfferFormChange} placeholder="Nimi" className="p-2 border rounded" required />
+              <input name="description" value={offerForm.description} onChange={handleOfferFormChange} placeholder="Kuvaus" className="p-2 border rounded" required />
+              <input name="old_price" value={offerForm.old_price} onChange={handleOfferFormChange} placeholder="Normaali hinta" className="p-2 border rounded" required />
+              <input name="new_price" value={offerForm.new_price} onChange={handleOfferFormChange} placeholder="Tarjoushinta" className="p-2 border rounded" required />
+              <input name="start_date" type="date" value={offerForm.start_date} onChange={handleOfferFormChange} className="p-2 border rounded" required />
+              <input name="end_date" type="date" value={offerForm.end_date} onChange={handleOfferFormChange} className="p-2 border rounded" required />
+              <button type="submit" className="col-span-1 md:col-span-2 bg-yellow-500 text-white py-2 rounded">Lisää tarjous</button>
+            </form>
+            {offersLoading ? (
+              <div>Ladataan tarjouksia...</div>
+            ) : offers.length === 0 ? (
+              <div>Ei tarjouksia.</div>
+            ) : (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {offers.map((offer) => (
+                  <div key={offer.id} className="border rounded p-4 bg-yellow-50">
+                    <div className="font-bold text-yellow-900">{offer.name}</div>
+                    <div className="text-sm text-gray-700 mb-2">{offer.description}</div>
+                    <div className="line-through text-gray-400">{offer.old_price}</div>
+                    <div className="text-yellow-700 font-bold">{offer.new_price}</div>
+                    <div className="text-xs text-gray-500 mt-2">Voimassa: {offer.start_date?.slice(0,10)} - {offer.end_date?.slice(0,10)}</div>
+                  </div>
+                ))}
+              </div>
             )}
           </TabsContent>
         </Tabs>
