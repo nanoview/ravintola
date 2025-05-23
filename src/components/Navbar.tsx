@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 
@@ -10,6 +10,7 @@ interface NavbarProps {
 export default function Navbar({ darkHeader }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,12 +37,12 @@ export default function Navbar({ darkHeader }: NavbarProps) {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="hover:text-primary transition-colors font-medium" style={{ color: isScrolled || !darkHeader ? 'inherit' : 'fuchsia' }} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>KOTI</Link>
-            <Link to="/menu" className="hover:text-primary transition-colors font-medium" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>RUOKALISTA</Link>
-            <Link to="/about" className="hover:text-primary transition-colors font-medium" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>TIETOA MEISTA</Link>
-            <Link to="/contact" className="hover:text-primary transition-colors font-medium" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>OTA YHTEYTTÄ</Link>
+            <Link to="/" className={`hover:text-primary transition-colors font-medium${location.pathname === '/' ? ' text-fuchsia-600 font-bold' : ''}`} style={{ color: isScrolled || !darkHeader ? 'inherit' : 'fuchsia' }} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>KOTI</Link>
+            <Link to="/menu" className={`hover:text-primary transition-colors font-medium${location.pathname === '/menu' ? ' text-fuchsia-600 font-bold' : ''}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>RUOKALISTA</Link>
+            <Link to="/about" className={`hover:text-primary transition-colors font-medium${location.pathname === '/about' ? ' text-fuchsia-600 font-bold' : ''}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>TIETOA MEISTA</Link>
+            <Link to="/contact" className={`hover:text-primary transition-colors font-medium${location.pathname === '/contact' ? ' text-fuchsia-600 font-bold' : ''}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>OTA YHTEYTTÄ</Link>
             <Button asChild>
-              <Link to="/reservation" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>VARAA PÖYTÄ</Link>
+              <Link to="/reservation" className={location.pathname === '/reservation' ? 'text-fuchsia-600 font-bold' : ''} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>VARAA PÖYTÄ</Link>
             </Button>
           </div>
 
@@ -60,35 +61,35 @@ export default function Navbar({ darkHeader }: NavbarProps) {
             <div className="flex flex-col space-y-4">
               <Link 
                 to="/" 
-                className="hover:text-primary transition-colors px-4 py-2 font-medium"
+                className={`hover:text-primary transition-colors px-4 py-2 font-medium${location.pathname === '/' ? ' text-fuchsia-600 font-bold' : ''}`}
                 onClick={() => { setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               >
                 Koti
               </Link>
               <Link 
                 to="/menu" 
-                className="hover:text-primary transition-colors px-4 py-2 font-medium"
+                className={`hover:text-primary transition-colors px-4 py-2 font-medium${location.pathname === '/menu' ? ' text-fuchsia-600 font-bold' : ''}`}
                 onClick={() => { setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               >
                 Ruokalista
               </Link>
               <Link 
                 to="/about" 
-                className="hover:text-primary transition-colors px-4 py-2 font-medium"
+                className={`hover:text-primary transition-colors px-4 py-2 font-medium${location.pathname === '/about' ? ' text-fuchsia-600 font-bold' : ''}`}
                 onClick={() => { setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               >
                 Tietoa meistä
               </Link>
               <Link 
                 to="/contact" 
-                className="hover:text-primary transition-colors px-4 py-2 font-medium"
+                className={`hover:text-primary transition-colors px-4 py-2 font-medium${location.pathname === '/contact' ? ' text-fuchsia-600 font-bold' : ''}`}
                 onClick={() => { setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               >
                 Ota yhteyttä
               </Link>
               <div className="px-4 py-2">
                 <Button asChild className="w-full">
-                  <Link to="/reservation" onClick={() => { setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
+                  <Link to="/reservation" className={location.pathname === '/reservation' ? 'text-fuchsia-600 font-bold' : ''} onClick={() => { setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>
                     Varaa pöytä
                   </Link>
                 </Button>
