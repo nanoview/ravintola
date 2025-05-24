@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
+import { supabase } from '@/integrations/supabase/client';
 
 interface NavbarProps {
   darkHeader?: boolean;
@@ -10,6 +11,8 @@ interface NavbarProps {
 export default function Navbar({ darkHeader }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeOffer, setActiveOffer] = useState(null);
+  const [offerLoading, setOfferLoading] = useState(true);
   const location = useLocation();
 
   useEffect(() => {
@@ -19,6 +22,22 @@ export default function Navbar({ darkHeader }: NavbarProps) {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  useEffect(() => {
+    async function fetchActiveOffer() {
+      setOfferLoading(true);
+      const now = new Date().toISOString();
+      const { data } = await supabase
+        .from('offers')
+        .select('*')
+        .gte('start_date', now)
+        .lte('end_date', now)
+        .order('end_date', { ascending: true });
+      setActiveOffer((data && data.length > 0) ? data[0] : null);
+      setOfferLoading(false);
+    }
+    fetchActiveOffer();
   }, []);
 
   const navbarClass = isScrolled || !darkHeader
@@ -41,7 +60,9 @@ export default function Navbar({ darkHeader }: NavbarProps) {
             <Link to="/menu" className={`hover:text-primary transition-colors font-medium${location.pathname === '/menu' ? ' text-fuchsia-600 font-bold' : ''}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>RUOKALISTA</Link>
             <Link to="/about" className={`hover:text-primary transition-colors font-medium${location.pathname === '/about' ? ' text-fuchsia-600 font-bold' : ''}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>TIETOA MEISTA</Link>
             <Link to="/contact" className={`hover:text-primary transition-colors font-medium${location.pathname === '/contact' ? ' text-fuchsia-600 font-bold' : ''}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>OTA YHTEYTTÄ</Link>
-            <Link to="/offer" className={`hover:text-yellow-600 transition-colors font-medium${location.pathname === '/offer' ? ' text-yellow-700 font-bold' : ''}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>TARJOUKSET</Link>
+            {(!offerLoading && activeOffer) && (
+              <Link to="/offer" className={`hover:text-yellow-600 transition-colors font-medium${location.pathname === '/offer' ? ' text-yellow-700 font-bold' : ''}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>TARJOUKSET</Link>
+            )}
             <Button asChild>
               <Link to="/reservation" className={location.pathname === '/reservation' ? 'text-fuchsia-600 font-bold' : ''} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>VARAA PÖYTÄ</Link>
             </Button>
@@ -88,13 +109,15 @@ export default function Navbar({ darkHeader }: NavbarProps) {
               >
                 Ota yhteyttä
               </Link>
-              <Link 
-                to="/offer" 
-                className={`hover:text-yellow-600 transition-colors px-4 py-2 font-medium${location.pathname === '/offer' ? ' text-yellow-700 font-bold' : ''}`}
-                onClick={() => { setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-              >
-                Tarjoukset
-              </Link>
+              {(!offerLoading && activeOffer) && (
+                <Link 
+                  to="/offer" 
+                  className={`hover:text-yellow-600 transition-colors px-4 py-2 font-medium${location.pathname === '/offer' ? ' text-yellow-700 font-bold' : ''}`}
+                  onClick={() => { setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+                >
+                  Tarjoukset
+                </Link>
+              )}
               <div className="px-4 py-2">
                 <Button asChild className="w-full">
                   <Link to="/reservation" className={location.pathname === '/reservation' ? 'text-fuchsia-600 font-bold' : ''} onClick={() => { setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}>

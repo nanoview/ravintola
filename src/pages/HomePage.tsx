@@ -5,6 +5,8 @@ import { Card, CardContent } from '@/components/ui/card';
 import salmonsaladImg from '../assets/images/salmonsalad.png';
 import chickenkormaImg from '../assets/images/chickenkorma.png';
 import beefmasalaImg from '../assets/images/beefmasala.png';
+import { useEffect, useState } from 'react';
+import { supabase } from '@/integrations/supabase/client';
 
 export default function HomePage() {
   // Example featured menu items
@@ -31,6 +33,25 @@ export default function HomePage() {
       image: beefmasalaImg
     }
   ];
+
+  const [activeOffer, setActiveOffer] = useState(null);
+  const [offerLoading, setOfferLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchActiveOffer() {
+      setOfferLoading(true);
+      const now = new Date().toISOString();
+      const { data, error } = await supabase
+        .from('offers')
+        .select('*')
+        .gte('start_date', now)
+        .lte('end_date', now)
+        .order('end_date', { ascending: true });
+      setActiveOffer((data && data.length > 0) ? data[0] : null);
+      setOfferLoading(false);
+    }
+    fetchActiveOffer();
+  }, []);
 
   return (
     <Layout darkHeader={true}>
@@ -178,18 +199,20 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Offer Section */}
-      <section className="py-20 bg-yellow-50">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4 text-yellow-700">Erikoistarjoukset</h2>
-          <p className="mb-6 text-lg text-yellow-800">Katso tämän viikon parhaat tarjoukset ja alennetut annokset!</p>
-          <Button size="lg" asChild className="bg-yellow-400 hover:bg-yellow-500 text-yellow-900 font-bold">
-            <Link to="/offer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-              Näytä tarjoukset
-            </Link>
-          </Button>
-        </div>
-      </section>
+      {/* Offer Section (only if offer exists) */}
+      {!offerLoading && activeOffer && (
+        <section className="py-20 bg-yellow-50">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl font-bold mb-4 text-yellow-700">Erikoistarjoukset</h2>
+            <p className="mb-6 text-lg text-yellow-800">Katso tämän viikon parhaat tarjoukset ja alennetut annokset!</p>
+            <Button size="lg" asChild className="bg-yellow-400 hover:bg-yellow-500 text-yellow-900 font-bold">
+              <Link to="/offer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                Näytä tarjoukset
+              </Link>
+            </Button>
+          </div>
+        </section>
+      )}
 
       {/* CTA Section */}
       <section 
