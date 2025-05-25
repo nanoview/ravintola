@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { Instagram, Facebook, Twitter, MapPin } from 'lucide-react';
 
 export default function Footer() {
@@ -36,10 +36,26 @@ export default function Footer() {
           <div>
             <h3 className="text-xl font-bold mb-4 text-green-500">Pikalinkit</h3>
             <ul className="space-y-2">
-              <li><Link to="/menu" className="hover:text-primary transition-colors" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Ruokalistamme</Link></li>
-              <li><Link to="/reservation" className="hover:text-primary transition-colors" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Varaukset</Link></li>
-              <li><Link to="/about" className="hover:text-primary transition-colors" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Tietoa meistä</Link></li>
-              <li><Link to="/contact" className="hover:text-primary transition-colors" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>Ota yhteyttä</Link></li>
+              <li>
+                <NavLink to="/menu" className={({ isActive }) => isActive ? "text-primary font-semibold" : "hover:text-primary transition-colors"} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                  Ruokalistamme
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/reservation" className={({ isActive }) => isActive ? "text-primary font-semibold" : "hover:text-primary transition-colors"} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                  Varaukset
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/about" className={({ isActive }) => isActive ? "text-primary font-semibold" : "hover:text-primary transition-colors"} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                  Tietoa meistä
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/contact" className={({ isActive }) => isActive ? "text-primary font-semibold" : "hover:text-primary transition-colors"} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                  Ota yhteyttä
+                </NavLink>
+              </li>
               <li></li>
             </ul>
         

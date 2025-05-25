@@ -204,6 +204,7 @@ export default function DashboardPage() {
                           <th className="p-2">Subject</th>
                           <th className="p-2">Email</th>
                           <th className="p-2">Status</th>
+                          <th className="p-2">Action</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -213,7 +214,49 @@ export default function DashboardPage() {
                             <td className="p-2">{m.name}</td>
                             <td className="p-2">{m.subject}</td>
                             <td className="p-2">{m.email}</td>
-                            <td className="p-2">{m.status}</td>
+                            <td className="p-2">
+                              <span className={`px-2 py-1 rounded text-xs font-semibold ${
+                                m.status === 'read' ? 'bg-green-100 text-green-700' :
+                                m.status === 'replied' ? 'bg-blue-100 text-blue-700' :
+                                'bg-yellow-100 text-yellow-700'
+                              }`}>
+                                {m.status ? m.status.charAt(0).toUpperCase() + m.status.slice(1) : 'Unread'}
+                              </span>
+                            </td>
+                            <td className="p-2">
+                              <button
+                                className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white px-2 py-1 rounded text-xs mr-2"
+                                onClick={async () => {
+                                  if (m.status !== 'read') {
+                                    await supabase.from('contact_messages').update({ status: 'read' }).eq('id', m.id);
+                                    setMessages(messages => messages.map(msg => msg.id === m.id ? { ...msg, status: 'read' } : msg));
+                                  }
+                                  alert(`Message from ${m.name}:\n\n${m.message}`);
+                                }}
+                              >
+                                Open
+                              </button>
+                              <button
+                                className="bg-yellow-500 hover:bg-yellow-600 text-white px-2 py-1 rounded text-xs mr-2"
+                                onClick={async () => {
+                                  await supabase.from('contact_messages').update({ status: 'unread' }).eq('id', m.id);
+                                  setMessages(messages => messages.map(msg => msg.id === m.id ? { ...msg, status: 'unread' } : msg));
+                                }}
+                              >
+                                Unread
+                              </button>
+                              <button
+                                className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded text-xs"
+                                onClick={async () => {
+                                  if (window.confirm('Are you sure you want to delete this message?')) {
+                                    await supabase.from('contact_messages').delete().eq('id', m.id);
+                                    setMessages(messages => messages.filter(msg => msg.id !== m.id));
+                                  }
+                                }}
+                              >
+                                Delete
+                              </button>
+                            </td>
                           </tr>
                         ))}
                       </tbody>
