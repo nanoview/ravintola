@@ -5,6 +5,7 @@ import Layout from '../components/Layout';
 export default function DashboardPage() {
   const [loading, setLoading] = useState(true);
   const [authenticated, setAuthenticated] = useState(false);
+  const [activeTab, setActiveTab] = useState<'reservation' | 'messages' | 'offers'>('reservation');
 
   useEffect(() => {
     let isMounted = true;
@@ -23,6 +24,57 @@ export default function DashboardPage() {
     return () => { isMounted = false; };
   }, []);
 
+  // Reservation content from Supabase
+  const [reservations, setReservations] = useState<any[]>([]);
+  const [reservationsLoading, setReservationsLoading] = useState(false);
+  useEffect(() => {
+    if (activeTab === 'reservation') {
+      setReservationsLoading(true);
+      supabase
+        .from('reservations')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .then(({ data }) => {
+          setReservations(data || []);
+          setReservationsLoading(false);
+        });
+    }
+  }, [activeTab]);
+
+  // Messages content from Supabase
+  const [messages, setMessages] = useState<any[]>([]);
+  const [messagesLoading, setMessagesLoading] = useState(false);
+  useEffect(() => {
+    if (activeTab === 'messages') {
+      setMessagesLoading(true);
+      supabase
+        .from('contact_messages')
+        .select('*')
+        .order('created_at', { ascending: false })
+        .then(({ data }) => {
+          setMessages(data || []);
+          setMessagesLoading(false);
+        });
+    }
+  }, [activeTab]);
+
+  // Offers content from Supabase
+  const [offers, setOffers] = useState<any[]>([]);
+  const [offersLoading, setOffersLoading] = useState(false);
+  useEffect(() => {
+    if (activeTab === 'offers') {
+      setOffersLoading(true);
+      supabase
+        .from('offers')
+        .select('*')
+        .order('end_date', { ascending: true })
+        .then(({ data }) => {
+          setOffers(data || []);
+          setOffersLoading(false);
+        });
+    }
+  }, [activeTab]);
+
   if (loading) {
     return <div className="flex items-center justify-center h-screen">Loading...</div>;
   }
@@ -37,19 +89,138 @@ export default function DashboardPage() {
 
   return (
     <Layout>
-      <div className="container mx-auto py-10">
-        <div className="flex justify-between items-center mb-6">
-          <h1 className="text-3xl font-bold">Restaurant Dashboard</h1>
-          <button
-            onClick={handleLogout}
-            className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded shadow"
-          >
-            Logout
-          </button>
+      <div className="container mx-auto py-10 flex">
+        {/* Sidebar */}
+        <div className="w-56 mr-8">
+          <nav className="bg-white rounded shadow p-4 flex flex-col gap-2">
+            <button
+              className={`text-left px-4 py-2 rounded font-medium transition-colors ${activeTab === 'reservation' ? 'bg-blue-100 text-blue-700' : 'hover:bg-gray-100'}`}
+              onClick={() => setActiveTab('reservation')}
+            >
+              Reservation
+            </button>
+            <button
+              className={`text-left px-4 py-2 rounded font-medium transition-colors ${activeTab === 'messages' ? 'bg-blue-100 text-blue-700' : 'hover:bg-gray-100'}`}
+              onClick={() => setActiveTab('messages')}
+            >
+              Messages
+            </button>
+            <button
+              className={`text-left px-4 py-2 rounded font-medium transition-colors ${activeTab === 'offers' ? 'bg-blue-100 text-blue-700' : 'hover:bg-gray-100'}`}
+              onClick={() => setActiveTab('offers')}
+            >
+              Offers
+            </button>
+          </nav>
         </div>
-        <div className="bg-white rounded shadow p-8 text-center">
-          <p className="text-lg text-gray-700">Welcome to the admin dashboard.</p>
-          <p className="text-gray-500 mt-2">(Fresh dashboard template. Add your management features here.)</p>
+        {/* Main Content */}
+        <div className="flex-1">
+          <div className="bg-white rounded shadow p-8">
+            <h1 className="text-3xl font-bold mb-6">Restaurant Dashboard</h1>
+            <div className="mt-8">
+              {activeTab === 'reservation' && (
+                <div>
+                  <h2 className="text-xl font-semibold mb-4">Reservations</h2>
+                  {reservationsLoading ? (
+                    <div>Loading reservations...</div>
+                  ) : reservations.length === 0 ? (
+                    <div className="text-gray-500">No reservations found.</div>
+                  ) : (
+                    <table className="w-full text-left border">
+                      <thead>
+                        <tr className="bg-gray-100">
+                          <th className="p-2">Date</th>
+                          <th className="p-2">Time</th>
+                          <th className="p-2">Name</th>
+                          <th className="p-2">Guests</th>
+                          <th className="p-2">Email</th>
+                          <th className="p-2">Phone</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {reservations.map(r => (
+                          <tr key={r.id} className="border-t">
+                            <td className="p-2">{r.date}</td>
+                            <td className="p-2">{r.time}</td>
+                            <td className="p-2">{r.name}</td>
+                            <td className="p-2">{r.guests}</td>
+                            <td className="p-2">{r.email}</td>
+                            <td className="p-2">{r.phone}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  )}
+                </div>
+              )}
+              {activeTab === 'messages' && (
+                <div>
+                  <h2 className="text-xl font-semibold mb-4">Messages</h2>
+                  {messagesLoading ? (
+                    <div>Loading messages...</div>
+                  ) : messages.length === 0 ? (
+                    <div className="text-gray-500">No messages found.</div>
+                  ) : (
+                    <table className="w-full text-left border">
+                      <thead>
+                        <tr className="bg-gray-100">
+                          <th className="p-2">Date</th>
+                          <th className="p-2">Name</th>
+                          <th className="p-2">Subject</th>
+                          <th className="p-2">Email</th>
+                          <th className="p-2">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {messages.map(m => (
+                          <tr key={m.id} className="border-t">
+                            <td className="p-2">{new Date(m.created_at).toLocaleDateString('fi-FI')}</td>
+                            <td className="p-2">{m.name}</td>
+                            <td className="p-2">{m.subject}</td>
+                            <td className="p-2">{m.email}</td>
+                            <td className="p-2">{m.status}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  )}
+                </div>
+              )}
+              {activeTab === 'offers' && (
+                <div>
+                  <h2 className="text-xl font-semibold mb-4">Offers</h2>
+                  {offersLoading ? (
+                    <div>Loading offers...</div>
+                  ) : offers.length === 0 ? (
+                    <div className="text-gray-500">No offers found.</div>
+                  ) : (
+                    <table className="w-full text-left border">
+                      <thead>
+                        <tr className="bg-gray-100">
+                          <th className="p-2">Name</th>
+                          <th className="p-2">Description</th>
+                          <th className="p-2">Old Price</th>
+                          <th className="p-2">New Price</th>
+                          <th className="p-2">Valid</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {offers.map(o => (
+                          <tr key={o.id} className="border-t">
+                            <td className="p-2">{o.name}</td>
+                            <td className="p-2">{o.description}</td>
+                            <td className="p-2 line-through">{o.old_price}</td>
+                            <td className="p-2 font-bold text-yellow-700">{o.new_price}</td>
+                            <td className="p-2 text-xs text-gray-500">{o.start_date?.slice(0,10)} - {o.end_date?.slice(0,10)}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </Layout>
