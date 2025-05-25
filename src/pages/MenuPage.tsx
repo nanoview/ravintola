@@ -387,6 +387,13 @@ export default function MenuPage() {
           </Tabs>
         </div>
       </div>
+      {/*
+      <div className="flex justify-end w-full mt-8">
+        <div className="border border-fuchsia-400 rounded-lg shadow-lg w-40 h-24 flex items-center justify-center">
+          <span className="text-fuchsia-700 font-bold">Order Online</span>
+        </div>
+      </div>
+      */}
     </Layout>
   );
 };

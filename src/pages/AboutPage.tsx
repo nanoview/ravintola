@@ -1,5 +1,6 @@
 import Layout from '../components/Layout';
 import sofiaGarciaImg from '../assets/images/sofia_garcia.png';
+import amitSharmaImg from '../assets/images/amit_sharma.png';
 
 export default function AboutPage() {
   return (
@@ -78,15 +79,14 @@ export default function AboutPage() {
             <div className="text-center">
               <div className="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4">
                 <img 
-                  src="https://images.unsplash.com/photo-1542282088-72c9c27ed0cd?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" 
-                  alt="Nicoletta Bonamera" 
+                  src={amitSharmaImg} 
+                  alt="Amit Sharma" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Nicoletta Bonamera</h3>
-              
+              <h3 className="text-xl font-semibold mb-2">Amit Sharma</h3>
               <p className="text-muted-foreground">
-                Nicoletta varmistaa, että jokainen vieras saa erinomaista palvelua ja että ruokailukokemuksesi on unohtumaton heti ovesta sisään astuessasi.
+                Amit tuo keittiöömme runsaasti kansainvälistä kokemusta ja intohimoa kulinaarisiin innovaatioihin varmistaen, että jokainen ruokalaji on mestariteos.
               </p>
             </div>
           </div>
