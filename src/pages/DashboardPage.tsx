@@ -46,6 +46,30 @@ type ContactMessage = {
 };
 
 export default function DashboardPage() {
+  // Check authentication (redirect to /login if not authenticated)
+  const [loading, setLoading] = useState(true);
+  const [authenticated, setAuthenticated] = useState(false);
+
+  useEffect(() => {
+    async function checkAuth() {
+      const { data, error } = await supabase.auth.getSession();
+      if (data?.session && data.session.user) {
+        setAuthenticated(true);
+      } else {
+        window.location.href = '/login';
+      }
+      setLoading(false);
+    }
+    checkAuth();
+  }, []);
+
+  if (loading) {
+    return <div className="flex items-center justify-center h-screen">Loading...</div>;
+  }
+  if (!authenticated) {
+    return null;
+  }
+
   const { toast } = useToast();
   const [page, setPage] = useState(1);
   const [activeTab, setActiveTab] = useState<"reservations" | "messages" | "offers">("reservations");
