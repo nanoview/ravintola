@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import { useToast } from '@/hooks/use-toast';
 
@@ -7,25 +7,8 @@ export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data }) => {
-      if (data.session) {
-        setIsAuthenticated(true);
-        window.location.href = '/dashboard';
-      }
-    });
-    const { data: listener } = supabase.auth.onAuthStateChange((event, session) => {
-      if (session) {
-        setIsAuthenticated(true);
-        window.location.href = '/dashboard';
-      }
-    });
-    return () => { listener?.subscription.unsubscribe(); };
-  }, []);
-
-  const handleLogin = async (e) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     const { error } = await supabase.auth.signInWithPassword({ email, password });
@@ -41,11 +24,9 @@ export default function LoginPage() {
         title: 'Logged in',
         description: 'Welcome back!',
       });
-      window.location.href = '/dashboard';
+      window.location.replace('/dashboard');
     }
   };
-
-  if (isAuthenticated) return null;
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
