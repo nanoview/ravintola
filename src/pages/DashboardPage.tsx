@@ -135,6 +135,8 @@ export default function DashboardPage() {
                           <th className="p-2">Guests</th>
                           <th className="p-2">Email</th>
                           <th className="p-2">Phone</th>
+                          <th className="p-2">Status</th>
+                          <th className="p-2">Action</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -146,6 +148,39 @@ export default function DashboardPage() {
                             <td className="p-2">{r.guests}</td>
                             <td className="p-2">{r.email}</td>
                             <td className="p-2">{r.phone}</td>
+                            <td className="p-2">
+                              <span className={`px-2 py-1 rounded text-xs font-semibold ${
+                                r.status === 'confirmed' ? 'bg-green-100 text-green-700' :
+                                r.status === 'cancelled' ? 'bg-red-100 text-red-700' :
+                                'bg-yellow-100 text-yellow-700'
+                              }`}>
+                                {r.status ? r.status.charAt(0).toUpperCase() + r.status.slice(1) : 'Pending'}
+                              </span>
+                            </td>
+                            <td className="p-2">
+                              {r.status !== 'confirmed' && (
+                                <button
+                                  className="bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded text-xs mr-2"
+                                  onClick={async () => {
+                                    await supabase.from('reservations').update({ status: 'confirmed' }).eq('id', r.id);
+                                    setReservations(reservations => reservations.map(res => res.id === r.id ? { ...res, status: 'confirmed' } : res));
+                                  }}
+                                >
+                                  Confirm
+                                </button>
+                              )}
+                              {r.status !== 'cancelled' && (
+                                <button
+                                  className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded text-xs"
+                                  onClick={async () => {
+                                    await supabase.from('reservations').update({ status: 'cancelled' }).eq('id', r.id);
+                                    setReservations(reservations => reservations.map(res => res.id === r.id ? { ...res, status: 'cancelled' } : res));
+                                  }}
+                                >
+                                  Cancel
+                                </button>
+                              )}
+                            </td>
                           </tr>
                         ))}
                       </tbody>
