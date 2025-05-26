@@ -131,16 +131,20 @@ export default function AboutPage() {
         
         {/* Awards Section */}
         <section>
-          <h2 className="text-3xl font-semibold text-center mb-10">Palkinnot & tunnustukset</h2>
+          <h2 className="text-3xl font-semibold text-center mb-10">Tunnustukset</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-md">
               <div className="flex items-center mb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-yellow-500 mr-3" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/>
                 </svg>
-                <h3 className="text-xl font-semibold">Vuoden paras fine dining -ravintola 2024</h3>
+                <h3 className="text-xl font-semibold">A-oikeudet</h3>
               </div>
-              <p className="text-muted-foreground">Culinary Excellence Magazinen myöntämä palkinto poikkeuksellisesta ruoasta ja palvelusta.</p>
+              <p className="text-muted-foreground">Suomessa alkoholijuomien anniskeluoikeudet <strong>A-oikeudet</strong> ovat laajin ja kattavin anniskelulupa.
+                 <strong>  A-oikeudet</strong> sallivat ravintolan tarjoilla kaikkia alkoholijuomia, mukaan lukien:
+                 Olut ja siideri
+                 <br/>Viini ja kuohuviini
+                 <br/>Väkevät alkoholijuomat (yli 22 % alkoholipitoisuus)</p>
             </div>
             
             <div className="bg-white p-6 rounded-lg shadow-md">
@@ -148,9 +152,9 @@ export default function AboutPage() {
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-yellow-500 mr-3" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/>
                 </svg>
-                <h3 className="text-xl font-semibold">Vuoden kokki 2023</h3>
+                <h3 className="text-xl font-semibold">Hygienpassi</h3>
               </div>
-              <p className="text-muted-foreground">Ali Hossain Sarder palkittiin innovatiivisista panoksistaan nykyaikaiseen keittiöön.</p>
+              <p className="text-muted-foreground">Noudatamme hygieniaa ruoanvalmistuksessa. Kaikilla tiimimme jäsenillä on hygieniapassi.</p>
             </div>
             
             <div className="bg-white p-6 rounded-lg shadow-md">
