@@ -6,7 +6,8 @@ import butterlambImg from '../assets/images/butterlamb.png';
 import chickenburgerImg from '../assets/images/chickenburger.png';
 import chickencutletImg from '../assets/images/chickencutlet.png';
 import chickenkormaImg from '../assets/images/chickenkorma.png';
-import chikencurryImg from '../assets/images/chikencurry.png';
+import chikencurryImg from '../assets/images/chickencurry.png';
+import butterchickenImg from '../assets/images/butterchicken.png';
 import kidspizzaImg from '../assets/images/kidspizza.png';
 import lambmasalImg from '../assets/images/lambmasal.png';
 import malaikoftaImg from '../assets/images/malaikofta.png';
@@ -57,7 +58,7 @@ export default function MenuPage() {
         description: "Marinoitu Tandoori kana paistettu spicy butter kastikkeet",
         price: "18€",
         dietary: "L, G",
-        imageUrl: chickenkormaImg
+        imageUrl: butterchickenImg
       },
       {
         id: 3,
