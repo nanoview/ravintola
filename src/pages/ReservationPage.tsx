@@ -139,10 +139,9 @@ export default function ReservationPage() {
         <p className="text-center text-lg mb-10 max-w-2xl mx-auto">
           Varaa pöytä Savoria Bistroon ja nauti unohtumattomasta ruokailukokemuksesta.
         </p>
-        
         <div className="max-w-4xl mx-auto">
           <div className="grid md:grid-cols-5 gap-8">
-            {/* Reservation Form (3 columns) */}
+            {/* Varauslomake (3 saraketta) */}
             <div className="md:col-span-3 bg-white p-8 rounded-lg shadow-md">
               <h2 className="text-2xl font-semibold mb-6">Varauksen tiedot</h2>
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -154,11 +153,10 @@ export default function ReservationPage() {
                       name="name" 
                       value={reservationData.name} 
                       onChange={handleChange}
-                      placeholder="John Smith" 
+                      placeholder="Esim. Matti Meikäläinen" 
                       required 
                     />
                   </div>
-                  
                   <div className="space-y-2">
                     <Label htmlFor="email">Sähköpostiosoite</Label>
                     <Input 
@@ -167,12 +165,11 @@ export default function ReservationPage() {
                       type="email" 
                       value={reservationData.email} 
                       onChange={handleChange}
-                      placeholder="john@example.com" 
+                      placeholder="esim. matti@email.com" 
                       required 
                     />
                   </div>
                 </div>
-                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
                     <Label htmlFor="phone">Puhelinnumero</Label>
@@ -181,11 +178,10 @@ export default function ReservationPage() {
                       name="phone" 
                       value={reservationData.phone} 
                       onChange={handleChange}
-                      placeholder="(123) 456-7890" 
+                      placeholder="esim. 040 123 4567" 
                       required 
                     />
                   </div>
-                  
                   <div className="space-y-2">
                     <Label htmlFor="guests">Vieraiden määrä</Label>
                     <Select value={reservationData.guests} onValueChange={handleGuestsChange}>
@@ -193,20 +189,19 @@ export default function ReservationPage() {
                         <SelectValue placeholder="Valitse vieraiden määrä" />
                       </SelectTrigger>
                       <SelectContent>
-                        {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
+                        {[1,2,3,4,5,6,7,8,9,10].map(num => (
                           <SelectItem key={num} value={num.toString()}>
-                            {num} {num === 1 ? 'Guest' : 'Guests'}
+                            {num} {num === 1 ? 'vieras' : 'vierasta'}
                           </SelectItem>
                         ))}
-                        <SelectItem value="11+">11+ Guests (Large Party)</SelectItem>
+                        <SelectItem value="11+">11+ vierasta (suuri seurue)</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
                 </div>
-                
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label>Date</Label>
+                    <Label>Päivämäärä</Label>
                     <Popover>
                       <PopoverTrigger asChild>
                         <Button
@@ -224,14 +219,13 @@ export default function ReservationPage() {
                           onSelect={setDate}
                           initialFocus
                           disabled={(date) => {
-                            // Disable dates in the past
+                            // Estä menneet päivät
                             return date < new Date(new Date().setHours(0, 0, 0, 0));
                           }}
                         />
                       </PopoverContent>
                     </Popover>
                   </div>
-                  
                   <div className="space-y-2">
                     <Label htmlFor="time">Aika</Label>
                     <Select value={reservationData.time} onValueChange={handleTimeChange}>
@@ -248,7 +242,6 @@ export default function ReservationPage() {
                     </Select>
                   </div>
                 </div>
-                
                 <div className="space-y-2">
                   <Label htmlFor="specialRequests">Erityispyynnöt (valinnainen)</Label>
                   <textarea
@@ -258,21 +251,19 @@ export default function ReservationPage() {
                     onChange={handleChange}
                     rows={4}
                     className="w-full min-h-[80px] p-3 border rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
-                    placeholder="Erityisvaatimukset tai mieltymykset?"
+                    placeholder="Erityisvaatimukset tai toiveet?"
                   ></textarea>
                 </div>
-                
                 <Button 
                   type="submit" 
                   className="w-full" 
                   disabled={loading}
                 >
-                  {loading ? 'Käsitellään...' : 'lähetä varaustietosi'}
+                  {loading ? 'Käsitellään...' : 'Lähetä varaustietosi'}
                 </Button>
               </form>
             </div>
-            
-            {/* Information Panel (2 columns) */}
+            {/* Info-paneeli (2 saraketta) */}
             <div className="md:col-span-2 space-y-6">
               <div className="bg-white p-6 rounded-lg shadow-md">
                 <h3 className="text-xl font-semibold mb-4">Varaustiedot</h3>
@@ -295,7 +286,6 @@ export default function ReservationPage() {
                   </li>
                 </ul>
               </div>
-              
               <div className="bg-primary text-white p-6 rounded-lg shadow-md">
                 <h3 className="text-xl font-semibold mb-4">Erikoistapahtumat</h3>
                 <p className="mb-4">
@@ -311,7 +301,6 @@ export default function ReservationPage() {
                   Ota yhteyttä tapahtumatiimiimme osoitteessa events@savoriabistro.com saadaksesi lisätietoja.
                 </p>
               </div>
-              
               <div className="p-6 rounded-lg border border-muted bg-gray-50">
                 <h3 className="text-xl font-semibold mb-4">Tarvitsetko apua?</h3>
                 <p className="mb-2">

@@ -89,24 +89,24 @@ export default function DashboardPage() {
 
   return (
     <Layout>
-      <div className="container mx-auto py-10 flex">
+      <div className="container mx-auto py-6 px-2 md:px-4 flex flex-col md:flex-row">
         {/* Sidebar */}
-        <div className="w-56 mr-8">
-          <nav className="bg-white rounded shadow p-4 flex flex-col gap-2">
+        <div className="w-full md:w-56 md:mr-8 mb-4 md:mb-0">
+          <nav className="bg-white rounded shadow p-4 flex flex-row md:flex-col gap-2 overflow-x-auto">
             <button
-              className={`text-left px-4 py-2 rounded font-medium transition-colors ${activeTab === 'reservation' ? 'bg-blue-100 text-blue-700' : 'hover:bg-gray-100'}`}
+              className={`flex-1 text-left px-4 py-2 rounded font-medium transition-colors ${activeTab === 'reservation' ? 'bg-blue-100 text-blue-700' : 'hover:bg-gray-100'}`}
               onClick={() => setActiveTab('reservation')}
             >
               Reservation
             </button>
             <button
-              className={`text-left px-4 py-2 rounded font-medium transition-colors ${activeTab === 'messages' ? 'bg-blue-100 text-blue-700' : 'hover:bg-gray-100'}`}
+              className={`flex-1 text-left px-4 py-2 rounded font-medium transition-colors ${activeTab === 'messages' ? 'bg-blue-100 text-blue-700' : 'hover:bg-gray-100'}`}
               onClick={() => setActiveTab('messages')}
             >
               Messages
             </button>
             <button
-              className={`text-left px-4 py-2 rounded font-medium transition-colors ${activeTab === 'offers' ? 'bg-blue-100 text-blue-700' : 'hover:bg-gray-100'}`}
+              className={`flex-1 text-left px-4 py-2 rounded font-medium transition-colors ${activeTab === 'offers' ? 'bg-blue-100 text-blue-700' : 'hover:bg-gray-100'}`}
               onClick={() => setActiveTab('offers')}
             >
               Offers
@@ -114,186 +114,192 @@ export default function DashboardPage() {
           </nav>
         </div>
         {/* Main Content */}
-        <div className="flex-1">
-          <div className="bg-white rounded shadow p-8">
-            <h1 className="text-3xl font-bold mb-6">Restaurant Dashboard</h1>
-            <div className="mt-8">
+        <div className="flex-1 w-full">
+          <div className="bg-white rounded shadow p-4 md:p-8 overflow-x-auto">
+            <h1 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6">Restaurant Dashboard</h1>
+            <div className="mt-4 md:mt-8">
               {activeTab === 'reservation' && (
                 <div>
-                  <h2 className="text-xl font-semibold mb-4">Reservations</h2>
+                  <h2 className="text-lg md:text-xl font-semibold mb-2 md:mb-4">Reservations</h2>
                   {reservationsLoading ? (
                     <div>Loading reservations...</div>
                   ) : reservations.length === 0 ? (
                     <div className="text-gray-500">No reservations found.</div>
                   ) : (
-                    <table className="w-full text-left border">
-                      <thead>
-                        <tr className="bg-gray-100">
-                          <th className="p-2">Date</th>
-                          <th className="p-2">Time</th>
-                          <th className="p-2">Name</th>
-                          <th className="p-2">Guests</th>
-                          <th className="p-2">Email</th>
-                          <th className="p-2">Phone</th>
-                          <th className="p-2">Status</th>
-                          <th className="p-2">Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {reservations.map(r => (
-                          <tr key={r.id} className="border-t">
-                            <td className="p-2">{r.date}</td>
-                            <td className="p-2">{r.time}</td>
-                            <td className="p-2">{r.name}</td>
-                            <td className="p-2">{r.guests}</td>
-                            <td className="p-2">{r.email}</td>
-                            <td className="p-2">{r.phone}</td>
-                            <td className="p-2">
-                              <span className={`px-2 py-1 rounded text-xs font-semibold ${
-                                r.status === 'confirmed' ? 'bg-green-100 text-green-700' :
-                                r.status === 'cancelled' ? 'bg-red-100 text-red-700' :
-                                'bg-yellow-100 text-yellow-700'
-                              }`}>
-                                {r.status ? r.status.charAt(0).toUpperCase() + r.status.slice(1) : 'Pending'}
-                              </span>
-                            </td>
-                            <td className="p-2">
-                              {r.status !== 'confirmed' && (
-                                <button
-                                  className="bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded text-xs mr-2"
-                                  onClick={async () => {
-                                    await supabase.from('reservations').update({ status: 'confirmed' }).eq('id', r.id);
-                                    setReservations(reservations => reservations.map(res => res.id === r.id ? { ...res, status: 'confirmed' } : res));
-                                  }}
-                                >
-                                  Confirm
-                                </button>
-                              )}
-                              {r.status !== 'cancelled' && (
-                                <button
-                                  className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded text-xs"
-                                  onClick={async () => {
-                                    await supabase.from('reservations').update({ status: 'cancelled' }).eq('id', r.id);
-                                    setReservations(reservations => reservations.map(res => res.id === r.id ? { ...res, status: 'cancelled' } : res));
-                                  }}
-                                >
-                                  Cancel
-                                </button>
-                              )}
-                            </td>
+                    <div className="overflow-x-auto">
+                      <table className="min-w-[600px] w-full text-left border text-xs md:text-sm">
+                        <thead>
+                          <tr className="bg-gray-100">
+                            <th className="p-2">Date</th>
+                            <th className="p-2">Time</th>
+                            <th className="p-2">Name</th>
+                            <th className="p-2">Guests</th>
+                            <th className="p-2">Email</th>
+                            <th className="p-2">Phone</th>
+                            <th className="p-2">Status</th>
+                            <th className="p-2">Action</th>
                           </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                        </thead>
+                        <tbody>
+                          {reservations.map(r => (
+                            <tr key={r.id} className="border-t">
+                              <td className="p-2">{r.date}</td>
+                              <td className="p-2">{r.time}</td>
+                              <td className="p-2">{r.name}</td>
+                              <td className="p-2">{r.guests}</td>
+                              <td className="p-2">{r.email}</td>
+                              <td className="p-2">{r.phone}</td>
+                              <td className="p-2">
+                                <span className={`px-2 py-1 rounded text-xs font-semibold ${
+                                  r.status === 'confirmed' ? 'bg-green-100 text-green-700' :
+                                  r.status === 'cancelled' ? 'bg-red-100 text-red-700' :
+                                  'bg-yellow-100 text-yellow-700'
+                                }`}>
+                                  {r.status ? r.status.charAt(0).toUpperCase() + r.status.slice(1) : 'Pending'}
+                                </span>
+                              </td>
+                              <td className="p-2">
+                                {r.status !== 'confirmed' && (
+                                  <button
+                                    className="bg-green-500 hover:bg-green-600 text-white px-2 py-1 rounded text-xs mr-2"
+                                    onClick={async () => {
+                                      await supabase.from('reservations').update({ status: 'confirmed' }).eq('id', r.id);
+                                      setReservations(reservations => reservations.map(res => res.id === r.id ? { ...res, status: 'confirmed' } : res));
+                                    }}
+                                  >
+                                    Confirm
+                                  </button>
+                                )}
+                                {r.status !== 'cancelled' && (
+                                  <button
+                                    className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded text-xs"
+                                    onClick={async () => {
+                                      await supabase.from('reservations').update({ status: 'cancelled' }).eq('id', r.id);
+                                      setReservations(reservations => reservations.map(res => res.id === r.id ? { ...res, status: 'cancelled' } : res));
+                                    }}
+                                  >
+                                    Cancel
+                                  </button>
+                                )}
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
                   )}
                 </div>
               )}
               {activeTab === 'messages' && (
                 <div>
-                  <h2 className="text-xl font-semibold mb-4">Messages</h2>
+                  <h2 className="text-lg md:text-xl font-semibold mb-2 md:mb-4">Messages</h2>
                   {messagesLoading ? (
                     <div>Loading messages...</div>
                   ) : messages.length === 0 ? (
                     <div className="text-gray-500">No messages found.</div>
                   ) : (
-                    <table className="w-full text-left border">
-                      <thead>
-                        <tr className="bg-gray-100">
-                          <th className="p-2">Date</th>
-                          <th className="p-2">Name</th>
-                          <th className="p-2">Subject</th>
-                          <th className="p-2">Email</th>
-                          <th className="p-2">Status</th>
-                          <th className="p-2">Action</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {messages.map(m => (
-                          <tr key={m.id} className="border-t">
-                            <td className="p-2">{new Date(m.created_at).toLocaleDateString('fi-FI')}</td>
-                            <td className="p-2">{m.name}</td>
-                            <td className="p-2">{m.subject}</td>
-                            <td className="p-2">{m.email}</td>
-                            <td className="p-2">
-                              <span className={`px-2 py-1 rounded text-xs font-semibold ${
-                                m.status === 'read' ? 'bg-green-100 text-green-700' :
-                                m.status === 'replied' ? 'bg-blue-100 text-blue-700' :
-                                'bg-yellow-100 text-yellow-700'
-                              }`}>
-                                {m.status ? m.status.charAt(0).toUpperCase() + m.status.slice(1) : 'Unread'}
-                              </span>
-                            </td>
-                            <td className="p-2">
-                              <button
-                                className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white px-2 py-1 rounded text-xs mr-2"
-                                onClick={async () => {
-                                  if (m.status !== 'read') {
-                                    await supabase.from('contact_messages').update({ status: 'read' }).eq('id', m.id);
-                                    setMessages(messages => messages.map(msg => msg.id === m.id ? { ...msg, status: 'read' } : msg));
-                                  }
-                                  alert(`Message from ${m.name}:\n\n${m.message}`);
-                                }}
-                              >
-                                Open
-                              </button>
-                              <button
-                                className="bg-yellow-500 hover:bg-yellow-600 text-white px-2 py-1 rounded text-xs mr-2"
-                                onClick={async () => {
-                                  await supabase.from('contact_messages').update({ status: 'unread' }).eq('id', m.id);
-                                  setMessages(messages => messages.map(msg => msg.id === m.id ? { ...msg, status: 'unread' } : msg));
-                                }}
-                              >
-                                Unread
-                              </button>
-                              <button
-                                className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded text-xs"
-                                onClick={async () => {
-                                  if (window.confirm('Are you sure you want to delete this message?')) {
-                                    await supabase.from('contact_messages').delete().eq('id', m.id);
-                                    setMessages(messages => messages.filter(msg => msg.id !== m.id));
-                                  }
-                                }}
-                              >
-                                Delete
-                              </button>
-                            </td>
+                    <div className="overflow-x-auto">
+                      <table className="min-w-[600px] w-full text-left border text-xs md:text-sm">
+                        <thead>
+                          <tr className="bg-gray-100">
+                            <th className="p-2">Date</th>
+                            <th className="p-2">Name</th>
+                            <th className="p-2">Subject</th>
+                            <th className="p-2">Email</th>
+                            <th className="p-2">Status</th>
+                            <th className="p-2">Action</th>
                           </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                        </thead>
+                        <tbody>
+                          {messages.map(m => (
+                            <tr key={m.id} className="border-t">
+                              <td className="p-2">{new Date(m.created_at).toLocaleDateString('fi-FI')}</td>
+                              <td className="p-2">{m.name}</td>
+                              <td className="p-2">{m.subject}</td>
+                              <td className="p-2">{m.email}</td>
+                              <td className="p-2">
+                                <span className={`px-2 py-1 rounded text-xs font-semibold ${
+                                  m.status === 'read' ? 'bg-green-100 text-green-700' :
+                                  m.status === 'replied' ? 'bg-blue-100 text-blue-700' :
+                                  'bg-yellow-100 text-yellow-700'
+                                }`}>
+                                  {m.status ? m.status.charAt(0).toUpperCase() + m.status.slice(1) : 'Unread'}
+                                </span>
+                              </td>
+                              <td className="p-2">
+                                <button
+                                  className="bg-fuchsia-500 hover:bg-fuchsia-600 text-white px-2 py-1 rounded text-xs mr-2"
+                                  onClick={async () => {
+                                    if (m.status !== 'read') {
+                                      await supabase.from('contact_messages').update({ status: 'read' }).eq('id', m.id);
+                                      setMessages(messages => messages.map(msg => msg.id === m.id ? { ...msg, status: 'read' } : msg));
+                                    }
+                                    alert(`Message from ${m.name}:\n\n${m.message}`);
+                                  }}
+                                >
+                                  Open
+                                </button>
+                                <button
+                                  className="bg-yellow-500 hover:bg-yellow-600 text-white px-2 py-1 rounded text-xs mr-2"
+                                  onClick={async () => {
+                                    await supabase.from('contact_messages').update({ status: 'unread' }).eq('id', m.id);
+                                    setMessages(messages => messages.map(msg => msg.id === m.id ? { ...msg, status: 'unread' } : msg));
+                                  }}
+                                >
+                                  Unread
+                                </button>
+                                <button
+                                  className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded text-xs"
+                                  onClick={async () => {
+                                    if (window.confirm('Are you sure you want to delete this message?')) {
+                                      await supabase.from('contact_messages').delete().eq('id', m.id);
+                                      setMessages(messages => messages.filter(msg => msg.id !== m.id));
+                                    }
+                                  }}
+                                >
+                                  Delete
+                                </button>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
                   )}
                 </div>
               )}
               {activeTab === 'offers' && (
                 <div>
-                  <h2 className="text-xl font-semibold mb-4">Offers</h2>
+                  <h2 className="text-lg md:text-xl font-semibold mb-2 md:mb-4">Offers</h2>
                   {offersLoading ? (
                     <div>Loading offers...</div>
                   ) : offers.length === 0 ? (
                     <div className="text-gray-500">No offers found.</div>
                   ) : (
-                    <table className="w-full text-left border">
-                      <thead>
-                        <tr className="bg-gray-100">
-                          <th className="p-2">Name</th>
-                          <th className="p-2">Description</th>
-                          <th className="p-2">Old Price</th>
-                          <th className="p-2">New Price</th>
-                          <th className="p-2">Valid</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {offers.map(o => (
-                          <tr key={o.id} className="border-t">
-                            <td className="p-2">{o.name}</td>
-                            <td className="p-2">{o.description}</td>
-                            <td className="p-2 line-through">{o.old_price}</td>
-                            <td className="p-2 font-bold text-yellow-700">{o.new_price}</td>
-                            <td className="p-2 text-xs text-gray-500">{o.start_date?.slice(0,10)} - {o.end_date?.slice(0,10)}</td>
+                    <div className="overflow-x-auto">
+                      <table className="min-w-[600px] w-full text-left border text-xs md:text-sm">
+                        <thead>
+                          <tr className="bg-gray-100">
+                            <th className="p-2">Name</th>
+                            <th className="p-2">Description</th>
+                            <th className="p-2">Old Price</th>
+                            <th className="p-2">New Price</th>
+                            <th className="p-2">Valid</th>
                           </tr>
-                        ))}
-                      </tbody>
-                    </table>
+                        </thead>
+                        <tbody>
+                          {offers.map(o => (
+                            <tr key={o.id} className="border-t">
+                              <td className="p-2">{o.name}</td>
+                              <td className="p-2">{o.description}</td>
+                              <td className="p-2 line-through">{o.old_price}</td>
+                              <td className="p-2 font-bold text-yellow-700">{o.new_price}</td>
+                              <td className="p-2 text-xs text-gray-500">{o.start_date?.slice(0,10)} - {o.end_date?.slice(0,10)}</td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
                   )}
                 </div>
               )}

@@ -27,6 +27,7 @@ import ciderImg from '../assets/images/cider.png';
 import softdrinkImg from '../assets/images/softdrink.png';
 import beefmasalaImg from '../assets/images/beefmasala.png';
 import BiriyaniImg from '../assets/images/Biriyani.png';
+import salmonpotatoImg from '../assets/images/salmonpotato.png';
 
 export default function MenuPage() {
   const [activeCategory, setActiveCategory] = useState("leikkeet");
@@ -166,7 +167,7 @@ export default function MenuPage() {
     ],
     leikkeet: [
       {
-        id: 16,
+        id: 1,
         name: "PIPPURI LEIKE",
         description: "Kanasta. Tarjoillaan ranskalaisten / lohkoperunoiden / perunamuusin tai kermaperunoiden kanssa",
         price: "18€",
@@ -174,7 +175,7 @@ export default function MenuPage() {
         imageUrl: pepperchickencutletImg
       },
       {
-        id: 17,
+        id: 2,
         name: "WIENARI LEIKE",
         description: "Kanasta. Tarjoillaan ranskalaisten / lohkoperunoiden / perunamuusin tai kermaperunoiden kanssa",
         price: "18€",
@@ -182,7 +183,7 @@ export default function MenuPage() {
         imageUrl: chickencutletImg
       },
       {
-        id: 18,
+        id: 3,
         name: "HAWAI LEIKE",
         description: "Kanasta. Tarjoillaan ranskalaisten / lohkoperunoiden / perunamuusin tai kermaperunoiden kanssa",
         price: "18€",
@@ -190,7 +191,7 @@ export default function MenuPage() {
         imageUrl: chickencutletImg
       },
       {
-        id: 19,
+        id: 4,
         name: "METSASIAN LEIKE",
         description: "Kanasta. Tarjoillaan ranskalaisten / lohkoperunoiden / perunamuusin tai kermaperunoiden kanssa",
         price: "18€",
@@ -198,7 +199,7 @@ export default function MenuPage() {
         imageUrl: chickencutletImg
       },
       {
-        id: 20,
+        id: 5,
         name: "SPICY LEIKE",
         description: "Kanasta. Tarjoillaan ranskalaisten / lohkoperunoiden / perunamuusin tai kermaperunoiden kanssa",
         price: "18€",
@@ -226,7 +227,7 @@ export default function MenuPage() {
     ],
     salads: [
       {
-        id: 23,
+        id: 1,
         name: "KANA SALAATTI",
         description: "Sisältää Amerikan salaattia, tomaattia ja rucolaa",
         price: "15€",
@@ -234,7 +235,7 @@ export default function MenuPage() {
         imageUrl: chickenkormaImg
       },
       {
-        id: 24,
+        id: 2,
         name: "KATKARAPUSALAATTI",
         description: "Sisältää Amerikan salaattia, tomaattia ja rucolaa",
         price: "15€",
@@ -242,17 +243,25 @@ export default function MenuPage() {
         imageUrl: prawnkormaImg
       },
       {
-        id: 25,
+        id: 3,
         name: "KIRJOLOHENSALAATTI",
         description: "Sisältää Amerikan salaattia, tomaattia ja rucolaa",
         price: "15€",
         dietary: "",
         imageUrl: salmonsaladImg
+      },
+      {
+        id: 4,
+        name: "LOHENSALAATTI",
+        description: "Pariloitu lohi, kerma peruna, Kurkku, Salaatti",
+        price: "15€",
+        dietary: "",
+        imageUrl: salmonpotatoImg
       }
     ],
     pizzas: [
       {
-        id: 26,
+        id: 1,
         name: "LASTENPIZZA",
         description: "Sisältää neljä vapaavalintaista täytettä. Lisätäyte +1€",
         price: "7€",
@@ -260,7 +269,7 @@ export default function MenuPage() {
         imageUrl: kidspizzaImg
       },
       {
-        id: 27,
+        id: 2,
         name: "NORMAALIPIZZA",
         description: "Sisältää neljä vapaavalintaista täytettä. Lisätäyte +2€",
         price: "12€",
@@ -268,7 +277,7 @@ export default function MenuPage() {
         imageUrl: pizzaImg
       },
       {
-        id: 28,
+        id: 3,
         name: "PERHEPIZZA",
         description: "Sisältää neljä vapaavalintaista täytettä. Lisätäyte +3€",
         price: "20€",
