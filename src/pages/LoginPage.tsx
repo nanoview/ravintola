@@ -24,7 +24,7 @@ export default function LoginPage() {
         title: 'Logged in',
         description: 'Welcome back!',
       });
-      window.location.replace('/dashboard');
+      window.location.replace('/admin_dashboard');
     }
   };
 
