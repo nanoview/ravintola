@@ -131,7 +131,7 @@ export default function AboutPage() {
         
         {/* Awards Section */}
         <section>
-          <h2 className="text-3xl font-semibold text-center mb-10">Tunnustukset</h2>
+          <h2 className="text-3xl font-semibold text-center mb-10">Tunnustukset ja Velvollisuudet</h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white p-6 rounded-lg shadow-md">
               <div className="flex items-center mb-4">
@@ -162,7 +162,7 @@ export default function AboutPage() {
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-yellow-500 mr-3" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/>
                 </svg>
-                <h3 className="text-xl font-semibold">Kestävän kehityksen mestari 2022</h3>
+                <h3 className="text-xl font-semibold">Ympäristöystävällistä</h3>
               </div>
               <p className="text-muted-foreground">Tunnustus sitoutumisestamme ympäristöystävällisiin käytäntöihin ja paikallisten tuottajien tukemiseen.</p>
             </div>
@@ -172,7 +172,7 @@ export default function AboutPage() {
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-yellow-500 mr-3" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/>
                 </svg>
-                <h3 className="text-xl font-semibold">Viinien huippuosaaminen 2021</h3>
+                <h3 className="text-xl font-semibold"></h3>
               </div>
               <p className="text-muted-foreground">Viinivalikoimamme sai tunnustusta Wine Connoisseur Magazinen toimesta.</p>
             </div>

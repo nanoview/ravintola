@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 import Layout from '../components/Layout';
+import OfferForm from '../components/OfferForm';
 
 export default function DashboardPage() {
   const [loading, setLoading] = useState(true);
@@ -112,6 +113,12 @@ export default function DashboardPage() {
               Offers
             </button>
           </nav>
+          <button
+            onClick={handleLogout}
+            className="mt-4 w-full bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded shadow font-semibold"
+          >
+            Logout
+          </button>
         </div>
         {/* Main Content */}
         <div className="flex-1 w-full">
@@ -270,7 +277,8 @@ export default function DashboardPage() {
               )}
               {activeTab === 'offers' && (
                 <div>
-                  <h2 className="text-lg md:text-xl font-semibold mb-2 md:mb-4">Offers</h2>
+                  <h2 className="text-lg md:text-xl font-semibold mb-2 md:mb-4">Tarjoukset</h2>
+                  <OfferForm onOfferAdded={offer => setOffers(o => [offer, ...o])} />
                   {offersLoading ? (
                     <div>Loading offers...</div>
                   ) : offers.length === 0 ? (
@@ -280,11 +288,11 @@ export default function DashboardPage() {
                       <table className="min-w-[600px] w-full text-left border text-xs md:text-sm">
                         <thead>
                           <tr className="bg-gray-100">
-                            <th className="p-2">Name</th>
-                            <th className="p-2">Description</th>
-                            <th className="p-2">Old Price</th>
-                            <th className="p-2">New Price</th>
-                            <th className="p-2">Valid</th>
+                            <th className="p-2">Nimi</th>
+                            <th className="p-2">Kuvaus</th>
+                            <th className="p-2">Vanha hinta</th>
+                            <th className="p-2">Uusi hinta</th>
+                            <th className="p-2">Voimassa</th>
                           </tr>
                         </thead>
                         <tbody>
