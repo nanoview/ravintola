@@ -56,7 +56,7 @@ export default function Navbar({ darkHeader }: NavbarProps) {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/" className={`hover:text-primary transition-colors font-medium${location.pathname === '/' ? ' text-fuchsia-600 font-bold' : ''}`} style={{ color: isScrolled || !darkHeader ? 'inherit' : 'fuchsia' }} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>KOTI</Link>
+            <Link to="/" className={`hover:text-primary transition-colors font-medium${location.pathname === '/' ? ' text-fuchsia-600 font-bold' : ''}`} style={{ color: isScrolled || !darkHeader ? 'inherit' : 'fuchsia' }} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>ETUSIVU</Link>
             <Link to="/menu" className={`hover:text-primary transition-colors font-medium${location.pathname === '/menu' ? ' text-fuchsia-600 font-bold' : ''}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>RUOKALISTA</Link>
             <Link to="/about" className={`hover:text-primary transition-colors font-medium${location.pathname === '/about' ? ' text-fuchsia-600 font-bold' : ''}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>TIETOA MEISTA</Link>
             <Link to="/contact" className={`hover:text-primary transition-colors font-medium${location.pathname === '/contact' ? ' text-fuchsia-600 font-bold' : ''}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>OTA YHTEYTTÄ</Link>
