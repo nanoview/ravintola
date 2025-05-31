@@ -1,0 +1,11 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Redirect all requests to index.html except existing files/folders
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^ index.html [QSA,L]
+</IfModule>
+
+# Optional: serve .webmanifest files with correct MIME type
+AddType application/manifest+json .webmanifest

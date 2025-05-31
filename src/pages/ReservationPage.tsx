@@ -117,7 +117,7 @@ export default function ReservationPage() {
       console.error('Error submitting reservation:', error);
       toast({
         title: "Virhe varauksen lähettämisessä",
-        description: "Varauksesi lähettämisessä oli ongelma. Lähetä sähköpostitse tai soita numeron +358 45 116 9090. Pahoittelemme ongelmasta.",
+        description: "Varauksesi lähettämisessä oli ongelma. Lähetä sähköpostitse tai soita numeron +358 40 6289791. Pahoittelemme ongelmasta.",
 
         variant: "destructive"
       });
@@ -306,7 +306,7 @@ export default function ReservationPage() {
                 <p className="mb-2">
                   Jos tarvitset välitöntä apua tai haluat tehdä viime hetken varauksia, voit soittaa meille tai lähettää sähköpostia:
                 </p>
-                <p className="text-lg font-medium">+358 45 116 9090</p>
+                <p className="text-lg font-medium">+358 40 6289791</p>
                 <p className="text-lg font-medium">afrin.aloron@gmail.com</p>
               </div>
             </div>

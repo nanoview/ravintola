@@ -154,7 +154,7 @@ export default function ContactPage() {
                   <Phone className="text-primary mr-4 mt-1" />
                   <div>
                     <h3 className="font-medium mb-1">Puhelin</h3>
-                    <p className="text-muted-foreground">+358 45 116 9090</p>
+                    <p className="text-muted-foreground">+358 40 6289791</p>
                   </div>
                 </div>
 

@@ -11,7 +11,7 @@ export default function Footer() {
             <h3 className="text-xl font-bold mb-4 text-green-500">Ravintola Mummuntupa</h3>
             <p className="mb-2">Vieraskuja 4 (2 krs)   </p>
            <p className="mb-2"> 02770 Espoo, Finland</p>
-            <p className="mb-4">+358 45 116 9090</p>
+            <p className="mb-4">+358 40 6289791</p>
              {/* Google Maps Link */}
              <a
               href="https://www.google.com/maps?q=Vieraskuja+4,+02770+Espoo,+Finland"

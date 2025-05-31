@@ -30,6 +30,8 @@ import beefmasalaImg from '../assets/images/beefmasala.png';
 import BiriyaniImg from '../assets/images/Biriyani.png';
 import salmonpotatoImg from '../assets/images/salmonpotato.png';
 
+// ...imports unchanged
+
 export default function MenuPage() {
   const [activeCategory, setActiveCategory] = useState("leikkeet");
 
@@ -72,7 +74,7 @@ export default function MenuPage() {
         id: 4,
         name: "CHICKEN TIKKA MASALA",
         description: "Marinoitua kanaa paistettua maustekastikkeella",
-        price: "22€",
+        price: "18€",
         dietary: "L, G",
         highlight: true,
         imageUrl: spicychickenImg,
@@ -89,7 +91,7 @@ export default function MenuPage() {
         id: 6,
         name: "NAUDANLIHA MASALA",
         description: "Tehty ja keitetty mausteisella masalakastikkeessa",
-        price: "19€",
+        price: "18€",
         dietary: "L, G, M, P",
         imageUrl: beefmasalaImg
       },
@@ -97,15 +99,15 @@ export default function MenuPage() {
         id: 7,
         name: "NAUDANLIHA MALAI KOFTA",
         description: "Lihakeema prosessoitu kofta 4 kpl malai-kastikkeella",
-        price: "20€",
+        price: "18€",
         dietary: "L, G",
         imageUrl: malaikoftaImg
       },
       {
         id: 8,
-        name: "LAMB MUGHLAI",
+        name: "LAMB CURRY",
         description: "Hienosti maustettu lampaan curry kermalla, kananmunalla ja mantelilla",
-        price: "22€",
+        price: "19€",
         dietary: "L, G",
         imageUrl: mughlailambImg
       },
@@ -127,9 +129,9 @@ export default function MenuPage() {
       },
       {
         id: 11,
-        name: "PRAWN KORMA",
+        name: "PRAWN BUTTER / KORMA",
         description: "Jättikatkaravut/katkaravut kookosmaidolla, maustekastikkeella",
-        price: "24€",
+        price: "20€",
         dietary: "L, G",
         imageUrl: prawnkormaImg,
       },
@@ -137,13 +139,13 @@ export default function MenuPage() {
         id: 12,
         name: "PRAWN MASALA",
         description: "Jättikatkaravut/katkaravut mausteisella masalakastikkeessa",
-        price: "24€",
+        price: "20€",
         dietary: "L, G",
         imageUrl: prawnmasalaImg
       },
       {
         id: 13,
-        name: "KASVIS SEKOITUS MASALA",
+        name: "KASVIS MASALA",
         description: "Peruna, Tomaatti, Gobi, Porkkana, Pavut masalakastikkeessa",
         price: "15€",
         dietary: "L, G",
@@ -160,7 +162,7 @@ export default function MenuPage() {
       {
         id: 15,
         name: "BIRIYANI",
-        description: "Marinoitu enimmäkseen mausteinen kana / lammas / Naudanliha / katkaravut & kasvissekoitukset Jugurttikastike pulao-riisin kanssa",
+        description: "Marinoitu mausteinen kana / lammas / naudanliha / katkaravut & kasvissekoitukset jugurttikastike pulao-riisin kanssa",
         price: "22€",
         dietary: "L, G",
         imageUrl: BiriyaniImg
@@ -171,7 +173,7 @@ export default function MenuPage() {
         id: 1,
         name: "PIPPURI LEIKE",
         description: "Kanasta. Tarjoillaan ranskalaisten / lohkoperunoiden / perunamuusin tai kermaperunoiden kanssa",
-        price: "18€",
+        price: "17€",
         dietary: "",
         imageUrl: pepperchickencutletImg
       },
@@ -179,7 +181,7 @@ export default function MenuPage() {
         id: 2,
         name: "WIENARI LEIKE",
         description: "Kanasta. Tarjoillaan ranskalaisten / lohkoperunoiden / perunamuusin tai kermaperunoiden kanssa",
-        price: "18€",
+        price: "17€",
         dietary: "",
         imageUrl: chickencutletImg
       },
@@ -187,7 +189,7 @@ export default function MenuPage() {
         id: 3,
         name: "HAWAI LEIKE",
         description: "Kanasta. Tarjoillaan ranskalaisten / lohkoperunoiden / perunamuusin tai kermaperunoiden kanssa",
-        price: "18€",
+        price: "17€",
         dietary: "",
         imageUrl: chickencutletImg
       },
@@ -195,7 +197,7 @@ export default function MenuPage() {
         id: 4,
         name: "METSASIAN LEIKE",
         description: "Kanasta. Tarjoillaan ranskalaisten / lohkoperunoiden / perunamuusin tai kermaperunoiden kanssa",
-        price: "18€",
+        price: "17€",
         dietary: "",
         imageUrl: chickencutletImg
       },
@@ -203,7 +205,7 @@ export default function MenuPage() {
         id: 5,
         name: "SPICY LEIKE",
         description: "Kanasta. Tarjoillaan ranskalaisten / lohkoperunoiden / perunamuusin tai kermaperunoiden kanssa",
-        price: "18€",
+        price: "17€",
         dietary: "",
         imageUrl: spicychickenImg
       }
@@ -213,7 +215,7 @@ export default function MenuPage() {
         id: 21,
         name: "NAUTA BURGERI",
         description: "Sampula, American Salatti, Tupla chader, Talon Maonesi, Tomatti, Mautekurku. Tarjoillaan ranskalaisten tai lohkoperunoiden kanssa",
-        price: "16€",
+        price: "14€",
         dietary: "L.",
         imageUrl: nautaburgerImg
       },
@@ -221,7 +223,7 @@ export default function MenuPage() {
         id: 22,
         name: "KANA BURGERI",
         description: "Sampula, American Salatti, Tupla chader, Talon Maonesi, Tomatti, Mautekurku. Tarjoillaan ranskalaisten tai lohkoperunoiden kanssa",
-        price: "16€",
+        price: "14€",
         dietary: "L",
         imageUrl: chickenburgerImg
       }
@@ -291,7 +293,7 @@ export default function MenuPage() {
         id: 29,
         name: "OLUT, III",
         description: "Pullo",
-        price: "5€",
+        price: "5.5€",
         dietary: "",
         imageUrl: beer1Img
       },
@@ -299,7 +301,7 @@ export default function MenuPage() {
         id: 30,
         name: "OLUT, IV",
         description: "Pullo",
-        price: "5,50€",
+        price: "6.5€",
         dietary: "",
         imageUrl: beer2Img
       },
@@ -307,7 +309,7 @@ export default function MenuPage() {
         id: 31,
         name: "SIIDERI",
         description: "Sommersby Omena tai Päärynä",
-        price: "6€",
+        price: "7€",
         dietary: "",
         imageUrl: ciderImg
       },
@@ -339,12 +341,14 @@ export default function MenuPage() {
         id: 35,
         name: "VIRVOITUSJUOMAT (1,5L)",
         description: "Coca Cola / Fanta / Sprite",
-        price: "7€",
+        price: "6€",
         dietary: "",
         imageUrl: softdrinkImg
       }
     ]
   };
+
+  
 
   return (
     <Layout>
