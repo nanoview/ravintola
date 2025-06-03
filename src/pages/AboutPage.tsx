@@ -45,49 +45,34 @@ export default function AboutPage() {
         
         {/* Meet the Team Section */}
         <section className="mb-20">
-          <h2 className="text-3xl font-semibold text-center mb-10">Tiimimme</h2>
+          <h2 className="text-3xl font-semibold text-center mb-10">Arvomme</h2>
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center">
-              <div className="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4">
-                <img 
-                  src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3" 
-                  alt="Ali Hossain Sarder" 
-                  className="w-full h-full object-cover"
-                />
+            <div className="text-center p-6">
+              <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                </svg>
               </div>
-              <h3 className="text-xl font-semibold mb-2">Ali Hossain Sarder</h3>
-              <p className="text-muted-foreground">
-                Yli 20 vuoden kokemus Michelin-tähdillä palkituista ravintoloista Euroopassa. Ali tuo intohimonsa innovatiiviseen keittiöön jokaiseen annokseen.
-              </p>
+              <h3 className="text-xl font-semibold mb-3">Intohimo vieraanvaraisuuteen</h3>
+              <p>Uskomme, että jokainen vieras ansaitsee lämpimän vastaanoton ja unohtumattoman kokemuksen. Tiimimme on omistautunut saamaan sinut tuntemaan olosi kotoisaksi, olitpa sitten nopealla drinkillä tai juhlistamassa erityistä hetkeä.</p>
             </div>
-            
-            <div className="text-center">
-              <div className="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4">
-                <img 
-                  src={sofiaGarciaImg} 
-                  alt="Sofia Garcia" 
-                  className="w-full h-full object-cover"
-                />
+            <div className="text-center p-6">
+              <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
               </div>
-              <h3 className="text-xl font-semibold mb-2">Sofia Garcia</h3>
-              
-              <p className="text-muted-foreground">
-                Sofian perinteisten tekniikoiden ja modernin luovuuden yhdistelmä tuottaa annoksia, jotka ovat sekä tuttuja että yllättäviä.
-              </p>
+              <h3 className="text-xl font-semibold mb-3">Lähituotetut raaka-aineet</h3>
+              <p>Olemme sitoutuneet tukemaan paikallisia viljelijöitä ja tuottajia. Menumme perustuu tuoreimpiin kauden raaka-aineisiin, mikä takaa laadun ja kestävyyden jokaisessa annoksessa ja juomassa.</p>
             </div>
-            
-            <div className="text-center">
-              <div className="rounded-full overflow-hidden w-48 h-48 mx-auto mb-4">
-                <img 
-                  src={amitSharmaImg} 
-                  alt="Amit Sharma" 
-                  className="w-full h-full object-cover"
-                />
+            <div className="text-center p-6">
+              <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
               </div>
-              <h3 className="text-xl font-semibold mb-2">Amit Sharma</h3>
-              <p className="text-muted-foreground">
-                Amit tuo keittiöömme runsaasti kansainvälistä kokemusta ja intohimoa kulinaarisiin innovaatioihin varmistaen, että jokainen ruokalaji on mestariteos.
-              </p>
+              <h3 className="text-xl font-semibold mb-3">Yhteisön juhlistaminen</h3>
+              <p>Ravintolamme on kohtaamispaikka ystäville, perheille ja naapureille. Arvostamme täällä syntyviä yhteyksiä ja haluamme luoda tilan, jossa jokainen tuntee kuuluvansa joukkoon.</p>
             </div>
           </div>
         </section>
@@ -172,7 +157,7 @@ export default function AboutPage() {
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-yellow-500 mr-3" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"/>
                 </svg>
-                <h3 className="text-xl font-semibold"></h3>
+                <h3 className="text-xl font-semibold">OiVA Todistus</h3>
               </div>
               <p className="text-muted-foreground">Viinivalikoimamme sai tunnustusta Wine Connoisseur Magazinen toimesta.</p>
             </div>
