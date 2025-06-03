@@ -36,7 +36,7 @@ export default function MenuPage() {
   const [activeCategory, setActiveCategory] = useState("leikkeet");
 
   const menuCategories = [
-    { id: "indian", label: "Itämaiset pääruoat" },
+    { id: "indian", label: "Itämaiset" },
     { id: "leikkeet", label: "Kanaleikkeet" },
     { id: "pihvit", label: "Pihvit" },
     { id: "burgers", label: "Burgerit" },
@@ -359,6 +359,90 @@ export default function MenuPage() {
         dietary: "",
         imageUrl: softdrinkImg
       }
+    ],
+    kebabs: [
+      {
+        id: 31,
+        name: "KEBAB RANSKALAISILLA",
+        description: "Kebab ranskalaisilla perunoilla",
+        price: "10€ / 14€",
+        dietary: "",
+        imageUrl: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80"
+      },
+      {
+        id: 32,
+        name: "KEBAB LOHKOPERUNOILLA",
+        description: "Kebab lohkoperunoilla",
+        price: "10€ / 14€",
+        dietary: "",
+        imageUrl: "https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80"
+      },
+      {
+        id: 33,
+        name: "KEBAB KERMAPERUNOILLA",
+        description: "Kebab kermaperunoilla",
+        price: "12€",
+        dietary: "",
+        imageUrl: "https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80"
+      },
+      {
+        id: 34,
+        name: "ISKENDER KEBAB",
+        description: "Iskender kebab leivällä ja kastikkeella",
+        price: "12€",
+        dietary: "",
+        imageUrl: "https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=400&q=80"
+      },
+      {
+        id: 35,
+        name: "KEBAB RIISILLÄ",
+        description: "Kebab riisillä",
+        price: "12€",
+        dietary: "",
+        imageUrl: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80"
+      }
+    ],
+    pihvit: [
+      {
+        id: 21,
+        name: "PIPPURIPIHVI",
+        description: "Pippuripihvi pippurikastikkeella",
+        price: "22€",
+        dietary: "",
+        imageUrl: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80"
+      },
+      {
+        id: 22,
+        name: "WIENERPIHVI",
+        description: "Wienerleike perinteiseen tapaan",
+        price: "22€",
+        dietary: "",
+        imageUrl: "https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80"
+      },
+      {
+        id: 23,
+        name: "HAWAIJINPIHVI",
+        description: "Hawaijin pihvi ananaksella",
+        price: "22€",
+        dietary: "",
+        imageUrl: "https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80"
+      },
+      {
+        id: 24,
+        name: "METSÄSTÄJÄNPIHVI",
+        description: "Metsästäjänpihvi sienikastikkeella",
+        price: "22€",
+        dietary: "",
+        imageUrl: "https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=400&q=80"
+      },
+      {
+        id: 25,
+        name: "SPICYPHIIVI",
+        description: "Spicy pihvi tulisella kastikkeella",
+        price: "22€",
+        dietary: "",
+        imageUrl: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80"
+      }
     ]
   };
 
@@ -386,11 +470,53 @@ export default function MenuPage() {
             </TabsList>
             {Object.entries(menuItems).map(([category, items]) => (
               <TabsContent key={category} value={category} className="pt-2 pb-2 md:pt-5 md:pb-5">
-                <div className="flex justify-center items-center mt-8 mb-8 pb-5 w-full">
-                  <h2 className="text-fuchsia-500 text-2xl font-bold text-center w-full max-w-xs md:max-w-md lg:max-w-lg xl:max-w-2xl mt-4 px-2 py-2 md:mt-8 md:mb-8 md:px-0 md:py-0">
+                <div className="flex justify-center items-center mt-8 mb-0 pb-0 w-full">
+                  <h2 className="text-fuchsia-500 text-2xl font-bold text-center w-full max-w-xs md:max-w-md lg:max-w-lg xl:max-w-2xl mt-4 px-2 py-2 md:mt-8 md:mb-2 md:px-0 md:py-0">
                     {menuCategories.find(c => c.id === category)?.label}
                   </h2>
                 </div>
+                {category === "pihvit" && (
+                  <p className="text-center text-base text-gray-700 mb-8">
+                    Kaikkiin 200g pihviannoksiin kuuluu ranskalaiset, lohkoperunat tai kermaperunoat</p>
+                )}
+                {category === "indian" && (
+                    <p className="text-center text-base  font-semibold mb-8">
+                    
+                      Kaikki mausteiset kastikkeet sisältävät tomaattia, sipulia,
+                      valkosipulia, inkivääriä, kanelia, kardemummaa, korianteria, chiliä, kurkumaa,
+                      maitotuotteita, siemeniä, öljyä, laakerinlehtiä, hunajaa, kermaa
+                      <br />
+                      kaikki muut annokset tulevat mukaan <span className="font-bold text-fuchsia-700"> pulao-riisi tai naan-levyllä.
+                    </span>
+                    </p>
+                )}
+                {category === "leikkeet" && (
+                  <p className="text-center text-base text-gray-700 mb-8">Kaikkiin leikeannoksiin kuuluu ranskalaiset, lohkoperunat,
+kermaperruat tai perunamuusi</p>
+                )}
+                {category === "burgers" && (
+                  <p className="text-center text-base text-gray-700 mb-4"> 200g nauta- tai kanapihvillä
+    sämpylä, jäävuorisalaatti, cheddarjuusto, talon majoneesi, kurkku,
+    tomaatti, maustekurkku, ranskalaiset tai lohkoperunat.</p>
+                )}
+                {category === "salads" && (
+                  <p className="text-center text-base text-gray-700 mb-8">Raikkaat salaatit ja kevyet vaihtoehdot jokaiseen makuun.</p>
+                )}
+                {category === "pizzas" && (
+                  <p className="text-center text-base text-gray-700 mb-8">Lastenpizza lisätäyte 1€, norm. pizza lisätäyte 2€, perhepizza lisätäyte 3€
+Valitse seuraavista lisätäytteistä:
+anan, anjovis, aurajuusto, basilika, herkkusieni, jalopeno, jauheliha, kapris, kana, kananmunan,
+katkarapu, kebab, pizzasuikale, maissi, maustekurkku, mozzarella, oliivi, paprika, parsa, rucola,
+salamisuikale, simpukka, punasipuli, kirsikkatomaatti, tonnikala, kebab, tuorepinaatti, valkosipuli,
+vuohejuusto, BBQ-kastike, cheddarjuusto, chilisiivike, fetajuusto, smetana <br/>KASTIKKEET:
+tomaattikastike, meksikolaiskastike tai kermainen juustokastike.</p>
+                )}
+                {category === "kebabs" && (
+                  <p className="text-center text-base text-gray-700 mb-8">Suosituimmat kebab-annokset erilaisilla lisukkeilla.</p>
+                )}
+                {category === "beverages" && (
+                  <p className="text-center text-base text-gray-700 mb-8">Valikoima virvoitusjuomia, oluita ja viinejä ruokasi seuraksi.</p>
+                )}
                 <div className="grid md:grid-cols-2 gap-10">
                   {items.map(item => (
                     <div key={item.id} className="flex bg-white rounded-lg overflow-hidden shadow-md">
