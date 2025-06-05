@@ -48,14 +48,22 @@ export default function DashboardPage() {
   useEffect(() => {
     if (activeTab === 'messages') {
       setMessagesLoading(true);
-      supabase
-        .from('contact_messages')
-        .select('*')
-        .order('created_at', { ascending: false })
-        .then(({ data }) => {
-          setMessages(data || []);
+      supabase.auth.getUser().then(({ data: userData, error: userError }) => {
+        if (userError || !userData?.user) {
+          setMessages([]);
           setMessagesLoading(false);
-        });
+          return;
+        }
+        supabase
+          .from('contact_messages')
+          .select('*')
+          .eq('user_id', userData.user.id)
+          .order('created_at', { ascending: false })
+          .then(({ data }) => {
+            setMessages(data || []);
+            setMessagesLoading(false);
+          });
+      });
     }
   }, [activeTab]);
 

@@ -16,21 +16,21 @@ export default function HomePage() {
       id: 1,
       name: "KIRJOLOHENSALAATTI",
       description: "Sisältää Amerikan salaattia, tomaattia ja rucolaa",
-      price: "$24.99",
+      price: "15€",
       image: salmonsaladImg,
     },
     {
       id: 2,
       name: "CHICKEN TIKKA MASALA",
       description: "Marinoitua kanaa paistettua maustekastikkeella.",
-      price: "$22.99",
+      price: "18€",
       image: chickenkormaImg,
     },
     {
       id: 3,
       name: "NAUDANLIHA MASALA",
       description: "Tehty ja keitetty mausteisella masalakastikkeessa.",
-      price: "$34.99",
+      price: "18€",
       image: beefmasalaImg,
     },
   ];
@@ -56,6 +56,9 @@ export default function HomePage() {
 
   return (
     <Layout darkHeader={true}>
+      <div className="w-full bg-yellow-300 text-yellow-900 text-center font-bold py-2 text-base shadow-md z-50">
+        The site is under build
+      </div>
       {/* Hero Section */}
       <section
         className="relative h-screen bg-cover bg-center flex items-center"

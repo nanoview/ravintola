@@ -43,6 +43,7 @@ export default function MenuPage() {
     { id: "salads", label: "Salaatit" },
     { id: "pizzas", label: "Pizzat" },
     { id: "kebabs", label: "Kebabit" },
+    { id: "fishes", label: "Kalat" },
     { id: "beverages", label: "Juomat" }
     
   ];
@@ -212,14 +213,7 @@ export default function MenuPage() {
         dietary: "",
         imageUrl: spicychickenImg
       },
-        {
-        id: 4,
-        name: "LOHENSALAATTI",
-        description: "Pariloitu lohi, kerma peruna, Kurkku, Salaatti",
-        price: "15€",
-        dietary: "",
-        imageUrl: salmonpotatoImg
-      },
+        
     ],
     burgers: [
       {
@@ -302,6 +296,33 @@ export default function MenuPage() {
         imageUrl: pizzaImg
       }
     ],
+    fishes:[
+      {
+        id: 1,
+        name: "LOHIKIRJA",
+        description: "Lohifilee, perunamuusi, salaatti",
+        price: "18€",
+        dietary: "",
+        imageUrl: "https://cdn.pixabay.com/photo/2017/04/30/09/30/steak-2272464_640.jpg"
+      },
+      {
+        id: 2,
+        name: "KIRJOLOHI",
+        description: "Kirjolohi, perunamuusi, salaatti",
+        price: "18€",
+        dietary: "",
+        imageUrl: "https://cdn.pixabay.com/photo/2017/04/30/09/30/steak-2272464_640.jpg"
+      },
+      {
+        id: 4,
+        name: "LOHENSALAATTI",
+        description: "Pariloitu lohi, kerma peruna, Kurkku, Salaatti",
+        price: "15€",
+        dietary: "",
+        imageUrl: salmonpotatoImg
+      },
+
+    ],
     beverages: [
       {
         id: 29,
@@ -367,7 +388,7 @@ export default function MenuPage() {
         description: "Kebab ranskalaisilla perunoilla",
         price: "10€ / 14€",
         dietary: "",
-        imageUrl: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80"
+        imageUrl: "https://cdn.pixabay.com/photo/2021/10/11/03/57/kebab-6699287_640.jpg"
       },
       {
         id: 32,
@@ -375,7 +396,7 @@ export default function MenuPage() {
         description: "Kebab lohkoperunoilla",
         price: "10€ / 14€",
         dietary: "",
-        imageUrl: "https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80"
+        imageUrl: "https://cdn.pixabay.com/photo/2021/10/11/03/57/kebab-6699287_640.jpg"
       },
       {
         id: 33,
@@ -383,7 +404,7 @@ export default function MenuPage() {
         description: "Kebab kermaperunoilla",
         price: "12€",
         dietary: "",
-        imageUrl: "https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80"
+        imageUrl: "https://cdn.pixabay.com/photo/2021/10/11/03/57/kebab-6699287_640.jpg"
       },
       {
         id: 34,
@@ -391,7 +412,7 @@ export default function MenuPage() {
         description: "Iskender kebab leivällä ja kastikkeella",
         price: "12€",
         dietary: "",
-        imageUrl: "https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=400&q=80"
+        imageUrl: "https://cdn.pixabay.com/photo/2021/10/11/03/57/kebab-6699287_640.jpg"
       },
       {
         id: 35,
@@ -399,7 +420,7 @@ export default function MenuPage() {
         description: "Kebab riisillä",
         price: "12€",
         dietary: "",
-        imageUrl: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80"
+        imageUrl: "https://cdn.pixabay.com/photo/2021/10/11/03/57/kebab-6699287_640.jpg"
       }
     ],
     pihvit: [
@@ -409,7 +430,7 @@ export default function MenuPage() {
         description: "Pippuripihvi pippurikastikkeella",
         price: "22€",
         dietary: "",
-        imageUrl: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80"
+        imageUrl: "https://tse4.mm.bing.net/th/id/OIP.JvBbJnqfOtQQQBUCiEmNCAHaKo?r=0&rs=1&pid=ImgDetMain"
       },
       {
         id: 22,
@@ -417,7 +438,7 @@ export default function MenuPage() {
         description: "Wienerleike perinteiseen tapaan",
         price: "22€",
         dietary: "",
-        imageUrl: "https://images.unsplash.com/photo-1519864600265-abb23847ef2c?auto=format&fit=crop&w=400&q=80"
+        imageUrl: "https://cdn.pixabay.com/photo/2017/04/30/09/30/steak-2272464_640.jpg"
       },
       {
         id: 23,
@@ -425,7 +446,7 @@ export default function MenuPage() {
         description: "Hawaijin pihvi ananaksella",
         price: "22€",
         dietary: "",
-        imageUrl: "https://images.unsplash.com/photo-1464306076886-debca5e8a6b0?auto=format&fit=crop&w=400&q=80"
+        imageUrl: "https://cdn.pixabay.com/photo/2024/05/18/23/26/food-8771203_1280.png"
       },
       {
         id: 24,
@@ -433,7 +454,7 @@ export default function MenuPage() {
         description: "Metsästäjänpihvi sienikastikkeella",
         price: "22€",
         dietary: "",
-        imageUrl: "https://images.unsplash.com/photo-1502741338009-cac2772e18bc?auto=format&fit=crop&w=400&q=80"
+        imageUrl: "https://cdn.pixabay.com/photo/2017/04/30/09/30/steak-2272464_640.jpg"
       },
       {
         id: 25,
@@ -441,7 +462,7 @@ export default function MenuPage() {
         description: "Spicy pihvi tulisella kastikkeella",
         price: "22€",
         dietary: "",
-        imageUrl: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=400&q=80"
+        imageUrl: "https://cdn.pixabay.com/photo/2021/08/03/11/11/steak-6519095_1280.jpg"
       }
     ]
   };
@@ -453,16 +474,20 @@ export default function MenuPage() {
       <div className="bg-gray-50 py-10">
         <div className="container mx-auto px-4">
           <h1 className="text-4xl font-bold text-center mb-4">Ruokalista</h1>
+          <p className="text-center text-red-500 font-semibold mb-4">
+            Photos are taken from the net and it may different than real serve food.
+          </p>
           <p className="text-center text-lg mb-10 max-w-2xl mx-auto">
             Tutustu huolella laadittuun ruokalistaamme, jossa on käytetty parhaita raaka-aineita ja kulinaarisia perinteitä.
           </p>
           <Tabs defaultValue={activeCategory} className="w-full max-w-4xl mx-auto">
-            <TabsList className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            <TabsList className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-4 mb-4">
               {menuCategories.map(category => (
                 <TabsTrigger
                   key={category.id}
                   value={category.id}
                   onClick={() => setActiveCategory(category.id)}
+                  className="truncate px-2 py-2 text-xs sm:text-sm md:text-base"
                 >
                   {category.label}
                 </TabsTrigger>

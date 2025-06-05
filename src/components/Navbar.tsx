@@ -86,7 +86,7 @@ export default function Navbar({ darkHeader }: NavbarProps) {
                 className={`hover:text-primary transition-colors px-4 py-2 font-medium${location.pathname === '/' ? ' text-fuchsia-600 font-bold' : ''}`}
                 onClick={() => { setIsMenuOpen(false); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
               >
-                Koti
+                Etusivu
               </Link>
               <Link 
                 to="/menu" 

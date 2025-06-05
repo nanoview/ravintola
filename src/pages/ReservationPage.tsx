@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Layout from '../components/Layout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -23,6 +23,17 @@ export default function ReservationPage() {
     time: '',
     specialRequests: ''
   });
+
+  // Only allow authenticated users to access this page
+  useEffect(() => {
+    async function checkAuth() {
+      const { data, error } = await supabase.auth.getSession();
+      if (error || !data?.session || !data.session.user) {
+        window.location.replace('/login');
+      }
+    }
+    checkAuth();
+  }, []);
   
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
