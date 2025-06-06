@@ -240,7 +240,7 @@ export default function MenuPage() {
         description: "Sisältää Amerikan salaattia, tomaattia ja rucolaa",
         price: "15€",
         dietary: "",
-        imageUrl: chickenkormaImg
+        imageUrl: "https://cdn.pixabay.com/photo/2021/06/23/08/01/salad-6357996_1280.jpg"
       },
       {
         id: 2,

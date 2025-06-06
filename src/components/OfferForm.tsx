@@ -1,7 +1,11 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { supabase } from '@/integrations/supabase/client';
 
-export default function OfferForm({ onOfferAdded }: { onOfferAdded: (offer: any) => void }) {
+export default function OfferForm({ onOfferAdded, editingOffer, onCancelEdit }: {
+  onOfferAdded: (offer: any) => void;
+  editingOffer?: any | null;
+  onCancelEdit?: () => void;
+}) {
   const [form, setForm] = useState({
     name: '',
     description: '',
@@ -10,9 +14,31 @@ export default function OfferForm({ onOfferAdded }: { onOfferAdded: (offer: any)
     start_date: '',
     end_date: ''
   });
-
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Prefill form if editingOffer changes
+  useEffect(() => {
+    if (editingOffer) {
+      setForm({
+        name: editingOffer.name || '',
+        description: editingOffer.description || '',
+        old_price: editingOffer.old_price?.toString() || '',
+        new_price: editingOffer.new_price?.toString() || '',
+        start_date: editingOffer.start_date?.slice(0, 10) || '',
+        end_date: editingOffer.end_date?.slice(0, 10) || ''
+      });
+    } else {
+      setForm({
+        name: '',
+        description: '',
+        old_price: '',
+        new_price: '',
+        start_date: '',
+        end_date: ''
+      });
+    }
+  }, [editingOffer]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -23,13 +49,11 @@ export default function OfferForm({ onOfferAdded }: { onOfferAdded: (offer: any)
     e.preventDefault();
     setLoading(true);
     setError(null);
-
     try {
       const { data: userData, error: userError } = await supabase.auth.getUser();
       if (userError || !userData?.user) throw new Error('Käyttäjätunnusta ei löytynyt. Kirjaudu sisään uudelleen.');
       const user_id = userData.user.id;
-
-      const insertData = {
+      const upsertData = {
         user_id,
         name: form.name,
         description: form.description,
@@ -38,15 +62,24 @@ export default function OfferForm({ onOfferAdded }: { onOfferAdded: (offer: any)
         start_date: form.start_date,
         end_date: form.end_date
       };
-
-      const { data, error } = await supabase
-        .from('offers')
-        .insert([insertData])
-        .select()
-        .single();
-
+      let data, error;
+      if (editingOffer && editingOffer.id) {
+        // Update existing offer
+        ({ data, error } = await supabase
+          .from('offers')
+          .update(upsertData)
+          .eq('id', editingOffer.id)
+          .select()
+          .single());
+      } else {
+        // Insert new offer
+        ({ data, error } = await supabase
+          .from('offers')
+          .insert([upsertData])
+          .select()
+          .single());
+      }
       if (error) throw error;
-
       onOfferAdded(data);
       setForm({
         name: '',
@@ -57,7 +90,7 @@ export default function OfferForm({ onOfferAdded }: { onOfferAdded: (offer: any)
         end_date: ''
       });
     } catch (err: any) {
-      setError(err.message || 'Error adding offer.');
+      setError(err.message || 'Error saving offer.');
     } finally {
       setLoading(false);
     }
@@ -88,7 +121,7 @@ export default function OfferForm({ onOfferAdded }: { onOfferAdded: (offer: any)
         name="old_price"
         value={form.old_price}
         onChange={handleChange}
-        placeholder="Old price"
+        placeholder="Vanha hinta"
         className="border rounded px-2 py-1 w-24"
         required
       />
@@ -96,7 +129,7 @@ export default function OfferForm({ onOfferAdded }: { onOfferAdded: (offer: any)
         name="new_price"
         value={form.new_price}
         onChange={handleChange}
-        placeholder="New price"
+        placeholder="Uusi hinta"
         className="border rounded px-2 py-1 w-24"
         required
       />
@@ -116,15 +149,22 @@ export default function OfferForm({ onOfferAdded }: { onOfferAdded: (offer: any)
         className="border rounded px-2 py-1 w-36"
         required
       />
-
       <button
         type="submit"
         className="bg-fuchsia-600 hover:bg-fuchsia-700 text-white px-4 py-2 rounded shadow min-w-[100px]"
         disabled={loading}
       >
-        {loading ? 'Saving...' : 'Add Offer'}
+        {loading ? 'Tallennetaan...' : editingOffer ? 'Päivitä tarjous' : 'Lisää tarjous'}
       </button>
-
+      {editingOffer && onCancelEdit && (
+        <button
+          type="button"
+          className="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded shadow min-w-[100px] ml-2"
+          onClick={onCancelEdit}
+        >
+          Peru muokkaus
+        </button>
+      )}
       {error && <div className="text-red-500 text-sm mt-2">{error}</div>}
     </form>
   );

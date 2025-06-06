@@ -70,6 +70,8 @@ export default function DashboardPage() {
   // Offers content from Supabase
   const [offers, setOffers] = useState<any[]>([]);
   const [offersLoading, setOffersLoading] = useState(false);
+  const [offersReload, setOffersReload] = useState(0);
+  const [editingOffer, setEditingOffer] = useState<any | null>(null);
   useEffect(() => {
     if (activeTab === 'offers') {
       setOffersLoading(true);
@@ -82,7 +84,7 @@ export default function DashboardPage() {
           setOffersLoading(false);
         });
     }
-  }, [activeTab]);
+  }, [activeTab, offersReload]);
 
   if (loading) {
     return <div className="flex items-center justify-center h-screen">Loading...</div>;
@@ -286,7 +288,14 @@ export default function DashboardPage() {
               {activeTab === 'offers' && (
                 <div>
                   <h2 className="text-lg md:text-xl font-semibold mb-2 md:mb-4">Tarjoukset</h2>
-                  <OfferForm onOfferAdded={offer => setOffers(o => [offer, ...o])} />
+                  <OfferForm
+                    onOfferAdded={offer => {
+                      setEditingOffer(null);
+                      setOffersReload(r => r + 1);
+                    }}
+                    editingOffer={editingOffer}
+                    onCancelEdit={() => setEditingOffer(null)}
+                  />
                   {offersLoading ? (
                     <div>Loading offers...</div>
                   ) : offers.length === 0 ? (
@@ -301,6 +310,7 @@ export default function DashboardPage() {
                             <th className="p-2">Vanha hinta</th>
                             <th className="p-2">Uusi hinta</th>
                             <th className="p-2">Voimassa</th>
+                            <th className="p-2">Toiminnot</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -311,6 +321,25 @@ export default function DashboardPage() {
                               <td className="p-2 line-through">{o.old_price}</td>
                               <td className="p-2 font-bold text-yellow-700">{o.new_price}</td>
                               <td className="p-2 text-xs text-gray-500">{o.start_date?.slice(0,10)} - {o.end_date?.slice(0,10)}</td>
+                              <td className="p-2 flex gap-2">
+                                <button
+                                  className="bg-blue-500 hover:bg-blue-600 text-white px-2 py-1 rounded text-xs"
+                                  onClick={() => setEditingOffer(o)}
+                                >
+                                  Edit
+                                </button>
+                                <button
+                                  className="bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded text-xs"
+                                  onClick={async () => {
+                                    if (window.confirm('Are you sure you want to delete this offer?')) {
+                                      await supabase.from('offers').delete().eq('id', o.id);
+                                      setOffersReload(r => r + 1);
+                                    }
+                                  }}
+                                >
+                                  Delete
+                                </button>
+                              </td>
                             </tr>
                           ))}
                         </tbody>
