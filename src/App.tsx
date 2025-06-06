@@ -10,7 +10,6 @@ import ContactPage from "./pages/ContactPage";
 import ReservationPage from "./pages/ReservationPage";
 import DashboardPage from "./pages/DashboardPage";
 import NotFound from "./pages/NotFound";
-import OfferPage from "./pages/OfferPage";
 import LoginPage from "./pages/LoginPage";
 
 const queryClient = new QueryClient();
@@ -29,7 +28,6 @@ const App = () => (
           <Route path="/reservation" element={<ReservationPage />} />
           <Route path="/admin_dashboard" element={<DashboardPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/offer" element={<OfferPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

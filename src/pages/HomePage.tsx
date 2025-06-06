@@ -35,23 +35,39 @@ export default function HomePage() {
     },
   ];
 
-  const [activeOffer, setActiveOffer] = useState(null);
-  const [offerLoading, setOfferLoading] = useState(true);
+  // Remove OfferPage and EventsPage navigation and fetch all offers and events for the homepage banner
+  const [offers, setOffers] = useState([]);
+  const [events, setEvents] = useState([]);
+  const [offersLoading, setOffersLoading] = useState(true);
+  const [eventsLoading, setEventsLoading] = useState(true);
 
   useEffect(() => {
-    async function fetchActiveOffer() {
-      setOfferLoading(true);
+    async function fetchOffers() {
+      setOffersLoading(true);
       const now = new Date().toISOString();
       const { data, error } = await supabase
         .from("offers")
         .select("*")
-        .gte("start_date", now)
-        .lte("end_date", now)
+        .lte("start_date", now)
+        .gte("end_date", now)
         .order("end_date", { ascending: true });
-      setActiveOffer(data && data.length > 0 ? data[0] : null);
-      setOfferLoading(false);
+      setOffers(data || []);
+      setOffersLoading(false);
     }
-    fetchActiveOffer();
+    async function fetchEvents() {
+      setEventsLoading(true);
+      const today = new Date().toISOString().split("T")[0];
+      const { data, error } = await supabase
+        .from("events")
+        .select("*")
+        .eq("is_active", true)
+        .gte("event_date", today)
+        .order("event_date", { ascending: true });
+      setEvents(data || []);
+      setEventsLoading(false);
+    }
+    fetchOffers();
+    fetchEvents();
   }, []);
 
   return (
@@ -167,6 +183,61 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Offer Section (only if offer exists) */}
+      {!offersLoading && offers.length > 0 && (
+        <section className="py-20 bg-yellow-50">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl font-bold mb-4 text-yellow-700">
+              Erikoistarjoukset
+            </h2>
+            <p className="mb-6 text-lg text-yellow-800">
+              Katso tämän viikon parhaat tarjoukset ja alennetut annokset!
+            </p>
+            <Button
+              size="lg"
+              asChild
+              className="bg-yellow-400 hover:bg-yellow-500 text-yellow-900 font-bold"
+            >
+              <Link
+                to="/offer"
+                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              >
+                Näytä tarjoukset
+              </Link>
+            </Button>
+          </div>
+        </section>
+      )}
+
+      {/* Events Section (only if events exist) */}
+      {!eventsLoading && events.length > 0 && (
+        <section className="py-20 bg-white">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl font-bold mb-4">
+              Tulevat tapahtumat
+            </h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              {events.map((event) => (
+                <div key={event.id} className="border rounded-lg p-6 shadow-md">
+                  <h3 className="text-xl font-semibold mb-2">{event.name}</h3>
+                  <p className="text-muted-foreground mb-4">
+                    {event.description}
+                  </p>
+                  <p className="text-sm text-gray-500">
+                    {event.event_date} {event.time ? `klo ${event.time}` : ''}
+                  </p>
+                  {event.location && (
+                    <p className="text-sm text-gray-500">
+                      {event.location}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* Testimonials */}
       <section className="py-20 bg-foreground text-white">
         <div className="container mx-auto px-4">
@@ -250,32 +321,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Offer Section (only if offer exists) */}
-      {!offerLoading && activeOffer && (
-        <section className="py-20 bg-yellow-50">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold mb-4 text-yellow-700">
-              Erikoistarjoukset
-            </h2>
-            <p className="mb-6 text-lg text-yellow-800">
-              Katso tämän viikon parhaat tarjoukset ja alennetut annokset!
-            </p>
-            <Button
-              size="lg"
-              asChild
-              className="bg-yellow-400 hover:bg-yellow-500 text-yellow-900 font-bold"
-            >
-              <Link
-                to="/offer"
-                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              >
-                Näytä tarjoukset
-              </Link>
-            </Button>
-          </div>
-        </section>
-      )}
-
       {/* CTA Section */}
       <section
         className="py-20 bg-cover bg-center"
@@ -286,7 +331,7 @@ export default function HomePage() {
       >
         <div className="container mx-auto px-4 text-center text-white">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Mummuntupa &#128522; Grandma's Cottage
+            Mummontupa &#128522; Grandma's Cottage
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
             "Tule mummon tupalle tänään! Koe upeat maut ja tunnelma. Varaa pöytä

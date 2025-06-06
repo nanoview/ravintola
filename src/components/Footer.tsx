@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Restaurant Info */}
           <div>
-            <h3 className="text-xl font-bold mb-4 text-green-500">Ravintola Mummuntupa</h3>
+            <h3 className="text-xl font-bold mb-4 text-green-500">Ravintola Mummontupa</h3>
             <p className="mb-2">Vieraskuja 4 (2 krs)   </p>
            <p className="mb-2"> 02770 Espoo, Finland</p>
             <p className="mb-4">+358 40 6289791</p>
@@ -74,7 +74,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-700 mt-10 pt-6 text-center text-sm">
-          <p className="text-green-500">&copy; {new Date().getFullYear()} Ravintola Mummuntupa.</p> 
+          <p className="text-green-500">&copy; {new Date().getFullYear()} Ravintola Mummontupa.</p> 
           <p>All rights reserved.</p>
         </div>
       </div>

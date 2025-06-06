@@ -163,7 +163,7 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-medium mb-1">Sähköposti</h3>
                     <p className="text-muted-foreground">
-                      info@Ravintolamummuntupa.fi
+                      info@RAVINTOLA\nMUMMONTUPA.fi
                     </p>
                   </div>
                 </div>

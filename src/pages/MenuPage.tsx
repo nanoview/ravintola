@@ -248,7 +248,7 @@ export default function MenuPage() {
         description: "Sisältää Amerikan salaattia, tomaattia ja rucolaa",
         price: "15€",
         dietary: "",
-        imageUrl: prawnkormaImg
+        imageUrl: "https://cdn.pixabay.com/photo/2022/10/04/12/58/salad-7498153_960_720.jpg"
       },
       {
         id: 3,
@@ -266,7 +266,7 @@ export default function MenuPage() {
         description: "Feta, tomaatti, kurkku, punasipuli, oliiviöljy",
         price: "12€",
         dietary: "",
-        imageUrl: mixvegImg
+        imageUrl: "https://cdn.pixabay.com/photo/2021/01/10/04/37/salad-5904093_640.jpg"
       }
     ],
 
@@ -315,7 +315,7 @@ export default function MenuPage() {
       },
       {
         id: 4,
-        name: "LOHENSALAATTI",
+        name: "LOHi PERUNAT",
         description: "Pariloitu lohi, kerma peruna, Kurkku, Salaatti",
         price: "15€",
         dietary: "",
