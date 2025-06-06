@@ -182,36 +182,42 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* Offer Section (only if offer exists) */}
+      {/* Offer Section (only if offers exist) */}
       {!offersLoading && offers.length > 0 && (
-        <section className="py-20 bg-yellow-50">
+        <section className="py-20 bg-foreground bg-opacity-90" style={{backgroundColor: 'rgba(24, 24, 27, 0.92)'}}>
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold mb-4 text-yellow-700">
-              Erikoistarjoukset
+            <h2 className="text-3xl font-bold mb-4 text-yellow-300">
+            Tarjoukset
             </h2>
-            <p className="mb-6 text-lg text-yellow-800">
-              Katso tämän viikon parhaat tarjoukset ja alennetut annokset!
-            </p>
-            <Button
-              size="lg"
-              asChild
-              className="bg-yellow-400 hover:bg-yellow-500 text-yellow-900 font-bold"
-            >
-              <Link
-                to="/offer"
-                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              >
-                Näytä tarjoukset
-              </Link>
-            </Button>
+            <div className="grid md:grid-cols-3 gap-8 mb-6">
+              {offers.map((offer) => (
+                <Card key={offer.id} className="overflow-hidden shadow-md">
+                  {offer.image_url && (
+                    <img
+                      src={offer.image_url}
+                      alt={offer.title}
+                      className="h-48 w-full object-cover"
+                    />
+                  )}
+                  <CardContent className="p-6">
+                    <h3 className="text-xl font-semibold mb-2">{offer.title}</h3>
+                    <p className="text-muted-foreground mb-2">{offer.description}</p>
+                    {offer.price && (
+                      <span className="text-primary font-medium">{offer.price}</span>
+                    )}
+                    <div className="text-sm text-gray-500 mt-2">
+                      {offer.start_date} – {offer.end_date}
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+            
           </div>
         </section>
       )}
-
-      {/* Events Section (only if events exist) */}
       {!eventsLoading && events.length > 0 && (
-        <section className="py-20 bg-white">
+        <section className="py-20 bg-white bg-opacity-60" style={{backgroundColor: 'rgba(255,255,255,0.4)'}}>
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl font-bold mb-4">
               Tulevat tapahtumat
