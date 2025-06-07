@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 import { supabase } from '@/integrations/supabase/client';
+import logoImg from "../assets/images/logo.png";
 
 interface NavbarProps {
   darkHeader?: boolean;
@@ -49,9 +50,16 @@ export default function Navbar({ darkHeader }: NavbarProps) {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <Link to="/" className="text-2xl font-bold flex items-center">
-            <span className="text-primary mr-1 text-fuchsia-500">RAVINTOLA</span>
-            <span className={isScrolled || !darkHeader ? "text-fuchsia-500" : "text-foreground"}>MUMMONTUPA</span>
+          <Link to="/" className="flex items-center h-full min-w-0 flex-shrink max-w-[60vw] z-0">
+            <img src={logoImg} alt="Ravintola Mummontupa logo" className="h-12 w-auto mr-2 flex-shrink-0" />
+            <span className={
+              "text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold mr-1 whitespace-nowrap flex-shrink"
+              + (isScrolled || !darkHeader ? " text-fuchsia-500" : " text-green-400")
+            }>RAVINTOLA</span>
+            <span className={
+              "text-xs xs:text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-bold whitespace-nowrap flex-shrink"
+              + (isScrolled || !darkHeader ? " text-green-400" : " text-fuchsia-500")
+            }>MUMMONTUPA</span>
           </Link>
 
           {/* Desktop Navigation */}

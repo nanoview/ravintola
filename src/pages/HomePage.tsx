@@ -8,6 +8,7 @@ import beefmasalaImg from "../assets/images/beefmasala.png";
 import terraceImg from "../assets/images/terrace.jpg";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
+import logoImg from "../assets/images/logo.png";
 
 export default function HomePage() {
   // Example featured menu items
@@ -139,6 +140,7 @@ export default function HomePage() {
         </div>
       </section>
 
+     
       {/* Featured Menu Items */}
       <section className="py-20 bg-gray-50">
         <div className="container mx-auto px-4">
@@ -182,40 +184,53 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-      {/* Offer Section (only if offers exist) */}
+       {/* Offer Section (only if offers exist) */}
       {!offersLoading && offers.length > 0 && (
-        <section className="py-20 bg-foreground bg-opacity-90" style={{backgroundColor: 'rgba(24, 24, 27, 0.92)'}}>
+        <section className="pt-5 mt-0 pb-20 bg-foreground bg-opacity-90" style={{backgroundColor: 'black'}}>
           <div className="container mx-auto px-4 text-center">
-            <h2 className="text-3xl font-bold mb-4 text-yellow-300">
+            <h2 className="text-3xl font-bold mb-8 text-yellow-300">
             Tarjoukset
             </h2>
-            <div className="grid md:grid-cols-3 gap-8 mb-6">
-              {offers.map((offer) => (
-                <Card key={offer.id} className="overflow-hidden shadow-md">
-                  {offer.image_url && (
-                    <img
-                      src={offer.image_url}
-                      alt={offer.title}
-                      className="h-48 w-full object-cover"
-                    />
-                  )}
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-semibold mb-2">{offer.title}</h3>
-                    <p className="text-muted-foreground mb-2">{offer.description}</p>
-                    {offer.price && (
-                      <span className="text-primary font-medium">{offer.price}</span>
+            <div className="flex justify-center">
+              <div className="grid inline-grid md:grid-cols-3 gap-8 mb-6">
+                {offers.map((offer) => (
+                  <Card key={offer.id} className="w-96 shadow-md border border-gray-300 bg-white text-left mx-auto">
+                    {offer.image_url && (
+                      <img
+                        src={offer.image_url}
+                        alt={offer.title || offer.name}
+                        className="h-48 w-full object-cover border-b border-gray-200"
+                        style={{ borderRadius: 0 }}
+                      />
                     )}
-                    <div className="text-sm text-gray-500 mt-2">
-                      {offer.start_date} – {offer.end_date}
-                    </div>
-                  </CardContent>
-                </Card>
-              ))}
+                    <CardContent className="p-6">
+                      <h3 className="text-xl font-semibold mb-2">{offer.title || offer.name}</h3>
+                      <div className="mb-2">
+                        <span className="text-muted-foreground">{offer.description}</span>
+                      </div>
+                      <div className="flex flex-col md:flex-row md:items-center md:gap-4 mb-2">
+                        <div className="pb-2 border-b border-gray-200 mb-2 md:mb-0 md:mr-4">
+                          <span className="block text-xs text-gray-500">Vanha hinta</span>
+                          <span className="line-through text-gray-400 font-medium">{offer.old_price ? `${offer.old_price}€` : '-'}</span>
+                        </div>
+                        <div className="pb-2 border-b border-gray-200">
+                          <span className="block text-xs text-gray-500">Uusi hinta</span>
+                          <span className="text-yellow-700 font-bold">{offer.new_price ? `${offer.new_price}€` : '-'}</span>
+                        </div>
+                      </div>
+                      <div className="text-xs text-gray-500 mt-2">
+                        <span className="font-semibold">Voimassa:</span> {offer.start_date?.slice(0,10)} – {offer.end_date?.slice(0,10)}
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
             
           </div>
         </section>
       )}
+
       {!eventsLoading && events.length > 0 && (
         <section className="py-20 bg-white bg-opacity-60" style={{backgroundColor: 'rgba(255,255,255,0.4)'}}>
           <div className="container mx-auto px-4 text-center">

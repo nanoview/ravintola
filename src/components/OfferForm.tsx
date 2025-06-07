@@ -51,7 +51,7 @@ export default function OfferForm({ onOfferAdded, editingOffer, onCancelEdit }: 
     setError(null);
     try {
       const { data: userData, error: userError } = await supabase.auth.getUser();
-      if (userError || !userData?.user) throw new Error('Käyttäjätunnusta ei löytynyt. Kirjaudu sisään uudelleen.');
+      if (userError || !userData?.user) throw new Error('User not found. Please log in again.');
       const user_id = userData.user.id;
       const upsertData = {
         user_id,
@@ -64,13 +64,16 @@ export default function OfferForm({ onOfferAdded, editingOffer, onCancelEdit }: 
       };
       let data, error;
       if (editingOffer && editingOffer.id) {
-        // Update existing offer
+        // Update existing offer, only if it belongs to the user
         ({ data, error } = await supabase
           .from('offers')
           .update(upsertData)
           .eq('id', editingOffer.id)
-          .select()
-          .single());
+          .eq('user_id', user_id)
+          .select()); // Remove .single()
+        if (error) throw error;
+        // data is an array, return the first updated row if present
+        onOfferAdded(data && data.length > 0 ? data[0] : null);
       } else {
         // Insert new offer
         ({ data, error } = await supabase
@@ -78,9 +81,9 @@ export default function OfferForm({ onOfferAdded, editingOffer, onCancelEdit }: 
           .insert([upsertData])
           .select()
           .single());
+        if (error) throw error;
+        onOfferAdded(data);
       }
-      if (error) throw error;
-      onOfferAdded(data);
       setForm({
         name: '',
         description: '',
@@ -105,7 +108,7 @@ export default function OfferForm({ onOfferAdded, editingOffer, onCancelEdit }: 
         name="name"
         value={form.name}
         onChange={handleChange}
-        placeholder="Tarjouksen nimi"
+        placeholder="Offer name"
         className="border rounded px-2 py-1 flex-1"
         required
       />
@@ -113,7 +116,7 @@ export default function OfferForm({ onOfferAdded, editingOffer, onCancelEdit }: 
         name="description"
         value={form.description}
         onChange={handleChange}
-        placeholder="Kuvaus"
+        placeholder="Description"
         className="border rounded px-2 py-1 flex-1"
         required
       />
@@ -121,7 +124,7 @@ export default function OfferForm({ onOfferAdded, editingOffer, onCancelEdit }: 
         name="old_price"
         value={form.old_price}
         onChange={handleChange}
-        placeholder="Vanha hinta"
+        placeholder="Old price"
         className="border rounded px-2 py-1 w-24"
         required
       />
@@ -129,7 +132,7 @@ export default function OfferForm({ onOfferAdded, editingOffer, onCancelEdit }: 
         name="new_price"
         value={form.new_price}
         onChange={handleChange}
-        placeholder="Uusi hinta"
+        placeholder="New price"
         className="border rounded px-2 py-1 w-24"
         required
       />
@@ -154,7 +157,7 @@ export default function OfferForm({ onOfferAdded, editingOffer, onCancelEdit }: 
         className="bg-fuchsia-600 hover:bg-fuchsia-700 text-white px-4 py-2 rounded shadow min-w-[100px]"
         disabled={loading}
       >
-        {loading ? 'Tallennetaan...' : editingOffer ? 'Päivitä tarjous' : 'Lisää tarjous'}
+        {loading ? 'Saving...' : editingOffer ? 'Update offer' : 'Add new offer'}
       </button>
       {editingOffer && onCancelEdit && (
         <button
@@ -162,7 +165,7 @@ export default function OfferForm({ onOfferAdded, editingOffer, onCancelEdit }: 
           className="bg-gray-300 hover:bg-gray-400 text-gray-800 px-4 py-2 rounded shadow min-w-[100px] ml-2"
           onClick={onCancelEdit}
         >
-          Peru muokkaus
+          Cancel edit
         </button>
       )}
       {error && <div className="text-red-500 text-sm mt-2">{error}</div>}
