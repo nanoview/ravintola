@@ -5,7 +5,7 @@
 
 There are several ways of editing your application.
 Follow these steps:
-
+You will have to have your own supabase account. You have to create your own tables as required.
 ```sh
 # Step 1: Clone the repository using the project's Git URL.
 git clone https://github.com/nanoview/ravintola.git
@@ -20,6 +20,7 @@ npm i
 # Step 4: Start the development server with auto-reloading and an instant preview.
 npm run dev
 ```
+
 
 
 

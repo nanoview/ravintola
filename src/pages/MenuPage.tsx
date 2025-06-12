@@ -54,7 +54,7 @@ export default function MenuPage() {
         id: 1,
         name: "CHICKEN CURRY",
         description: "Tehty ja keitetty kana spicy curry kastikkeessa",
-        price: "16€",
+        price: "16.00€",
         dietary: "L, G, M, P",
         imageUrl: chikencurryImg
       },
@@ -62,7 +62,7 @@ export default function MenuPage() {
         id: 2,
         name: "BUTTER CHICKEN",
         description: "Marinoitu Tandoori kana paistettu spicy butter kastikkeet",
-        price: "18€",
+        price: "18.00€",
         dietary: "L, G",
         imageUrl: butterchickenImg
       },
@@ -70,7 +70,7 @@ export default function MenuPage() {
         id: 3,
         name: "CHICKEN KORMA",
         description: "Tehty ja keitetty kana maustetulla kookoskastikkeella",
-        price: "17€",
+        price: "17.00€",
         dietary: "L, G",
         imageUrl: chickenkormaImg
       },
@@ -78,7 +78,7 @@ export default function MenuPage() {
         id: 4,
         name: "CHICKEN TIKKA MASALA",
         description: "Marinoitua kanaa paistettua maustekastikkeella",
-        price: "18€",
+        price: "18.00€",
         dietary: "L, G",
         highlight: true,
         imageUrl: spicychickenImg,
@@ -87,7 +87,7 @@ export default function MenuPage() {
         id: 5,
         name: "NAUDANLIHA CURRY",
         description: "Tehty ja keitetty currykastikkeella",
-        price: "18€",
+        price: "18.00€",
         dietary: "L, G, M, P",
         imageUrl: beefcurryImg
       },
@@ -95,7 +95,7 @@ export default function MenuPage() {
         id: 6,
         name: "NAUDANLIHA MASALA",
         description: "Tehty ja keitetty mausteisella masalakastikkeessa",
-        price: "18€",
+        price: "18.00€",
         dietary: "L, G, M, P",
         imageUrl: beefmasalaImg
       },
@@ -103,7 +103,7 @@ export default function MenuPage() {
         id: 7,
         name: "NAUDANLIHA MALAI KOFTA",
         description: "Lihakeema prosessoitu kofta 4 kpl malai-kastikkeella",
-        price: "18€",
+        price: "18.00€",
         dietary: "L, G",
         imageUrl: malaikoftaImg
       },
@@ -111,15 +111,15 @@ export default function MenuPage() {
         id: 8,
         name: "LAMB CURRY",
         description: "Hienosti maustettu lampaan curry kermalla, kananmunalla ja mantelilla",
-        price: "19€",
+        price: "19.00€",
         dietary: "L, G",
         imageUrl: mughlailambImg
       },
       {
         id: 9,
-        name: "LAMB BUTTER",
+        name: "LAMB BUTTER / KORMA",
         description: "Tehty ja keitetyt lammat kastikkeella, cashewpähkinöillä",
-        price: "21€",
+        price: "21.00€",
         dietary: "L, G",
         imageUrl: butterlambImg
       },
@@ -127,7 +127,7 @@ export default function MenuPage() {
         id: 10,
         name: "LAMB MASALA",
         description: "Tehty ja keitetyt lammat mausteisella masala kastikkeessa",
-        price: "20€",
+        price: "20.00€",
         dietary: "L, G",
         imageUrl: lambmasalImg
       },
@@ -135,7 +135,7 @@ export default function MenuPage() {
         id: 11,
         name: "PRAWN BUTTER / KORMA",
         description: "Jättikatkaravut/katkaravut kookosmaidolla, maustekastikkeella",
-        price: "20€",
+        price: "20.00€",
         dietary: "L, G",
         imageUrl: prawnkormaImg,
       },
@@ -143,7 +143,7 @@ export default function MenuPage() {
         id: 12,
         name: "PRAWN MASALA",
         description: "Jättikatkaravut/katkaravut mausteisella masalakastikkeessa",
-        price: "20€",
+        price: "20.00€",
         dietary: "L, G",
         imageUrl: prawnmasalaImg
       },
@@ -151,23 +151,15 @@ export default function MenuPage() {
         id: 13,
         name: "KASVIS MASALA",
         description: "Peruna, Tomaatti, Gobi, Porkkana, Pavut masalakastikkeessa",
-        price: "15€",
+        price: "15.00€",
         dietary: "L, G",
         imageUrl: mixvegImg
       },
       {
         id: 14,
-        name: "MALAI KOFTA",
-        description: "Tehty kofta (peruna, tomaatti, gobi, porkkana, pavut) malai-kastikkeella",
-        price: "16€",
-        dietary: "L, G, M, P",
-        imageUrl: malaikoftaImg
-      },
-      {
-        id: 15,
         name: "BIRIYANI",
-        description: "Marinoitu mausteinen kana / lammas / naudanliha / katkaravut & kasvissekoitukset jugurttikastike pulao-riisin kanssa",
-        price: "22€",
+        description: "Marinoitu enimmäkseen mausteinen kana / lammas / naudanliha / katkaravut & kasvissekoitukset jugurttikastike pulao-riisin kanssa",
+        price: "22.00€",
         dietary: "L, G",
         imageUrl: BiriyaniImg
       }
@@ -177,7 +169,7 @@ export default function MenuPage() {
         id: 1,
         name: "PIPPURI LEIKE",
         description: "Kanasta. Tarjoillaan ranskalaisten / lohkoperunoiden / perunamuusin tai kermaperunoiden kanssa",
-        price: "17€",
+        price: "16.90€",
         dietary: "",
         imageUrl: pepperchickencutletImg
       },
@@ -185,7 +177,7 @@ export default function MenuPage() {
         id: 2,
         name: "WIENARI LEIKE",
         description: "Kanasta. Tarjoillaan ranskalaisten / lohkoperunoiden / perunamuusin tai kermaperunoiden kanssa",
-        price: "17€",
+        price: "16.90€",
         dietary: "",
         imageUrl: chickencutletImg
       },
@@ -193,7 +185,7 @@ export default function MenuPage() {
         id: 3,
         name: "HAWAI LEIKE",
         description: "Kanasta. Tarjoillaan ranskalaisten / lohkoperunoiden / perunamuusin tai kermaperunoiden kanssa",
-        price: "17€",
+        price: "16.90€",
         dietary: "",
         imageUrl: chickencutletImg
       },
@@ -201,7 +193,7 @@ export default function MenuPage() {
         id: 4,
         name: "METSASIAN LEIKE",
         description: "Kanasta. Tarjoillaan ranskalaisten / lohkoperunoiden / perunamuusin tai kermaperunoiden kanssa",
-        price: "17€",
+        price: "16.90€",
         dietary: "",
         imageUrl: chickencutletImg
       },
@@ -209,7 +201,7 @@ export default function MenuPage() {
         id: 5,
         name: "SPICY LEIKE",
         description: "Kanasta. Tarjoillaan ranskalaisten / lohkoperunoiden / perunamuusin tai kermaperunoiden kanssa",
-        price: "17€",
+        price: "16.90€",
         dietary: "",
         imageUrl: spicychickenImg
       },
@@ -220,7 +212,7 @@ export default function MenuPage() {
         id: 21,
         name: "NAUTA BURGERI",
         description: "Sampula, American Salatti, Tupla chader, Talon Maonesi, Tomatti, Mautekurku. Tarjoillaan ranskalaisten tai lohkoperunoiden kanssa",
-        price: "14€",
+        price: "14.00€",
         dietary: "L.",
         imageUrl: nautaburgerImg
       },
@@ -228,7 +220,7 @@ export default function MenuPage() {
         id: 22,
         name: "KANA BURGERI",
         description: "Sampula, American Salatti, Tupla chader, Talon Maonesi, Tomatti, Mautekurku. Tarjoillaan ranskalaisten tai lohkoperunoiden kanssa",
-        price: "14€",
+        price: "14.00€",
         dietary: "L",
         imageUrl: chickenburgerImg
       }
@@ -238,7 +230,7 @@ export default function MenuPage() {
         id: 1,
         name: "KANA SALAATTI",
         description: "Sisältää Amerikan salaattia, tomaattia ja rucolaa",
-        price: "15€",
+        price: "14.00€",
         dietary: "",
         imageUrl: "https://cdn.pixabay.com/photo/2021/06/23/08/01/salad-6357996_1280.jpg"
       },
@@ -246,7 +238,7 @@ export default function MenuPage() {
         id: 2,
         name: "KATKARAPUSALAATTI",
         description: "Sisältää Amerikan salaattia, tomaattia ja rucolaa",
-        price: "15€",
+        price: "14.00€",
         dietary: "",
         imageUrl: "https://cdn.pixabay.com/photo/2022/10/04/12/58/salad-7498153_960_720.jpg"
       },
@@ -254,17 +246,15 @@ export default function MenuPage() {
         id: 3,
         name: "KIRJOLOHENSALAATTI",
         description: "Sisältää Amerikan salaattia, tomaattia ja rucolaa",
-        price: "15€",
+        price: "14.00€",
         dietary: "",
         imageUrl: salmonsaladImg
       },
-    
       {
-        
         id: 5,
-      name: "Kreikalainen salaatti",
+        name: "Kreikalainen salaatti",
         description: "Feta, tomaatti, kurkku, punasipuli, oliiviöljy",
-        price: "12€",
+        price: "12.00€",
         dietary: "",
         imageUrl: "https://cdn.pixabay.com/photo/2021/01/10/04/37/salad-5904093_640.jpg"
       }
@@ -275,7 +265,7 @@ export default function MenuPage() {
         id: 1,
         name: "LASTENPIZZA",
         description: "Sisältää neljä vapaavalintaista täytettä. Lisätäyte +1€",
-        price: "7€",
+        price: "7.00€",
         dietary: "",
         imageUrl: kidspizzaImg
       },
@@ -283,7 +273,7 @@ export default function MenuPage() {
         id: 2,
         name: "NORMAALIPIZZA",
         description: "Sisältää neljä vapaavalintaista täytettä. Lisätäyte +2€",
-        price: "12€",
+        price: "12.00€",
         dietary: "",
         imageUrl: pizzaImg
       },
@@ -291,7 +281,7 @@ export default function MenuPage() {
         id: 3,
         name: "PERHEPIZZA",
         description: "Sisältää neljä vapaavalintaista täytettä. Lisätäyte +3€",
-        price: "20€",
+        price: "22.00€",
         dietary: "",
         imageUrl: pizzaImg
       }
@@ -428,7 +418,7 @@ export default function MenuPage() {
         id: 21,
         name: "PIPPURIPIHVI",
         description: "Pippuripihvi pippurikastikkeella",
-        price: "22€",
+        price: "21.90€",
         dietary: "",
         imageUrl: "https://tse4.mm.bing.net/th/id/OIP.JvBbJnqfOtQQQBUCiEmNCAHaKo?r=0&rs=1&pid=ImgDetMain"
       },
@@ -436,7 +426,7 @@ export default function MenuPage() {
         id: 22,
         name: "WIENERPIHVI",
         description: "Wienerleike perinteiseen tapaan",
-        price: "22€",
+        price: "21.90€",
         dietary: "",
         imageUrl: "https://cdn.pixabay.com/photo/2017/04/30/09/30/steak-2272464_640.jpg"
       },
@@ -444,7 +434,7 @@ export default function MenuPage() {
         id: 23,
         name: "HAWAIJINPIHVI",
         description: "Hawaijin pihvi ananaksella",
-        price: "22€",
+        price: "21.90€",
         dietary: "",
         imageUrl: "https://cdn.pixabay.com/photo/2024/05/18/23/26/food-8771203_1280.png"
       },
@@ -452,7 +442,7 @@ export default function MenuPage() {
         id: 24,
         name: "METSÄSTÄJÄNPIHVI",
         description: "Metsästäjänpihvi sienikastikkeella",
-        price: "22€",
+        price: "21.90€",
         dietary: "",
         imageUrl: "https://cdn.pixabay.com/photo/2017/04/30/09/30/steak-2272464_640.jpg"
       },
@@ -460,7 +450,7 @@ export default function MenuPage() {
         id: 25,
         name: "SPICYPHIIVI",
         description: "Spicy pihvi tulisella kastikkeella",
-        price: "22€",
+        price: "21.90€",
         dietary: "",
         imageUrl: "https://cdn.pixabay.com/photo/2021/08/03/11/11/steak-6519095_1280.jpg"
       }
