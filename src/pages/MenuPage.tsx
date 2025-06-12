@@ -471,13 +471,13 @@ export default function MenuPage() {
             Tutustu huolella laadittuun ruokalistaamme, jossa on käytetty parhaita raaka-aineita ja kulinaarisia perinteitä.
           </p>
           <Tabs defaultValue={activeCategory} className="w-full max-w-4xl mx-auto">
-            <TabsList className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-4 mb-4">
+            <TabsList className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-1 sm:gap-2 mb-8">
               {menuCategories.map(category => (
                 <TabsTrigger
                   key={category.id}
                   value={category.id}
                   onClick={() => setActiveCategory(category.id)}
-                  className="truncate px-2 py-2 text-xs sm:text-sm md:text-base"
+                  className="truncate px-2 py-1.5 text-xs sm:text-sm min-h-[36px] min-w-[60px]"
                 >
                   {category.label}
                 </TabsTrigger>
